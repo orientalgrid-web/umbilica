@@ -1,0 +1,20 @@
+{
+  "oddsPrayers": [
+    {
+      "title": "Ancient Sumerian Prayer for Terminal Illness Reversal",
+      "prayer": "Enki, god of wisdom and healing, who knows the plant of life and the water of life, look upon this afflicted one. As you restored Inanna from the underworld, restore health to this body. Let the illness retreat like darkness before dawn.",
+      "ritual": "Create a clay tablet with the sick person's name. At sunset, place it in flowing water with seven healing herbs while chanting this prayer for seven nights.",
+      "items": ["Clay tablet", "Seven healing herbs", "Running water"],
+      "tradition": "Ancient Sumerian",
+      "odds": "1 in 10,000"
+    },
+    {
+      "title": "Celtic Druid Prayer to Find Missing Person After Years",
+      "prayer": "Spirits of the forest, eyes of the hawk, wisdom of the oak. Guide our search through dream and vision. Show us the path to the lost one. Let no veil of time or distance hide them from our seeking.",
+      "ritual": "Tie a personal item of the missing to an oak branch. Each dawn for nine days, walk sunwise around the tree chanting this prayer while scattering oats for the birds.",
+      "items": ["Personal item", "Oak branch", "Oats"],
+      "tradition": "Celtic Druid",
+      "odds": "Against all odds"
+    }
+  ]
+}
