@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umbilica - Prayer App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background: #f8f9fa;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4a6fa5, #2c5282);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .search-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f1f3f5;
+            border-radius: 12px;
+            padding: 12px 16px;
+        }
+        
+        .search-box i {
+            color: #666;
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+        
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            outline: none;
+            color: #333;
+        }
+        
+        .search-input::placeholder {
+            color: #999;
+        }
+        
+        .clear-btn {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            padding: 4px;
+            margin-left: 8px;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin-bottom: 15px;
+        }
+        
+        .filter-pill {
+            background: #f1f3f5;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: #495057;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+        
+        .filter-pill:hover {
+            background: #e9ecef;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e7f5ff;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .prayer-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .prayer-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        
+        .prayer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .prayer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .prayer-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #212529;
+        }
+        
+        .prayer-content {
+            color: #495057;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .prayer-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .tradition-badge {
+            display: flex;
+            align-items: center;
+            background: #e7f5ff;
+            color: #4a6fa5;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .tradition-badge i {
+            margin-right: 6px;
+        }
+        
+        .duration {
+            color: #868e96;
+            font-size: 0.9rem;
+        }
+        
+        .theme-tag {
+            background: #fff3bf;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #868e96;
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Umbilica</h1>
+            <p>Prayer & Meditation App</p>
+        </div>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search prayers by keyword, tradition, or theme...">
+                <button class="clear-btn" id="clearBtn" style="display: none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="filters" id="filters">
+                <button class="filter-pill" data-filter="Christian">Christian</button>
+                <button class="filter-pill" data-filter="Buddhist">Buddhist</button>
+                <button class="filter-pill" data-filter="Peace">Peace</button>
+                <button class="filter-pill" data-filter="Healing">Healing</button>
+                <button class="filter-pill" data-filter="Gratitude">Gratitude</button>
+            </div>
+        </div>
+        
+        <div class="results-header" id="resultsHeader" style="display: none;">
+            <span id="resultsCount">0 prayers found</span>
+            <button class="clear-btn" id="clearSearch">Clear</button>
+        </div>
+        
+        <div class="prayer-list" id="prayerList">
+            <!-- Prayers will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const prayers = [
+            {
+                id: 1,
+                title: "Morning Prayer",
+                content: "Thank you for this new day. Grant me strength, wisdom, and compassion to face whatever comes my way.",
+                tradition: "Christian",
+                duration: "2 min",
+                theme: "Gratitude",
+                favorite: true
+            },
+            {
+                id: 2,
+                title: "Evening Peace",
+                content: "As the day ends, I release all worries and find peace in stillness. May my mind and heart be calm.",
+                tradition: "Buddhist",
+                duration: "5 min",
+                theme: "Peace",
+                favorite: false
+            },
+            {
+                id: 3,
+                title: "Healing Prayer",
+                content: "Divine healer, touch those in need of healing. Bring comfort to body, mind, and spirit.",
+                tradition: "Christian",
+                duration: "3 min",
+                theme: "Healing",
+                favorite: true
+            },
+            {
+                id: 4,
+                title: "Mindful Breathing",
+                content: "Focus on your breath. Inhale peace, exhale tension. Be fully present in this moment.",
+                tradition: "Buddhist",
+                duration: "10 min",
+                theme: "Mindfulness",
+                favorite: false
+            },
+            {
+                id: 5,
+                title: "Gratitude Meditation",
+                content: "I count my blessings and give thanks for life's gifts, both big and small.",
+                tradition: "Interfaith",
+                duration: "4 min",
+                theme: "Gratitude",
+                favorite: true
+            },
+            {
+                id: 6,
+                title: "Serenity Prayer",
+                content: "Grant me serenity to accept what I cannot change, courage to change what I can, and wisdom to know the difference.",
+                tradition: "Christian",
+                duration: "2 min",
+                theme: "Peace",
+                favorite: true
+            },
+            {
+                id: 7,
+                title: "Loving-Kindness",
+                content: "May I be happy. May I be healthy. May I be safe. May I live with ease.",
+                tradition: "Buddhist",
+                duration: "7 min",
+                theme: "Compassion",
+                favorite: false
+            },
+            {
+                id: 8,
+                title: "Protection Prayer",
+                content: "Surround me with your light and protection. Keep me safe from harm and guide my path.",
+                tradition: "Interfaith",
+                duration: "3 min",
+                theme: "Protection",
+                favorite: true
+            }
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearBtn');
+        const resultsHeader = document.getElementById('resultsHeader');
+        const resultsCount = document.getElementById('resultsCount');
+        const clearSearch = document.getElementById('clearSearch');
+        const prayerList = document.getElementById('prayerList');
+        const filterButtons = document.querySelectorAll('.filter-pill');
+
+        function renderPrayers(filteredPrayers) {
+            prayerList.innerHTML = '';
+            
+            if (filteredPrayers.length === 0) {
+                prayerList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <h3>No prayers found</h3>
+                        <p>Try different keywords like "Christian", "Peace", or "Healing"</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredPrayers.forEach(prayer => {
+                const card = document.createElement('div');
+                card.className = 'prayer-card';
+                card.innerHTML = `
+                    <div class="prayer-header">
+                        <h3 class="prayer-title">${prayer.title}</h3>
+                        ${prayer.favorite ? '<i class="fas fa-heart" style="color:#ff6b6b"></i>' : ''}
+                    </div>
+                    <p class="prayer-content">${prayer.content}</p>
+                    <div class="prayer-footer">
+                        <div class="tradition-badge">
+                            <i class="fas fa-book"></i>
+                            ${prayer.tradition}
+                        </div>
+                        <div class="duration">
+                            <i class="far fa-clock"></i> ${prayer.duration}
+                        </div>
+                    </div>
+                    <div class="theme-tag">${prayer.theme}</div>
+                `;
+                prayerList.appendChild(card);
+            });
+        }
+
+        function filterPrayers() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            let filtered = prayers;
+            
+            if (searchTerm) {
+                filtered = prayers.filter(prayer => 
+                    prayer.title.toLowerCase().includes(searchTerm) ||
+                    prayer.content.toLowerCase().includes(searchTerm) ||
+                    prayer.tradition.toLowerCase().includes(searchTerm) ||
+                    prayer.theme.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            renderPrayers(filtered);
+            
+            // Update results count
+            if (searchTerm) {
+                resultsHeader.style.display = 'flex';
+                resultsCount.textContent = `${filtered.length} prayer${filtered.length !== 1 ? 's' : ''} found`;
+            } else {
+                resultsHeader.style.display = 'none';
+            }
+            
+            // Show/hide clear button
+            clearBtn.style.display = searchTerm ? 'block' : 'none';
+        }
+
+        // Event Listeners
+        searchInput.addEventListener('input', filterPrayers);
+        
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            filterPrayers();
+        });
+        
+        clearSearch.addEventListener('click', () => {
+            searchInput.value = '';
+            filterPrayers();
+        });
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                searchInput.value = button.getAttribute('data-filter');
+                filterPrayers();
+            });
+        });
+
+        // Initial render
+        renderPrayers(prayers);
+    </script>
+</body>
+</html>
