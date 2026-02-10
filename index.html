@@ -3,793 +3,861 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umbilica - Ancient Prayers That Actually Worked</title>
+    <title>Umbilica Oriental™ - Universal Spiritual Haven</title>
+    <!-- Meta Tags -->
+    <meta name="description" content="One spiritual app for all religions. Prayers, meditations, motivation for every situation. Find peace, purpose, and connection.">
+    <meta name="keywords" content="prayer, meditation, spirituality, motivation, Christian, Muslim, Buddhist, Hindu, Jewish, Interfaith">
+    <meta name="author" content="Oriental Grid Limited">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙏</text></svg>">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@300;400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Paystack SDK -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <style>
+        :root {
+            --primary: #6C3483;
+            --secondary: #3498DB;
+            --accent: #E74C3C;
+            --success: #27AE60;
+            --gold: #F1C40F;
+            --light: #F8F9FA;
+            --dark: #2C3E50;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        :root {
-            --ancient-gold: #d4af37;
-            --scroll-papyrus: #f5e9d4;
-            --ink-dark: #2c1810;
-            --temple-stone: #8b7355;
-            --monk-robe: #4a3728;
-            --desert-sand: #e6d5b8;
-        }
-        
         body {
-            background: linear-gradient(135deg, var(--desert-sand) 0%, var(--scroll-papyrus) 100%);
-            color: var(--ink-dark);
-            font-family: 'Crimson Pro', serif;
-            line-height: 1.8;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
             min-height: 100vh;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><path d="M20,20 Q40,5 60,20 T100,20" stroke="%234a3728" fill="none"/></svg>');
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Ancient Header */
-        .ancient-header {
-            background: linear-gradient(to right, var(--monk-robe), var(--temple-stone));
-            color: var(--ancient-gold);
-            padding: 3rem 0;
+        /* Header */
+        .master-header {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem 0;
             text-align: center;
-            border-bottom: 8px solid var(--ancient-gold);
             position: relative;
             overflow: hidden;
         }
         
-        .ancient-header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 20px,
-                var(--ancient-gold) 20px,
-                var(--ancient-gold) 40px
-            );
-        }
-        
-        .ancient-header h1 {
-            font-family: 'Crimson Pro', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            letter-spacing: 1px;
-        }
-        
-        .ancient-header h1 i {
-            margin-right: 15px;
-            font-size: 2.8rem;
-        }
-        
-        .ancient-header .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            font-style: italic;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        
-        /* Timeline */
-        .timeline {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem auto;
-            flex-wrap: wrap;
-            max-width: 900px;
-        }
-        
-        .era-pill {
-            background: var(--scroll-papyrus);
-            border: 2px solid var(--temple-stone);
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            color: var(--ink-dark);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .era-pill:hover {
-            background: var(--ancient-gold);
-            color: var(--ink-dark);
-            transform: translateY(-2px);
-            border-color: var(--ancient-gold);
-        }
-        
-        .era-pill.active {
-            background: var(--ancient-gold);
-            color: var(--ink-dark);
-            border-color: var(--ancient-gold);
-            box-shadow: 0 6px 12px rgba(212, 175, 55, 0.3);
-        }
-        
-        /* Ancient Scroll Search */
-        .scroll-search {
-            background: var(--scroll-papyrus);
-            border: 3px double var(--temple-stone);
-            border-radius: 0;
-            padding: 2rem;
-            margin: 2rem auto;
-            max-width: 900px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        
-        .scroll-search::before {
+        .master-header::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(90deg, transparent 95%, rgba(139, 115, 85, 0.1) 100%);
-            pointer-events: none;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.1"><path d="M0,0 L100,0 L100,100 Z" fill="white"/></svg>');
         }
         
-        .search-container {
-            position: relative;
+        .logo-container {
+            margin-bottom: 1.5rem;
         }
         
-        .search-box {
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            background: transparent;
-            border-bottom: 2px solid var(--temple-stone);
-            padding: 1rem 0;
+            justify-content: center;
+            gap: 15px;
         }
         
-        .search-box i {
-            color: var(--temple-stone);
-            font-size: 1.5rem;
-            margin-right: 1rem;
+        .logo span {
+            background: rgba(255,255,255,0.15);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
         }
         
-        .search-input {
-            flex: 1;
-            border: none;
-            background: transparent;
-            font-size: 1.3rem;
-            font-family: 'Crimson Pro', serif;
-            color: var(--ink-dark);
-            outline: none;
-            padding: 0.5rem 0;
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-weight: 300;
         }
         
-        .search-input::placeholder {
-            color: var(--temple-stone);
-            font-style: italic;
+        /* Universal Navigation */
+        .universal-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            padding: 0 1rem;
         }
         
-        /* Prayer Scrolls */
-        .prayer-scrolls {
+        .nav-pill {
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-pill:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        
+        .nav-pill.active {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--dark);
+            opacity: 0.8;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Mood Selector */
+        .mood-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .mood-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
+        }
+        
+        .mood-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+        
+        .mood-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Content Grid */
+        .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
         
-        .prayer-scroll {
-            background: var(--scroll-papyrus);
-            border: 2px solid var(--temple-stone);
-            padding: 2rem;
-            position: relative;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-        
-        .prayer-scroll:hover {
-            transform: translateY(-10px) rotate(1deg);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border-color: var(--ancient-gold);
-        }
-        
-        .prayer-scroll::before {
-            content: "";
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 1px dashed rgba(139, 115, 85, 0.3);
-            pointer-events: none;
-        }
-        
-        .scroll-header {
-            border-bottom: 2px solid var(--ancient-gold);
-            padding-bottom: 1rem;
-            margin-bottom: 1.5rem;
+        .content-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
             position: relative;
         }
         
-        .scroll-header h3 {
-            font-size: 1.6rem;
-            color: var(--ink-dark);
-            font-weight: 700;
-            line-height: 1.4;
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         
-        .era-badge {
+        .card-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .religion-badge {
             position: absolute;
-            top: -12px;
-            right: 0;
-            background: var(--ancient-gold);
-            color: var(--ink-dark);
-            padding: 0.3rem 1rem;
+            top: -10px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
-            letter-spacing: 1px;
         }
         
-        .prayer-content {
-            flex: 1;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            color: var(--ink-dark);
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .card-text {
+            color: #666;
             margin-bottom: 1.5rem;
-            font-style: italic;
+            line-height: 1.8;
         }
         
-        .prayer-source {
-            font-size: 0.9rem;
-            color: var(--temple-stone);
-            border-top: 1px dashed var(--temple-stone);
-            padding-top: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .prayer-meta {
+        .card-footer {
+            padding: 1rem 1.5rem;
+            background: var(--light);
+            border-top: 1px solid #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(139, 115, 85, 0.3);
         }
         
-        .tradition-tag {
-            background: var(--monk-robe);
-            color: var(--scroll-papyrus);
-            padding: 0.4rem 1rem;
-            border-radius: 3px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        /* Ancient Footer */
-        .ancient-footer {
+        /* Premium Section */
+        .premium-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
             text-align: center;
-            padding: 3rem 0;
-            color: var(--temple-stone);
-            border-top: 3px double var(--temple-stone);
-            margin-top: 4rem;
-            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
         }
         
-        .ancient-footer p {
-            margin: 0.5rem 0;
+        .premium-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.1"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="2"/></svg>');
+        }
+        
+        .premium-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .premium-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .premium-feature {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Paystack Button */
+        .paystack-btn {
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        
+        .paystack-btn:hover {
+            background: #f39c12;
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        .universal-footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
+            opacity: 0.8;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .ancient-header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .prayer-scrolls {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline {
-                gap: 1rem;
-            }
-            
-            .era-pill {
-                padding: 0.6rem 1rem;
-                font-size: 0.8rem;
-            }
+            .logo { font-size: 2.5rem; }
+            .hero-title { font-size: 2rem; }
+            .universal-nav { flex-direction: column; align-items: center; }
+            .nav-pill { width: 100%; max-width: 300px; }
+            .content-grid { grid-template-columns: 1fr; }
+            .premium-section { padding: 2rem 1rem; }
         }
         
-        /* Fade in animation */
-        @keyframes fadeInScroll {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .prayer-scroll {
-            animation: fadeInScroll 0.6s ease-out;
+        .content-card {
+            animation: fadeIn 0.6s ease-out;
         }
+        
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mt-3 { margin-top: 3rem; }
+        .highlight { color: var(--accent); font-weight: 600; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Ancient Header -->
-        <header class="ancient-header">
-            <h1><i class="fas fa-scroll"></i> UMBILICA ANCIENT</h1>
-            <p class="subtitle">Authentic prayers that guided Moses through the desert, sustained Abraham in his journey, and empowered early monks in their solitude</p>
-        </header>
-
-        <!-- Historical Timeline -->
-        <div class="timeline">
-            <button class="era-pill active" data-era="all">All Eras</button>
-            <button class="era-pill" data-era="patriarchal">Patriarchal (2000-1500 BCE)</button>
-            <button class="era-pill" data-era="mosaic">Mosaic (1500-1000 BCE)</button>
-            <button class="era-pill" data-era="desert">Desert Fathers (200-500 CE)</button>
-            <button class="era-pill" data-era="early-monastic">Early Monastic (500-1000 CE)</button>
-        </div>
-
-        <!-- Ancient Scroll Search -->
-        <div class="scroll-search">
-            <div class="search-container">
-                <div class="search-box">
-                    <i class="fas feather-pen"></i>
-                    <input type="text" class="search-input" id="searchInput" 
-                           placeholder="Search ancient prayers by prophet, tradition, or theme...">
+    <!-- Master Header -->
+    <header class="master-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <span><i class="fas fa-hands-praying"></i> UMBILICA ORIENTAL™</span>
+                </div>
+            </div>
+            <p class="tagline">
+                One spiritual haven for all beliefs. Find prayers, meditations, and motivation for every situation in life.
+                <br>Peace has no religion. Comfort knows no borders.
+            </p>
+            
+            <!-- Universal Navigation -->
+            <div class="universal-nav">
+                <div class="nav-pill active" data-category="all">
+                    <i class="fas fa-globe"></i> All Religions
+                </div>
+                <div class="nav-pill" data-category="christian">
+                    <i class="fas fa-cross"></i> Christian
+                </div>
+                <div class="nav-pill" data-category="muslim">
+                    <i class="fas fa-mosque"></i> Muslim
+                </div>
+                <div class="nav-pill" data-category="buddhist">
+                    <i class="fas fa-yin-yang"></i> Buddhist
+                </div>
+                <div class="nav-pill" data-category="hindu">
+                    <i class="fas fa-om"></i> Hindu
+                </div>
+                <div class="nav-pill" data-category="jewish">
+                    <i class="fas fa-star-of-david"></i> Jewish
+                </div>
+                <div class="nav-pill" data-category="interfaith">
+                    <i class="fas fa-handshake"></i> Interfaith
+                </div>
+                <div class="nav-pill" data-category="motivation">
+                    <i class="fas fa-fire"></i> Daily Motivation
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- Prayer Scrolls Container -->
-        <div class="prayer-scrolls" id="prayerScrolls">
-            <!-- Ancient prayers will be loaded here -->
-        </div>
-
-        <!-- Ancient Footer -->
-        <footer class="ancient-footer">
-            <p><i class="fas fa-landmark"></i> Curated from historical manuscripts and sacred texts</p>
-            <p>These prayers have sustained spiritual seekers for millennia</p>
-            <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.7;">
-                "The prayer of a righteous person is powerful and effective." - James 5:16
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">Welcome to Spiritual Unity</h1>
+            <p class="hero-subtitle">
+                Whether you're facing anxiety, seeking purpose, celebrating joy, or needing strength - 
+                find exactly what your soul needs. <span class="highlight">Over 500+ spiritual resources</span> 
+                from all world traditions.
             </p>
-        </footer>
+            
+            <!-- Mood Selector -->
+            <h2 class="text-center mb-2">What's your situation today?</h2>
+            <div class="mood-selector">
+                <div class="mood-card" data-mood="anxiety">
+                    <div class="mood-icon">😔</div>
+                    <h3>Anxiety & Stress</h3>
+                    <p>Calming prayers & meditations</p>
+                </div>
+                <div class="mood-card" data-mood="depression">
+                    <div class="mood-icon">😢</div>
+                    <h3>Sadness & Depression</h3>
+                    <p>Hope-filled scriptures</p>
+                </div>
+                <div class="mood-card" data-mood="strength">
+                    <div class="mood-icon">💪</div>
+                    <h3>Need Strength</h3>
+                    <p>Empowering verses</p>
+                </div>
+                <div class="mood-card" data-mood="gratitude">
+                    <div class="mood-icon">🙏</div>
+                    <h3>Gratitude & Joy</h3>
+                    <p>Thanksgiving prayers</p>
+                </div>
+                <div class="mood-card" data-mood="forgiveness">
+                    <div class="mood-icon">❤️</div>
+                    <h3>Forgiveness</h3>
+                    <p>Healing & reconciliation</p>
+                </div>
+                <div class="mood-card" data-mood="guidance">
+                    <div class="mood-icon">🧭</div>
+                    <h3>Guidance</h3>
+                    <p>Wisdom for decisions</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Grid -->
+        <section class="mt-3">
+            <h2 class="text-center mb-2">Today's Featured Spiritual Resources</h2>
+            <div class="content-grid" id="contentGrid">
+                <!-- Content will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Premium Section -->
+        <section class="premium-section">
+            <h2 class="premium-title">✨ Upgrade to Umbilica Premium ✨</h2>
+            <p class="hero-subtitle" style="color: rgba(255,255,255,0.9);">
+                Unlock exclusive content, personalized spiritual coaching, and ad-free experience
+            </p>
+            
+            <div class="premium-features">
+                <div class="premium-feature">
+                    <h3><i class="fas fa-crown"></i> Premium Content</h3>
+                    <p>Access 1000+ exclusive prayers, meditations, and spiritual teachings</p>
+                </div>
+                <div class="premium-feature">
+                    <h3><i class="fas fa-user-graduate"></i> Spiritual Coaching</h3>
+                    <p>Weekly sessions with certified spiritual guides from your tradition</p>
+                </div>
+                <div class="premium-feature">
+                    <h3><i class="fas fa-download"></i> Offline Access</h3>
+                    <p>Download content for meditation anywhere, anytime</p>
+                </div>
+                <div class="premium-feature">
+                    <h3><i class="fas fa-heart"></i> Personalized Path</h3>
+                    <p>Custom spiritual growth plan based on your journey</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem;">
+                    <span style="text-decoration: line-through; opacity: 0.7;">₦5,000</span> 
+                    <span style="color: var(--gold);">₦2,500/month</span>
+                </h3>
+                <p style="margin-bottom: 1rem;">First month 50% off • Cancel anytime</p>
+                
+                <!-- Paystack Payment Button -->
+                <button class="paystack-btn" onclick="payWithPaystack()">
+                    <i class="fas fa-lock"></i> UPGRADE NOW WITH PAYSTACK
+                </button>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">
+                    Secure payment powered by Paystack • All major cards & bank transfers
+                </p>
+            </div>
+        </section>
+
+        <!-- Company Info -->
+        <section class="hero-section mt-3">
+            <h2 class="hero-title">About Oriental Grid Limited</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p class="card-text mb-2">
+                    <strong>Oriental Grid Limited</strong> is a technology and spiritual wellness company 
+                    dedicated to creating inclusive digital spaces for spiritual growth and mental wellbeing.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                        <p>To make spiritual wellness accessible to everyone, regardless of religious background or personal beliefs.</p>
+                    </div>
+                    <div>
+                        <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                        <p>A world where technology bridges spiritual divides and promotes universal peace and understanding.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
+    <!-- Footer -->
+    <footer class="universal-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Umbilica Oriental™</h3>
+                    <p>Your universal spiritual companion. One app, all beliefs, infinite peace.</p>
+                    <div style="margin-top: 1rem;">
+                        <i class="fas fa-envelope"></i> support@umbilica-oriental.com<br>
+                        <i class="fas fa-phone"></i> +234 800 000 0000
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#" style="color: white; text-decoration: none;">Daily Inspiration</a></p>
+                    <p><a href="#" style="color: white; text-decoration: none;">Prayer Collections</a></p>
+                    <p><a href="#" style="color: white; text-decoration: none;">Meditation Guides</a></p>
+                    <p><a href="#" style="color: white; text-decoration: none;">Spiritual Counseling</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <p><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></p>
+                    <p><a href="#" style="color: white; text-decoration: none;">Privacy Policy</a></p>
+                    <p><a href="#" style="color: white; text-decoration: none;">Refund Policy</a></p>
+                    <p>© 2024 Oriental Grid Limited. All rights reserved.</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>Umbilica Oriental™ is a registered trademark of Oriental Grid Limited. RC: 1234567</p>
+                <p style="margin-top: 0.5rem;">
+                    <i class="fab fa-facebook"></i> 
+                    <i class="fab fa-twitter"></i> 
+                    <i class="fab fa-instagram"></i> 
+                    <i class="fab fa-youtube"></i>
+                    Follow us on social media
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
     <script>
-        // HISTORICALLY ACCURATE ANCIENT PRAYERS DATABASE
-        const ancientPrayers = [
+        // COMPREHENSIVE SPIRITUAL CONTENT DATABASE
+        const spiritualContent = [
+            // Christian
             {
                 id: 1,
-                title: "Moses' Desert Prayer for Guidance",
-                content: "Yahweh, if your presence does not go with us, do not lead us up from here. For how then can it be known that I have found favor in your sight, I and your people? Is it not by your going with us, so that we are distinct, I and your people, from all the people who are on the face of the earth?",
-                era: "mosaic",
-                tradition: "Hebrew",
-                source: "Exodus 33:15-16",
-                historicalContext: "Prayed by Moses when leading Israelites through Sinai desert (1446 BCE)",
-                impact: "Resulted in God's continued presence as pillar of cloud/fire"
+                title: "Psalm 23: The Lord is My Shepherd",
+                content: "The Lord is my shepherd; I shall not want. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul. Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me.",
+                category: "christian",
+                mood: ["anxiety", "strength", "guidance"],
+                tags: ["peace", "protection", "guidance"],
+                religion: "Christian",
+                author: "King David",
+                duration: "2 min"
             },
+            // Muslim
             {
                 id: 2,
-                title: "Abraham's Intercession for Sodom",
-                content: "Will you indeed sweep away the righteous with the wicked? Suppose there are fifty righteous within the city. Will you then sweep away the place and not spare it for the fifty righteous who are in it? Far be it from you to do such a thing, to put the righteous to death with the wicked, so that the righteous fare as the wicked! Far be that from you! Shall not the Judge of all the earth do what is just?",
-                era: "patriarchal",
-                tradition: "Hebrew",
-                source: "Genesis 18:23-25",
-                historicalContext: "Abraham bargaining with God to save Sodom (c. 2000 BCE)",
-                impact: "Saved Lot and his family; established precedent for intercessory prayer"
+                title: "Surah Al-Fatiha: The Opening",
+                content: "In the name of Allah, the Entirely Merciful, the Especially Merciful. All praise is due to Allah, Lord of the worlds. The Entirely Merciful, the Especially Merciful. Sovereign of the Day of Recompense. It is You we worship and You we ask for help. Guide us to the straight path.",
+                category: "muslim",
+                mood: ["guidance", "strength", "gratitude"],
+                tags: ["guidance", "mercy", "worship"],
+                religion: "Muslim",
+                author: "Quran",
+                duration: "1 min"
             },
+            // Buddhist
             {
                 id: 3,
-                title: "Jesus' Prayer in Gethsemane",
-                content: "Abba, Father, all things are possible for you. Remove this cup from me. Yet not what I will, but what you will.",
-                era: "mosaic",
-                tradition: "Christian",
-                source: "Mark 14:36",
-                historicalContext: "Prayed in olive grove before crucifixion (c. 30 CE)",
-                impact: "Gave strength to complete sacrificial mission"
+                title: "Metta (Loving-Kindness) Meditation",
+                content: "May I be happy. May I be healthy. May I be safe. May I live with ease. May my friends be happy. May my teachers be happy. May strangers be happy. May my difficulties be happy. May all beings everywhere be happy and free.",
+                category: "buddhist",
+                mood: ["anxiety", "depression", "forgiveness"],
+                tags: ["love", "compassion", "peace"],
+                religion: "Buddhist",
+                author: "Buddhist Tradition",
+                duration: "5 min"
             },
+            // Hindu
             {
                 id: 4,
-                title: "Desert Father's Cell Prayer",
-                content: "Lord Jesus Christ, Son of God, have mercy on me, a sinner. Lord Jesus Christ, Son of God, have mercy on me, a sinner. Lord Jesus Christ, Son of God, have mercy on me, a sinner.",
-                era: "desert",
-                tradition: "Christian",
-                source: "Desert Fathers Tradition",
-                historicalContext: "Prayer rope practice of early Egyptian monks (4th century CE)",
-                impact: "Became foundation of Hesychast prayer tradition"
+                title: "Gayatri Mantra for Enlightenment",
+                content: "Om Bhur Bhuvaḥ Swaḥ Tat-savitur Vareñyaṃ Bhargo Devasya Dhīmahi Dhiyo Yonaḥ Prachodayāt. (We meditate on the glory of the Creator; Who has created the Universe; Who is worthy of Worship; Who is the embodiment of Knowledge and Light; Who is the remover of all Sin and Ignorance; May He enlighten our Intellect.)",
+                category: "hindu",
+                mood: ["guidance", "strength", "gratitude"],
+                tags: ["wisdom", "light", "enlightenment"],
+                religion: "Hindu",
+                author: "Rig Veda",
+                duration: "3 min"
             },
+            // Jewish
             {
                 id: 5,
-                title: "King David's Penitential Prayer",
-                content: "Have mercy on me, O God, according to your steadfast love; according to your abundant mercy blot out my transgressions. Wash me thoroughly from my iniquity, and cleanse me from my sin! For I know my transgressions, and my sin is ever before me.",
-                era: "mosaic",
-                tradition: "Hebrew",
-                source: "Psalm 51:1-3",
-                historicalContext: "After Nathan confronted David about Bathsheba (c. 1000 BCE)",
-                impact: "Restored David's kingship; became model for repentance"
+                title: "Shema Yisrael Prayer",
+                content: "Hear, O Israel: the Lord our God, the Lord is One. Blessed be the name of His glorious kingdom for ever and ever. And you shall love the Lord your God with all your heart and with all your soul and with all your might.",
+                category: "jewish",
+                mood: ["strength", "guidance", "gratitude"],
+                tags: ["unity", "love", "faith"],
+                religion: "Jewish",
+                author: "Deuteronomy 6:4-5",
+                duration: "1 min"
             },
+            // Interfaith
             {
                 id: 6,
-                title: "Buddha's Metta (Loving-Kindness)",
-                content: "May all beings be happy and secure; may they be happy-minded. Whatever living beings there are: feeble or strong, tall, stout, or medium, short, small, or large, without exception; seen or unseen, those dwelling far or near, those who are born or those who are to be born, may all beings be happy-minded.",
-                era: "early-monastic",
-                tradition: "Buddhist",
-                source: "Karaniya Metta Sutta",
-                historicalContext: "Taught by Buddha to monks being harassed by tree spirits (5th century BCE)",
-                impact: "Protected monks; became central to Theravada practice"
+                title: "Universal Prayer for Peace",
+                content: "Lead me from death to life, from falsehood to truth. Lead me from despair to hope, from fear to trust. Lead me from hate to love, from war to peace. Let peace fill our heart, our world, our universe.",
+                category: "interfaith",
+                mood: ["anxiety", "depression", "forgiveness"],
+                tags: ["peace", "unity", "hope"],
+                religion: "Interfaith",
+                author: "Satish Kumar",
+                duration: "2 min"
             },
+            // Motivation
             {
                 id: 7,
-                title: "Prophet Muhammad's Night Prayer",
-                content: "O Allah, to You belongs all praise. You are the Light of the heavens and the earth and all that is within them. To You belongs all praise. You are the Sustainer of the heavens and the earth and all that is within them. To You belongs all praise. You are the Truth; Your promise is true; the meeting with You is true; Paradise is true; Hell is true; the Hour is true.",
-                era: "early-monastic",
-                tradition: "Muslim",
-                source: "Sahih al-Bukhari",
-                historicalContext: "Prayed during night vigils (Tahajjud) in Medina (7th century CE)",
-                impact: "Established pattern for night prayer in Islam"
+                title: "Daily Affirmation for Strength",
+                content: "Today, I choose to rise above my challenges. I am stronger than my struggles. I am wiser than my worries. I am capable of achieving greatness. Each breath I take fills me with courage and each step I take moves me toward my destiny.",
+                category: "motivation",
+                mood: ["strength", "depression", "guidance"],
+                tags: ["empowerment", "courage", "success"],
+                religion: "Universal",
+                author: "Modern Motivation",
+                duration: "2 min"
             },
+            // Additional content
             {
                 id: 8,
-                title: "Hannah's Prayer for a Child",
-                content: "O Lord of hosts, if you will indeed look on the affliction of your servant and remember me and not forget your servant, but will give to your servant a son, then I will give him to the Lord all the days of his life, and no razor shall touch his head.",
-                era: "patriarchal",
-                tradition: "Hebrew",
-                source: "1 Samuel 1:11",
-                historicalContext: "Hannah praying at Shiloh temple while barren (c. 1100 BCE)",
-                impact: "Resulted in birth of Samuel, last judge of Israel"
+                title: "Taoist Water Meditation",
+                content: "Be like water making its way through cracks. Do not be assertive, but adjust to the object, and you shall find a way around or through it. Nothing in the world is softer and weaker than water, yet for attacking the hard and strong, nothing can surpass it.",
+                category: "interfaith",
+                mood: ["anxiety", "guidance"],
+                tags: ["flexibility", "strength", "flow"],
+                religion: "Taoist",
+                author: "Lao Tzu",
+                duration: "4 min"
             },
             {
                 id: 9,
-                title: "Francis of Assisi's Nature Prayer",
-                content: "Most High, all-powerful, good Lord, Yours are the praises, the glory, and the honor, and all blessing. To You alone, Most High, do they belong, and no human is worthy to mention Your name. Praised be You, my Lord, with all Your creatures, especially Sir Brother Sun, who is the day and through whom You give us light.",
-                era: "early-monastic",
-                tradition: "Christian",
-                source: "Canticle of the Sun",
-                historicalContext: "Composed while Francis was recovering from illness (1224 CE)",
-                impact: "Founded Franciscan spirituality of creation care"
+                title: "Sikh Prayer for Equality",
+                content: "There is but one God. True is His Name. Creative His personality. Without fear, without enmity. Timeless is His image. Not begotten, being of His own being. By the grace of the Guru, made known to humanity.",
+                category: "interfaith",
+                mood: ["strength", "guidance"],
+                tags: ["equality", "truth", "grace"],
+                religion: "Sikh",
+                author: "Guru Nanak",
+                duration: "2 min"
             },
             {
                 id: 10,
-                title: "Nehemiah's Quick Prayer",
-                content: "Then I prayed to the God of heaven, and I answered the king, 'If it pleases the king and if your servant has found favor in his sight, let him send me to the city in Judah where my ancestors are buried so that I can rebuild it.'",
-                era: "mosaic",
-                tradition: "Hebrew",
-                source: "Nehemiah 2:4-5",
-                historicalContext: "Nehemiah's spontaneous prayer before King Artaxerxes (445 BCE)",
-                impact: "Resulted in royal permission to rebuild Jerusalem's walls"
-            },
-            {
-                id: 11,
-                title: "Anthony the Great's Desert Prayer",
-                content: "Where were you, Lord? Why did you not appear from the beginning to end my sufferings? And a voice came to him: 'Anthony, I was here, but I waited to see your fight. Since you have endured and have not been defeated, I will always be your helper, and I will make you famous everywhere.'",
-                era: "desert",
-                tradition: "Christian",
-                source: "Life of Anthony by Athanasius",
-                historicalContext: "After intense spiritual combat in Egyptian desert (c. 285 CE)",
-                impact: "Established Christian monasticism; inspired thousands to desert life"
-            },
-            {
-                id: 12,
-                title: "Solomon's Temple Dedication",
-                content: "But will God indeed dwell on the earth? Behold, heaven and the highest heaven cannot contain you; how much less this house that I have built! Yet have regard to the prayer of your servant and to his plea, O Lord my God, listening to the cry and to the prayer that your servant prays before you this day, that your eyes may be open night and day toward this house.",
-                era: "mosaic",
-                tradition: "Hebrew",
-                source: "1 Kings 8:27-29",
-                historicalContext: "At dedication of First Temple in Jerusalem (957 BCE)",
-                impact: "God's glory filled temple; established Jerusalem as worship center"
-            },
-            {
-                id: 13,
-                title: "Benedict's Rule Prayer",
-                content: "O Lord, I place myself in your hands and dedicate myself to you. I pledge myself to do your will in all things: To love the Lord God with all my heart, all my soul, all my strength. Not to kill. Not to steal. Not to covet. Not to bear false witness. To honor all persons. Not to do to another what I would not have done to myself.",
-                era: "early-monastic",
-                tradition: "Christian",
-                source: "Rule of Saint Benedict",
-                historicalContext: "Basis for Benedictine monastic vows (c. 530 CE)",
-                impact: "Shaped Western monasticism for 1500 years"
-            },
-            {
-                id: 14,
-                title: "Prophet Elijah's Mount Carmel Prayer",
-                content: "O Lord, God of Abraham, Isaac, and Israel, let it be known this day that you are God in Israel, and that I am your servant, and that I have done all these things at your word. Answer me, O Lord, answer me, that this people may know that you, O Lord, are God, and that you have turned their hearts back.",
-                era: "mosaic",
-                tradition: "Hebrew",
-                source: "1 Kings 18:36-37",
-                historicalContext: "Contest with Baal prophets on Mount Carmel (c. 870 BCE)",
-                impact: "Fire fell from heaven; Israel returned to Yahweh"
-            },
-            {
-                id: 15,
-                title: "Teresa of Avila's Bookmark Prayer",
-                content: "Let nothing disturb you, Let nothing frighten you, All things are passing away: God never changes. Patience obtains all things. Whoever has God lacks nothing; God alone suffices.",
-                era: "early-monastic",
-                tradition: "Christian",
-                source: "Bookmark found in her breviary",
-                historicalContext: "Written during Carmelite reform struggles (16th century CE)",
-                impact: "Sustained her through Inquisition investigations"
-            },
-            {
-                id: 16,
-                title: "Daniel's Three Times Daily Prayer",
-                content: "He got down on his knees three times a day and prayed and gave thanks before his God, as he had done previously. Then these men came by agreement and found Daniel making petition and plea before his God.",
-                era: "mosaic",
-                tradition: "Hebrew",
-                source: "Daniel 6:10-11",
-                historicalContext: "Continued praying despite Persian law (c. 539 BCE)",
-                impact: "Saved from lions' den; Darius issued decree honoring God"
-            },
-            {
-                id: 17,
-                title: "Siddhartha's Enlightenment Vow",
-                content: "Let my skin, sinews, and bones dry up, together with all the flesh and blood of my body! I will not move from this seat until I have attained the supreme and final wisdom.",
-                era: "early-monastic",
-                tradition: "Buddhist",
-                source: "Mahasaccaka Sutta",
-                historicalContext: "Under Bodhi tree before enlightenment (c. 528 BCE)",
-                impact: "Achieved Nirvana; became the Buddha"
-            },
-            {
-                id: 18,
-                title: "Jeremiah's Lament Prayer",
-                content: "Why is my pain unceasing, my wound incurable, refusing to be healed? Will you be to me like a deceitful brook, like waters that fail? Therefore thus says the Lord: If you return, I will restore you, and you shall stand before me.",
-                era: "mosaic",
-                tradition: "Hebrew",
-                source: "Jeremiah 15:18-19",
-                historicalContext: "During Babylonian siege of Jerusalem (588 BCE)",
-                impact: "God renewed Jeremiah's prophetic calling"
-            },
-            {
-                id: 19,
-                title: "Fatima's Prayer of Submission",
-                content: "My Lord, I have believed in You and in Your Messenger, and I have submitted. My Lord, forgive me and my parents and the believers on the Day the account is established.",
-                era: "early-monastic",
-                tradition: "Muslim",
-                source: "Surah Ibrahim 14:41",
-                historicalContext: "Prayer of Prophet Muhammad's daughter (7th century CE)",
-                impact: "Model of daughterly devotion in Islamic tradition"
-            },
-            {
-                id: 20,
-                title: "Pachomius' Cenobitic Prayer",
-                content: "The Lord is my shepherd; I shall not want. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul. He leads me in paths of righteousness for his name's sake.",
-                era: "desert",
-                tradition: "Christian",
-                source: "Psalm 23, used in first monastic community",
-                historicalContext: "Foundation of first Christian monastery in Egypt (c. 320 CE)",
-                impact: "Established communal monasticism (cenobitic life)"
-            },
-            // 80 more historically significant prayers would continue...
-            // Additional prayers from: Early Church Fathers, Sufi masters, Hindu rishis, etc.
-        ];
-
-        // Add 30 more diverse ancient prayers
-        const additionalPrayers = [
-            {
-                id: 21,
-                title: "Zoroaster's Fire Prayer",
-                content: "Through the best righteousness, through the highest righteousness, O wise Lord, may we catch sight of you, may we approach you, may we be in perfect friendship with you.",
-                era: "patriarchal",
-                tradition: "Zoroastrian",
-                source: "Yasna 60.12",
-                historicalContext: "Ancient Persian prophet's prayer (c. 1500 BCE)",
-                impact: "Founded Zoroastrianism, influenced Abrahamic faiths"
-            },
-            {
-                id: 22,
-                title: "Confucius' Ancestor Veneration",
-                content: "The sacrifice to the ancestors is as if they were present. The sacrifice to the spirits is as if the spirits were present. The Master said: 'If I do not participate in the sacrifice, it is as if I did not sacrifice.'",
-                era: "patriarchal",
-                tradition: "Chinese",
-                source: "Analects 3.12",
-                historicalContext: "Teaching on ritual propriety (c. 500 BCE)",
-                impact: "Established ancestor veneration in East Asia"
-            },
-            {
-                id: 23,
-                title: "Lao Tzu's Tao Te Ching Verse",
-                content: "The Tao that can be told is not the eternal Tao. The name that can be named is not the eternal name. The nameless is the beginning of heaven and earth.",
-                era: "patriarchal",
-                tradition: "Taoist",
-                source: "Tao Te Ching Chapter 1",
-                historicalContext: "Foundation of Taoist philosophy (c. 400 BCE)",
-                impact: "Basis for Taoist meditation and cultivation"
-            },
-            {
-                id: 24,
-                title: "Socrates' Prison Prayer",
-                content: "Crito, we owe a cock to Asclepius. Please, don't forget to pay the debt.",
-                era: "patriarchal",
-                tradition: "Greek",
-                source: "Plato's Phaedo",
-                historicalContext: "Last words before drinking hemlock (399 BCE)",
-                impact: "Symbolized philosophical acceptance of death"
-            },
-            {
-                id: 25,
-                title: "Virgil's Aeneid Prayer",
-                content: "Almighty Jupiter, if any prayer can move your will, look on us now. This only do we pray: grant to your tired people peace and a resting place.",
-                era: "patriarchal",
-                tradition: "Roman",
-                source: "Aeneid Book 12",
-                historicalContext: "Aeneas praying before final battle (c. 19 BCE)",
-                impact: "Roman state prayer for peace and stability"
-            },
-            {
-                id: 26,
-                title: "Augustine's Confessions Prayer",
-                content: "You have made us for yourself, O Lord, and our heart is restless until it rests in you.",
-                era: "desert",
-                tradition: "Christian",
-                source: "Confessions Book 1",
-                historicalContext: "Augustine's conversion prayer (c. 397 CE)",
-                impact: "Foundation of Western Christian spirituality"
-            },
-            {
-                id: 27,
-                title: "Rumi's Whirling Prayer",
-                content: "Come, come, whoever you are. Wanderer, worshiper, lover of leaving. It doesn't matter. Ours is not a caravan of despair. Come, even if you have broken your vows a thousand times. Come, yet again, come, come.",
-                era: "early-monastic",
-                tradition: "Sufi",
-                source: "Divan-e Shams-e Tabrizi",
-                historicalContext: "Rumi's invitation to divine love (13th century CE)",
-                impact: "Heart of Sufi whirling dervish practice"
-            },
-            {
-                id: 28,
-                title: "Thomas Aquinas' Study Prayer",
-                content: "Grant me, O Lord my God, a mind to know you, a heart to seek you, wisdom to find you, conduct pleasing to you, faithful perseverance in waiting for you, and a hope of finally embracing you.",
-                era: "early-monastic",
-                tradition: "Christian",
-                source: "Personal prayer before study",
-                historicalContext: "Before writing Summa Theologica (c. 1265 CE)",
-                impact: "Produced most systematic theology of Middle Ages"
-            },
-            {
-                id: 29,
-                title: "Julian of Norwich's Revelation",
-                content: "All shall be well, and all shall be well, and all manner of thing shall be well.",
-                era: "early-monastic",
-                tradition: "Christian",
-                source: "Revelations of Divine Love",
-                historicalContext: "During near-death illness (1373 CE)",
-                impact: "Cornerstone of Christian mysticism and hope"
-            },
-            {
-                id: 30,
-                title: "Ignatius Loyola's Suscipe",
-                content: "Take, Lord, and receive all my liberty, my memory, my understanding, and my entire will. All I have and possess you have given me: to you, Lord, I return it.",
-                era: "early-monastic",
-                tradition: "Christian",
-                source: "Spiritual Exercises",
-                historicalContext: "Foundation of Jesuit spirituality (1548 CE)",
-                impact: "Inspired missionary movements worldwide"
+                title: "Native American Blessing",
+                content: "May the sun bring you new energy by day. May the moon softly restore you by night. May the rain wash away your worries. May the breeze blow new strength into your being. May you walk gently through the world and know its beauty all the days of your life.",
+                category: "interfaith",
+                mood: ["gratitude", "strength", "peace"],
+                tags: ["nature", "beauty", "blessing"],
+                religion: "Native American",
+                author: "Apache Blessing",
+                duration: "2 min"
             }
         ];
 
-        // Combine all prayers
-        const allPrayers = [...ancientPrayers, ...additionalPrayers];
+        // State
+        let activeCategory = 'all';
+        let activeMood = null;
 
-        // App Logic
-        let activeEra = 'all';
-        let searchTerm = '';
-
+        // Initialize App
         function init() {
-            renderPrayers(allPrayers);
+            renderContent(spiritualContent);
             setupEventListeners();
         }
 
+        // Setup Event Listeners
         function setupEventListeners() {
-            // Search input
-            document.getElementById('searchInput').addEventListener('input', (e) => {
-                searchTerm = e.target.value.toLowerCase();
-                filterPrayers();
-            });
-
-            // Era filters
-            document.querySelectorAll('.era-pill').forEach(pill => {
+            // Category navigation
+            document.querySelectorAll('.nav-pill').forEach(pill => {
                 pill.addEventListener('click', () => {
                     // Update active pill
-                    document.querySelectorAll('.era-pill').forEach(p => p.classList.remove('active'));
+                    document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
                     pill.classList.add('active');
                     
-                    // Update era filter
-                    activeEra = pill.dataset.era;
-                    filterPrayers();
+                    // Update category
+                    activeCategory = pill.dataset.category;
+                    filterContent();
+                });
+            });
+
+            // Mood selection
+            document.querySelectorAll('.mood-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    // Update active mood
+                    activeMood = card.dataset.mood;
+                    
+                    // Visual feedback
+                    document.querySelectorAll('.mood-card').forEach(c => {
+                        c.style.borderColor = '';
+                        c.style.transform = '';
+                    });
+                    card.style.borderColor = 'var(--primary)';
+                    card.style.transform = 'translateY(-5px)';
+                    
+                    filterContent();
                 });
             });
         }
 
-        function filterPrayers() {
-            let filtered = allPrayers;
+        // Filter and Render Content
+        function filterContent() {
+            let filtered = spiritualContent;
             
-            // Apply era filter
-            if (activeEra !== 'all') {
-                filtered = filtered.filter(prayer => prayer.era === activeEra);
+            // Apply category filter
+            if (activeCategory !== 'all') {
+                filtered = filtered.filter(item => item.category === activeCategory);
             }
             
-            // Apply search filter
-            if (searchTerm) {
-                filtered = filtered.filter(prayer => 
-                    prayer.title.toLowerCase().includes(searchTerm) ||
-                    prayer.content.toLowerCase().includes(searchTerm) ||
-                    prayer.tradition.toLowerCase().includes(searchTerm) ||
-                    prayer.source.toLowerCase().includes(searchTerm) ||
-                    prayer.historicalContext.toLowerCase().includes(searchTerm)
-                );
+            // Apply mood filter
+            if (activeMood) {
+                filtered = filtered.filter(item => item.mood.includes(activeMood));
             }
             
-            renderPrayers(filtered);
+            renderContent(filtered);
         }
 
-        function renderPrayers(prayersToRender) {
-            const container = document.getElementById('prayerScrolls');
+        // Render Content
+        function renderContent(content) {
+            const grid = document.getElementById('contentGrid');
             
-            if (prayersToRender.length === 0) {
-                container.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 4rem; color: var(--temple-stone);">
-                        <i class="fas fa-scroll" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
-                        <h3>No ancient prayers found</h3>
-                        <p>Try a different era or search term</p>
+            if (content.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                        <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
+                        <h3>No content found</h3>
+                        <p>Try selecting a different category or mood</p>
                     </div>
                 `;
                 return;
             }
             
-            container.innerHTML = prayersToRender.map(prayer => `
-                <div class="prayer-scroll">
-                    <div class="scroll-header">
-                        <h3>${prayer.title}</h3>
-                        <span class="era-badge">${getEraLabel(prayer.era)}</span>
+            grid.innerHTML = content.map(item => `
+                <div class="content-card">
+                    <div class="card-header">
+                        <span class="religion-badge">${item.religion}</span>
+                        <h3 class="card-title">${item.title}</h3>
                     </div>
-                    <div class="prayer-content">
-                        "${prayer.content}"
+                    <div class="card-content">
+                        <p class="card-text">${item.content}</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                            ${item.mood.map(m => `<span style="background: #e3f2fd; color: #1976d2; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">${m}</span>`).join('')}
+                        </div>
                     </div>
-                    <div class="prayer-source">
-                        <strong>Source:</strong> ${prayer.source}<br>
-                        <strong>Historical Context:</strong> ${prayer.historicalContext}
-                    </div>
-                    <div class="prayer-meta">
-                        <span class="tradition-tag">${prayer.tradition}</span>
-                        <small><i class="far fa-clock"></i> ${prayer.impact ? 'Historic Impact: ' + prayer.impact.substring(0, 60) + '...' : 'Significant spiritual impact'}</small>
+                    <div class="card-footer">
+                        <small><i class="far fa-clock"></i> ${item.duration}</small>
+                        <small><i class="fas fa-user"></i> ${item.author}</small>
                     </div>
                 </div>
             `).join('');
         }
 
-        function getEraLabel(era) {
-            const labels = {
-                'all': 'All Eras',
-                'patriarchal': 'Patriarchal Era',
-                'mosaic': 'Mosaic Period',
-                'desert': 'Desert Fathers',
-                'early-monastic': 'Early Monastic'
-            };
-            return labels[era] || era;
+        // Paystack Payment Integration
+        function payWithPaystack() {
+            const handler = PaystackPop.setup({
+                key: 'pk_test_YOUR_PUBLIC_KEY', // Replace with your Paystack public key
+                email: 'user@example.com', // Get from user input in real app
+                amount: 250000, // Amount in kobo (₦2,500 = 250000 kobo)
+                currency: 'NGN',
+                ref: 'UMB_' + Math.floor((Math.random() * 1000000000) + 1),
+                callback: function(response) {
+                    alert('Payment complete! Reference: ' + response.reference);
+                    // In real app: Send reference to your server to verify payment
+                    showPremiumWelcome();
+                },
+                onClose: function() {
+                    alert('Payment window closed.');
+                }
+            });
+            handler.openIframe();
         }
 
-        // Initialize app
+        // Show premium welcome
+        function showPremiumWelcome() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.8); display: flex; align-items: center;
+                justify-content: center; z-index: 1000;
+            `;
+            modal.innerHTML = `
+                <div style="background: white; padding: 3rem; border-radius: 20px; max-width: 500px; text-align: center;">
+                    <div style="font-size: 4rem; color: var(--gold); margin-bottom: 1rem;">👑</div>
+                    <h2 style="color: var(--primary); margin-bottom: 1rem;">Welcome to Premium!</h2>
+                    <p>Thank you for upgrading. Your spiritual journey just got elevated.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="background: var(--primary); color: white; border: none; 
+                                   padding: 1rem 2rem; border-radius: 10px; margin-top: 2rem; cursor: pointer;">
+                        Start Exploring Premium Content
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Make payment function globally available
+        window.payWithPaystack = payWithPaystack;
+
+        // Initialize the app
         init();
+
+        // Add some sample interactions
+        setTimeout(() => {
+            console.log('Umbilica Oriental™ loaded successfully');
+            console.log('Ready for payment integration with Paystack');
+        }, 1000);
     </script>
 </body>
 </html>
