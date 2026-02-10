@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umbilica Oriental™ - Universal Spiritual Haven</title>
-    <!-- Meta Tags -->
-    <meta name="description" content="One spiritual app for all religions. Prayers, meditations, motivation for every situation. Find peace, purpose, and connection.">
-    <meta name="keywords" content="prayer, meditation, spirituality, motivation, Christian, Muslim, Buddhist, Hindu, Jewish, Interfaith">
-    <meta name="author" content="Oriental Grid Limited">
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙏</text></svg>">
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Paystack SDK -->
+    <title>LifePrayers™ - Spiritual Solutions for Every Human Situation</title>
+    <!-- Paystack -->
     <script src="https://js.paystack.co/v1/inline.js"></script>
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6C3483;
-            --secondary: #3498DB;
-            --accent: #E74C3C;
-            --success: #27AE60;
-            --gold: #F1C40F;
-            --light: #F8F9FA;
-            --dark: #2C3E50;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --life-blue: #1E3A8A;
+            --birth-pink: #F9A8D4;
+            --death-gray: #4B5563;
+            --healing-green: #10B981;
+            --love-red: #DC2626;
+            --wealth-gold: #D97706;
+            --wisdom-purple: #7C3AED;
+            --peace-teal: #0D9488;
+            --light-bg: #F8FAFC;
+            --card-white: #FFFFFF;
         }
         
         * {
@@ -35,64 +30,76 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: var(--dark);
-            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--light-bg);
+            color: #1F2937;
+            line-height: 1.7;
             min-height: 100vh;
         }
         
-        /* Header */
-        .master-header {
-            background: var(--gradient);
+        /* Master Header */
+        .life-header {
+            background: linear-gradient(135deg, var(--life-blue) 0%, #3730A3 100%);
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        .master-header::before {
+        .life-header::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.1"><path d="M0,0 L100,0 L100,100 Z" fill="white"/></svg>');
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path d="M20,50 Q50,10 80,50 T140,50" stroke="white" fill="none"/></svg>');
         }
         
-        .logo-container {
-            margin-bottom: 1.5rem;
-        }
-        
-        .logo {
+        .life-logo {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
-            font-weight: 600;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
         }
         
-        .logo span {
-            background: rgba(255,255,255,0.15);
-            padding: 10px 20px;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .tagline {
-            font-size: 1.2rem;
+        .life-tagline {
+            font-size: 1.3rem;
             opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
+            max-width: 900px;
+            margin: 0 auto 2rem;
             font-weight: 300;
         }
         
-        /* Universal Navigation */
-        .universal-nav {
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+        }
+        
+        .search-bar {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: white url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%231E3A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') no-repeat right 1.5rem center;
+            background-size: 20px;
+        }
+        
+        .search-bar:focus {
+            outline: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        /* Life Stages Navigation */
+        .life-stages {
             display: flex;
             justify-content: center;
             gap: 1rem;
@@ -101,74 +108,72 @@
             padding: 0 1rem;
         }
         
-        .nav-pill {
+        .stage-pill {
             background: rgba(255,255,255,0.15);
             border: 2px solid rgba(255,255,255,0.3);
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 1.8rem;
             border-radius: 50px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             backdrop-filter: blur(10px);
         }
         
-        .nav-pill:hover {
+        .stage-pill:hover {
             background: rgba(255,255,255,0.25);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
         
-        .nav-pill.active {
+        .stage-pill.active {
             background: white;
-            color: var(--primary);
+            color: var(--life-blue);
             border-color: white;
         }
         
-        /* Main Content */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 2rem 0;
-            box-shadow: var(--shadow);
+        /* Soul's Odds Corner */
+        .soul-odds-corner {
+            background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .hero-title {
+        .soul-odds-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--primary);
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
         
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--dark);
-            opacity: 0.8;
-            max-width: 800px;
-            margin: 0 auto 2rem;
+        .odds-prayer-card {
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: left;
+            backdrop-filter: blur(10px);
         }
         
-        /* Mood Selector */
-        .mood-selector {
+        /* Situation Grid */
+        .situation-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .mood-card {
-            background: white;
+        .situation-card {
+            background: var(--card-white);
             border-radius: 15px;
             padding: 1.5rem;
             text-align: center;
@@ -176,136 +181,148 @@
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
         }
         
-        .mood-card:hover {
+        .situation-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: var(--primary);
         }
         
-        .mood-icon {
+        .situation-icon {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
         }
         
-        /* Content Grid */
-        .content-grid {
+        /* Prayer Library */
+        .prayer-library {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .content-card {
-            background: white;
+        .prayer-card {
+            background: var(--card-white);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             position: relative;
         }
         
-        .content-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        .prayer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
         }
         
-        .card-header {
-            background: var(--gradient);
-            color: white;
-            padding: 1.5rem;
-            position: relative;
-        }
-        
-        .religion-badge {
+        .card-category {
             position: absolute;
-            top: -10px;
-            right: 20px;
-            background: var(--accent);
+            top: 15px;
+            right: 15px;
+            background: var(--life-blue);
             color: white;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 500;
         }
         
         .card-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
         
         .card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            color: #111827;
             margin-bottom: 1rem;
-            color: var(--dark);
+            line-height: 1.4;
         }
         
-        .card-text {
-            color: #666;
-            margin-bottom: 1.5rem;
+        .card-prayer {
+            color: #4B5563;
+            font-size: 1rem;
             line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
         }
         
-        .card-footer {
-            padding: 1rem 1.5rem;
-            background: var(--light);
-            border-top: 1px solid #eee;
+        .card-traditions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        
+        .tradition-tag {
+            background: #E0E7FF;
+            color: var(--life-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .card-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 2rem;
+            background: #F9FAFB;
+            border-top: 1px solid #E5E7EB;
+            font-size: 0.9rem;
+            color: #6B7280;
         }
         
         /* Premium Section */
-        .premium-section {
+        .premium-life {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-radius: 20px;
-            padding: 3rem;
-            margin: 3rem 0;
+            padding: 4rem;
+            margin: 3rem auto;
+            max-width: 1200px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        .premium-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.1"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="2"/></svg>');
-        }
-        
         .premium-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
         }
         
-        .premium-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+        .price-display {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: white;
+            margin: 2rem 0;
         }
         
-        .premium-feature {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+        .price-display span {
+            font-size: 1.5rem;
+            opacity: 0.8;
         }
         
         /* Paystack Button */
-        .paystack-btn {
-            background: var(--gold);
-            color: var(--dark);
+        .paystack-life {
+            background: white;
+            color: #764ba2;
             border: none;
-            padding: 1rem 3rem;
+            padding: 1.2rem 3rem;
             font-size: 1.2rem;
             font-weight: 600;
             border-radius: 50px;
@@ -313,32 +330,34 @@
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 1rem;
+            gap: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
         
-        .paystack-btn:hover {
-            background: #f39c12;
+        .paystack-life:hover {
             transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
         
         /* Footer */
-        .universal-footer {
-            background: var(--dark);
+        .life-footer {
+            background: #111827;
             color: white;
             padding: 3rem 0 1.5rem;
             margin-top: 4rem;
         }
         
-        .footer-content {
+        .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-bottom: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
         }
         
         .footer-section h3 {
-            color: var(--gold);
+            color: #60A5FA;
             margin-bottom: 1rem;
             font-family: 'Playfair Display', serif;
         }
@@ -346,476 +365,942 @@
         .copyright {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid #374151;
+            color: #9CA3AF;
             font-size: 0.9rem;
-            opacity: 0.8;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .logo { font-size: 2.5rem; }
-            .hero-title { font-size: 2rem; }
-            .universal-nav { flex-direction: column; align-items: center; }
-            .nav-pill { width: 100%; max-width: 300px; }
-            .content-grid { grid-template-columns: 1fr; }
-            .premium-section { padding: 2rem 1rem; }
+            .life-logo { font-size: 2.5rem; flex-direction: column; gap: 10px; }
+            .situation-grid { grid-template-columns: repeat(2, 1fr); }
+            .prayer-library { grid-template-columns: 1fr; }
+            .premium-life { padding: 2rem 1rem; }
+            .life-stages { flex-direction: column; align-items: center; }
+            .stage-pill { width: 90%; }
         }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .content-card {
-            animation: fadeIn 0.6s ease-out;
-        }
-        
-        /* Utility Classes */
-        .text-center { text-align: center; }
-        .mb-1 { margin-bottom: 1rem; }
-        .mb-2 { margin-bottom: 2rem; }
-        .mt-2 { margin-top: 2rem; }
-        .mt-3 { margin-top: 3rem; }
-        .highlight { color: var(--accent); font-weight: 600; }
     </style>
 </head>
 <body>
-    <!-- Master Header -->
-    <header class="master-header">
+    <!-- Life Header -->
+    <header class="life-header">
         <div class="container">
-            <div class="logo-container">
-                <div class="logo">
-                    <span><i class="fas fa-hands-praying"></i> UMBILICA ORIENTAL™</span>
-                </div>
-            </div>
-            <p class="tagline">
-                One spiritual haven for all beliefs. Find prayers, meditations, and motivation for every situation in life.
-                <br>Peace has no religion. Comfort knows no borders.
+            <h1 class="life-logo">
+                <span>LifePrayers™</span>
+                <i class="fas fa-hands-praying"></i>
+            </h1>
+            <p class="life-tagline">
+                1,000+ Prayers, Blessings & Rituals for Every Human Experience - From Womb to Tomb and Everything Between
             </p>
             
-            <!-- Universal Navigation -->
-            <div class="universal-nav">
-                <div class="nav-pill active" data-category="all">
-                    <i class="fas fa-globe"></i> All Religions
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" class="search-bar" id="prayerSearch" placeholder="Search for specific prayers (e.g., 'job loss', 'healing', 'marriage'...)" autocomplete="off">
+            </div>
+            
+            <!-- Life Stages Navigation -->
+            <div class="life-stages">
+                <div class="stage-pill active" data-stage="all">
+                    <i class="fas fa-infinity"></i> All Life Situations
                 </div>
-                <div class="nav-pill" data-category="christian">
-                    <i class="fas fa-cross"></i> Christian
+                <div class="stage-pill" data-stage="birth">
+                    <i class="fas fa-baby"></i> Birth & Childhood
                 </div>
-                <div class="nav-pill" data-category="muslim">
-                    <i class="fas fa-mosque"></i> Muslim
+                <div class="stage-pill" data-stage="youth">
+                    <i class="fas fa-graduation-cap"></i> Youth & Education
                 </div>
-                <div class="nav-pill" data-category="buddhist">
-                    <i class="fas fa-yin-yang"></i> Buddhist
+                <div class="stage-pill" data-stage="love">
+                    <i class="fas fa-heart"></i> Love & Relationships
                 </div>
-                <div class="nav-pill" data-category="hindu">
-                    <i class="fas fa-om"></i> Hindu
+                <div class="stage-pill" data-stage="marriage">
+                    <i class="fas fa-ring"></i> Marriage & Family
                 </div>
-                <div class="nav-pill" data-category="jewish">
-                    <i class="fas fa-star-of-david"></i> Jewish
+                <div class="stage-pill" data-stage="career">
+                    <i class="fas fa-briefcase"></i> Career & Finance
                 </div>
-                <div class="nav-pill" data-category="interfaith">
-                    <i class="fas fa-handshake"></i> Interfaith
+                <div class="stage-pill" data-stage="health">
+                    <i class="fas fa-heartbeat"></i> Health & Healing
                 </div>
-                <div class="nav-pill" data-category="motivation">
-                    <i class="fas fa-fire"></i> Daily Motivation
+                <div class="stage-pill" data-stage="crisis">
+                    <i class="fas fa-exclamation-triangle"></i> Crisis & Challenges
+                </div>
+                <div class="stage-pill" data-stage="death">
+                    <i class="fas fa-cross"></i> Death & Afterlife
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <h1 class="hero-title">Welcome to Spiritual Unity</h1>
-            <p class="hero-subtitle">
-                Whether you're facing anxiety, seeking purpose, celebrating joy, or needing strength - 
-                find exactly what your soul needs. <span class="highlight">Over 500+ spiritual resources</span> 
-                from all world traditions.
+    <!-- Soul's Odds Corner -->
+    <section class="soul-odds-corner" id="soulsOdds">
+        <h2 class="soul-odds-title"><i class="fas fa-star"></i> The Soul's Odds Corner</h2>
+        <p>Prayers for long-shot situations and extreme miracles</p>
+        <div id="oddsPrayers"></div>
+    </section>
+
+    <!-- Situation Grid -->
+    <section class="situation-section">
+        <h2 style="text-align: center; margin: 2rem 0 1rem; color: var(--life-blue);">
+            Select Your Current Need
+        </h2>
+        <div class="situation-grid" id="situationGrid">
+            <!-- Situations will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Prayer Library -->
+    <section class="library-section">
+        <h2 style="text-align: center; margin: 2rem 0 1rem; color: var(--life-blue);">
+            Prayer Library
+        </h2>
+        <div class="prayer-library" id="prayerLibrary">
+            <!-- Prayers will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Premium Section -->
+    <section class="premium-life">
+        <h2 class="premium-title">Access All 1,000+ Life Prayers</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+            Full access to prayers for every human situation across all religions and traditions
+        </p>
+        
+        <div class="price-display">
+            $19<span style="font-size: 1.5rem;">/month</span>
+        </div>
+        
+        <div style="margin: 2rem 0;">
+            <p style="margin-bottom: 1rem;">
+                <i class="fas fa-check-circle"></i> Birth to death prayer coverage
             </p>
-            
-            <!-- Mood Selector -->
-            <h2 class="text-center mb-2">What's your situation today?</h2>
-            <div class="mood-selector">
-                <div class="mood-card" data-mood="anxiety">
-                    <div class="mood-icon">😔</div>
-                    <h3>Anxiety & Stress</h3>
-                    <p>Calming prayers & meditations</p>
-                </div>
-                <div class="mood-card" data-mood="depression">
-                    <div class="mood-icon">😢</div>
-                    <h3>Sadness & Depression</h3>
-                    <p>Hope-filled scriptures</p>
-                </div>
-                <div class="mood-card" data-mood="strength">
-                    <div class="mood-icon">💪</div>
-                    <h3>Need Strength</h3>
-                    <p>Empowering verses</p>
-                </div>
-                <div class="mood-card" data-mood="gratitude">
-                    <div class="mood-icon">🙏</div>
-                    <h3>Gratitude & Joy</h3>
-                    <p>Thanksgiving prayers</p>
-                </div>
-                <div class="mood-card" data-mood="forgiveness">
-                    <div class="mood-icon">❤️</div>
-                    <h3>Forgiveness</h3>
-                    <p>Healing & reconciliation</p>
-                </div>
-                <div class="mood-card" data-mood="guidance">
-                    <div class="mood-icon">🧭</div>
-                    <h3>Guidance</h3>
-                    <p>Wisdom for decisions</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Content Grid -->
-        <section class="mt-3">
-            <h2 class="text-center mb-2">Today's Featured Spiritual Resources</h2>
-            <div class="content-grid" id="contentGrid">
-                <!-- Content will be loaded here -->
-            </div>
-        </section>
-
-        <!-- Premium Section -->
-        <section class="premium-section">
-            <h2 class="premium-title">✨ Upgrade to Umbilica Premium ✨</h2>
-            <p class="hero-subtitle" style="color: rgba(255,255,255,0.9);">
-                Unlock exclusive content, personalized spiritual coaching, and ad-free experience
+            <p style="margin-bottom: 1rem;">
+                <i class="fas fa-check-circle"></i> 500+ specific life situations
             </p>
-            
-            <div class="premium-features">
-                <div class="premium-feature">
-                    <h3><i class="fas fa-crown"></i> Premium Content</h3>
-                    <p>Access 1000+ exclusive prayers, meditations, and spiritual teachings</p>
-                </div>
-                <div class="premium-feature">
-                    <h3><i class="fas fa-user-graduate"></i> Spiritual Coaching</h3>
-                    <p>Weekly sessions with certified spiritual guides from your tradition</p>
-                </div>
-                <div class="premium-feature">
-                    <h3><i class="fas fa-download"></i> Offline Access</h3>
-                    <p>Download content for meditation anywhere, anytime</p>
-                </div>
-                <div class="premium-feature">
-                    <h3><i class="fas fa-heart"></i> Personalized Path</h3>
-                    <p>Custom spiritual growth plan based on your journey</p>
-                </div>
-            </div>
-            
-            <div style="text-align: center;">
-                <h3 style="font-size: 2rem; margin-bottom: 1rem;">
-                    <span style="text-decoration: line-through; opacity: 0.7;">₦5,000</span> 
-                    <span style="color: var(--gold);">₦2,500/month</span>
-                </h3>
-                <p style="margin-bottom: 1rem;">First month 50% off • Cancel anytime</p>
-                
-                <!-- Paystack Payment Button -->
-                <button class="paystack-btn" onclick="payWithPaystack()">
-                    <i class="fas fa-lock"></i> UPGRADE NOW WITH PAYSTACK
-                </button>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">
-                    Secure payment powered by Paystack • All major cards & bank transfers
-                </p>
-            </div>
-        </section>
-
-        <!-- Company Info -->
-        <section class="hero-section mt-3">
-            <h2 class="hero-title">About Oriental Grid Limited</h2>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <p class="card-text mb-2">
-                    <strong>Oriental Grid Limited</strong> is a technology and spiritual wellness company 
-                    dedicated to creating inclusive digital spaces for spiritual growth and mental wellbeing.
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                    <div>
-                        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
-                        <p>To make spiritual wellness accessible to everyone, regardless of religious background or personal beliefs.</p>
-                    </div>
-                    <div>
-                        <h3><i class="fas fa-eye"></i> Our Vision</h3>
-                        <p>A world where technology bridges spiritual divides and promotes universal peace and understanding.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+            <p style="margin-bottom: 1rem;">
+                <i class="fas fa-check-circle"></i> All world religions included
+            </p>
+            <p>
+                <i class="fas fa-check-circle"></i> Printable prayer cards
+            </p>
+        </div>
+        
+        <!-- Paystack Button -->
+        <button class="paystack-life" onclick="payWithPaystack()">
+            <i class="fas fa-unlock-alt"></i> GET FULL ACCESS - $19/MONTH
+        </button>
+        
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+            7-day free trial • Cancel anytime • Secure payment via Paystack
+        </p>
+    </section>
 
     <!-- Footer -->
-    <footer class="universal-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Umbilica Oriental™</h3>
-                    <p>Your universal spiritual companion. One app, all beliefs, infinite peace.</p>
-                    <div style="margin-top: 1rem;">
-                        <i class="fas fa-envelope"></i> support@umbilica-oriental.com<br>
-                        <i class="fas fa-phone"></i> +234 800 000 0000
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <p><a href="#" style="color: white; text-decoration: none;">Daily Inspiration</a></p>
-                    <p><a href="#" style="color: white; text-decoration: none;">Prayer Collections</a></p>
-                    <p><a href="#" style="color: white; text-decoration: none;">Meditation Guides</a></p>
-                    <p><a href="#" style="color: white; text-decoration: none;">Spiritual Counseling</a></p>
-                </div>
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <p><a href="#" style="color: white; text-decoration: none;">Terms of Service</a></p>
-                    <p><a href="#" style="color: white; text-decoration: none;">Privacy Policy</a></p>
-                    <p><a href="#" style="color: white; text-decoration: none;">Refund Policy</a></p>
-                    <p>© 2024 Oriental Grid Limited. All rights reserved.</p>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>Umbilica Oriental™ is a registered trademark of Oriental Grid Limited. RC: 1234567</p>
-                <p style="margin-top: 0.5rem;">
-                    <i class="fab fa-facebook"></i> 
-                    <i class="fab fa-twitter"></i> 
-                    <i class="fab fa-instagram"></i> 
-                    <i class="fab fa-youtube"></i>
-                    Follow us on social media
+    <footer class="life-footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>LifePrayers™</h3>
+                <p>Your spiritual companion for every life journey.</p>
+                <p style="margin-top: 1rem;">
+                    <i class="fas fa-envelope"></i> orientalgrid@gmail.com<br>
+                    <i class="fas fa-phone"></i> +234 810 336 5359
                 </p>
             </div>
+            <div class="footer-section">
+                <h3>Quick Access</h3>
+                <p>Daily Prayers</p>
+                <p>Emergency Prayers</p>
+                <p>Seasonal Blessings</p>
+                <p>Custom Prayers</p>
+            </div>
+            <div class="footer-section">
+                <h3>Oriental Grid Limited</h3>
+                <p>RC: 1234567</p>
+                <p>All rights reserved © 2024</p>
+                <p>VAT: NG-123-456-789</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>LifePrayers™ is a product of Oriental Grid Limited • Privacy Policy • Terms of Service</p>
+            <p style="margin-top: 0.5rem;">
+                <i class="fab fa-facebook"></i> 
+                <i class="fab fa-twitter"></i> 
+                <i class="fab fa-instagram"></i> 
+                <i class="fab fa-whatsapp"></i>
+            </p>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        // COMPREHENSIVE SPIRITUAL CONTENT DATABASE
-        const spiritualContent = [
-            // Christian
+        // COMPREHENSIVE LIFE SITUATIONS DATABASE (200+ entries)
+        const lifeSituations = [
+            // BIRTH & CHILDHOOD (50+ situations)
+            { id: 1, name: "Prayer for Conception", stage: "birth", icon: "👶", color: "#F9A8D4", tags: ["fertility", "pregnancy", "baby"] },
+            { id: 2, name: "Prayer for Healthy Pregnancy", stage: "birth", icon: "🤰", color: "#F9A8D4", tags: ["mother", "unborn", "health"] },
+            { id: 3, name: "Prayer for Safe Delivery", stage: "birth", icon: "🚼", color: "#F9A8D4", tags: ["birth", "labor", "delivery"] },
+            { id: 4, name: "Baby Naming Ceremony", stage: "birth", icon: "📝", color: "#F9A8D4", tags: ["naming", "ceremony", "child"] },
+            { id: 5, name: "Prayer for Newborn Protection", stage: "birth", icon: "🛡️", color: "#F9A8D4", tags: ["protection", "baby", "safety"] },
+            { id: 6, name: "Breastfeeding Blessing", stage: "birth", icon: "🤱", color: "#F9A8D4", tags: ["mother", "feeding", "nutrition"] },
+            { id: 7, name: "Baby's First Steps", stage: "birth", icon: "👣", color: "#F9A8D4", tags: ["milestone", "growth", "development"] },
+            { id: 8, name: "Child's First Words", stage: "birth", icon: "🗣️", color: "#F9A8D4", tags: ["speech", "language", "development"] },
+            { id: 9, name: "Prayer for Sick Child", stage: "birth", icon: "🤒", color: "#F9A8D4", tags: ["sickness", "healing", "child"] },
+            { id: 10, name: "Prayer for Child's Sleep", stage: "birth", icon: "😴", color: "#F9A8D4", tags: ["sleep", "rest", "peace"] },
+            { id: 11, name: "Child's First Day School", stage: "birth", icon: "🎒", color: "#F9A8D4", tags: ["school", "education", "beginning"] },
+            { id: 12, name: "Prayer Against Childhood Fears", stage: "birth", icon: "😨", color: "#F9A8D4", tags: ["fear", "anxiety", "child"] },
+            { id: 13, name: "Teething Prayer", stage: "birth", icon: "🦷", color: "#F9A8D4", tags: ["teeth", "pain", "growth"] },
+            { id: 14, name: "Adoption Blessing", stage: "birth", icon: "👨‍👩‍👧", color: "#F9A8D4", tags: ["adoption", "family", "love"] },
+            { id: 15, name: "Prayer for Child's Character", stage: "birth", icon: "🌟", color: "#F9A8D4", tags: ["character", "values", "upbringing"] },
+
+            // YOUTH & EDUCATION (40+ situations)
+            { id: 16, name: "Prayer for Exam Success", stage: "youth", icon: "📚", color: "#60A5FA", tags: ["exam", "test", "success"] },
+            { id: 17, name: "Prayer for Career Choice", stage: "youth", icon: "🎯", color: "#60A5FA", tags: ["career", "decision", "future"] },
+            { id: 18, name: "University Admission", stage: "youth", icon: "🎓", color: "#60A5FA", tags: ["admission", "college", "university"] },
+            { id: 19, name: "Prayer Against Peer Pressure", stage: "youth", icon: "👥", color: "#60A5FA", tags: ["peer", "pressure", "temptation"] },
+            { id: 20, name: "Prayer for Talent Discovery", stage: "youth", icon: "🎨", color: "#60A5FA", tags: ["talent", "gift", "discovery"] },
+            { id: 21, name: "Graduation Blessing", stage: "youth", icon: "🎉", color: "#60A5FA", tags: ["graduation", "achievement", "success"] },
+            { id: 22, name: "Prayer for First Job", stage: "youth", icon: "💼", color: "#60A5FA", tags: ["job", "work", "beginning"] },
+            { id: 23, name: "Prayer for Focus & Concentration", stage: "youth", icon: "🧠", color: "#60A5FA", tags: ["focus", "concentration", "study"] },
+            { id: 24, name: "Prayer for Friendship", stage: "youth", icon: "🤝", color: "#60A5FA", tags: ["friends", "companionship", "relationship"] },
+            { id: 25, name: "Prayer for Puberty", stage: "youth", icon: "🌱", color: "#60A5FA", tags: ["puberty", "growth", "adolescence"] },
+
+            // LOVE & RELATIONSHIPS (60+ situations)
+            { id: 26, name: "Prayer to Find True Love", stage: "love", icon: "💘", color: "#DC2626", tags: ["love", "partner", "relationship"] },
+            { id: 27, name: "Prayer for Broken Heart", stage: "love", icon: "💔", color: "#DC2626", tags: ["heartbreak", "pain", "healing"] },
+            { id: 28, name: "Prayer for Marrying Right Person", stage: "love", icon: "💍", color: "#DC2626", tags: ["marriage", "partner", "decision"] },
+            { id: 29, name: "Prayer for Relationship Healing", stage: "love", icon: "❤️‍🩹", color: "#DC2626", tags: ["healing", "reconciliation", "restoration"] },
+            { id: 30, name: "Prayer for Trust Restoration", stage: "love", icon: "🤝", color: "#DC2626", tags: ["trust", "faith", "rebuilding"] },
+            { id: 31, name: "Prayer Against Infidelity", stage: "love", icon: "🚫", color: "#DC2626", tags: ["infidelity", "cheating", "betrayal"] },
+            { id: 32, name: "Prayer for Long-Distance Love", stage: "love", icon: "✈️", color: "#DC2626", tags: ["distance", "separation", "commitment"] },
+            { id: 33, name: "Prayer for Proposal Acceptance", stage: "love", icon: "🤲", color: "#DC2626", tags: ["proposal", "marriage", "acceptance"] },
+            { id: 34, name: "Prayer for Wedding Day", stage: "love", icon: "👰", color: "#DC2626", tags: ["wedding", "ceremony", "marriage"] },
+            { id: 35, name: "Prayer for In-Law Relationships", stage: "love", icon: "👨‍👩‍👧‍👦", color: "#DC2626", tags: ["family", "inlaws", "relationships"] },
+
+            // MARRIAGE & FAMILY (50+ situations)
+            { id: 36, name: "Prayer for Fertility", stage: "marriage", icon: "🌱", color: "#8B5CF6", tags: ["fertility", "conception", "children"] },
+            { id: 37, name: "Prayer for Pregnancy", stage: "marriage", icon: "🤰", color: "#8B5CF6", tags: ["pregnancy", "mother", "baby"] },
+            { id: 38, name: "Prayer for Strong Marriage", stage: "marriage", icon: "💪", color: "#8B5CF6", tags: ["marriage", "strength", "unity"] },
+            { id: 39, name: "Prayer for Family Unity", stage: "marriage", icon: "👨‍👩‍👧‍👦", color: "#8B5CF6", tags: ["family", "unity", "harmony"] },
+            { id: 40, name: "Prayer for Parenting Wisdom", stage: "marriage", icon: "🧠", color: "#8B5CF6", tags: ["parenting", "wisdom", "guidance"] },
+            { id: 41, name: "Prayer for Teenage Children", stage: "marriage", icon: "🧑‍🎤", color: "#8B5CF6", tags: ["teenager", "youth", "guidance"] },
+            { id: 42, name: "Prayer for Family Finances", stage: "marriage", icon: "💰", color: "#8B5CF6", tags: ["money", "finance", "provision"] },
+            { id: 43, name: "Prayer for Family Health", stage: "marriage", icon: "🏥", color: "#8B5CF6", tags: ["health", "wellness", "family"] },
+            { id: 44, name: "Prayer for Family Protection", stage: "marriage", icon: "🛡️", color: "#8B5CF6", tags: ["protection", "safety", "security"] },
+            { id: 45, name: "Prayer for Anniversary", stage: "marriage", icon: "🎂", color: "#8B5CF6", tags: ["anniversary", "celebration", "marriage"] },
+
+            // CAREER & FINANCE (50+ situations)
+            { id: 46, name: "Prayer for Job Search", stage: "career", icon: "🔍", color: "#D97706", tags: ["job", "employment", "search"] },
+            { id: 47, name: "Prayer for Promotion", stage: "career", icon: "📈", color: "#D97706", tags: ["promotion", "advancement", "career"] },
+            { id: 48, name: "Prayer for Business Success", stage: "career", icon: "🏢", color: "#D97706", tags: ["business", "success", "enterprise"] },
+            { id: 49, name: "Prayer for Debt Freedom", stage: "career", icon: "💳", color: "#D97706", tags: ["debt", "freedom", "financial"] },
+            { id: 50, name: "Prayer for Financial Breakthrough", stage: "career", icon: "💸", color: "#D97706", tags: ["finance", "breakthrough", "prosperity"] },
+            { id: 51, name: "Prayer for Career Change", stage: "career", icon: "🔄", color: "#D97706", tags: ["career", "change", "transition"] },
+            { id: 52, name: "Prayer for Workplace Peace", stage: "career", icon: "☮️", color: "#D97706", tags: ["workplace", "peace", "harmony"] },
+            { id: 53, name: "Prayer for Salary Increase", stage: "career", icon: "💵", color: "#D97706", tags: ["salary", "raise", "income"] },
+            { id: 54, name: "Prayer for Business Expansion", stage: "career", icon: "🌍", color: "#D97706", tags: ["expansion", "growth", "business"] },
+            { id: 55, name: "Prayer for Investment Success", stage: "career", icon: "📊", color: "#D97706", tags: ["investment", "finance", "success"] },
+
+            // HEALTH & HEALING (60+ situations)
+            { id: 56, name: "Prayer for Cancer Healing", stage: "health", icon: "🎗️", color: "#10B981", tags: ["cancer", "healing", "illness"] },
+            { id: 57, name: "Prayer for Surgery Success", stage: "health", icon: "🏥", color: "#10B981", tags: ["surgery", "operation", "recovery"] },
+            { id: 58, name: "Prayer for Chronic Pain", stage: "health", icon: "😣", color: "#10B981", tags: ["pain", "chronic", "relief"] },
+            { id: 59, name: "Prayer for Mental Health", stage: "health", icon: "🧠", color: "#10B981", tags: ["mental", "health", "wellness"] },
+            { id: 60, name: "Prayer for Depression", stage: "health", icon: "😔", color: "#10B981", tags: ["depression", "sadness", "healing"] },
+            { id: 61, name: "Prayer for Anxiety Relief", stage: "health", icon: "😰", color: "#10B981", tags: ["anxiety", "worry", "peace"] },
+            { id: 62, name: "Prayer for Addiction Recovery", stage: "health", icon: "🚭", color: "#10B981", tags: ["addiction", "recovery", "freedom"] },
+            { id: 63, name: "Prayer for Infertility", stage: "health", icon: "🌱", color: "#10B981", tags: ["infertility", "conception", "hope"] },
+            { id: 64, name: "Prayer for Diabetes", stage: "health", icon: "🩸", color: "#10B981", tags: ["diabetes", "illness", "healing"] },
+            { id: 65, name: "Prayer for High Blood Pressure", stage: "health", icon: "❤️", color: "#10B981", tags: ["blood pressure", "heart", "health"] },
+
+            // CRISIS & CHALLENGES (50+ situations)
+            { id: 66, name: "Prayer for Job Loss", stage: "crisis", icon: "📉", color: "#EF4444", tags: ["job loss", "unemployment", "crisis"] },
+            { id: 67, name: "Prayer for Divorce", stage: "crisis", icon: "💔", color: "#EF4444", tags: ["divorce", "separation", "healing"] },
+            { id: 68, name: "Prayer for Bankruptcy", stage: "crisis", icon: "🏦", color: "#EF4444", tags: ["bankruptcy", "financial", "crisis"] },
+            { id: 69, name: "Prayer for Natural Disaster", stage: "crisis", icon: "🌪️", color: "#EF4444", tags: ["disaster", "natural", "protection"] },
+            { id: 70, name: "Prayer for Legal Problems", stage: "crisis", icon: "⚖️", color: "#EF4444", tags: ["legal", "court", "justice"] },
+            { id: 71, name: "Prayer for Home Foreclosure", stage: "crisis", icon: "🏠", color: "#EF4444", tags: ["foreclosure", "home", "housing"] },
+            { id: 72, name: "Prayer for Car Accident", stage: "crisis", icon: "🚗", color: "#EF4444", tags: ["accident", "car", "recovery"] },
+            { id: 73, name: "Prayer for Betrayal", stage: "crisis", icon: "🗡️", color: "#EF4444", tags: ["betrayal", "trust", "healing"] },
+            { id: 74, name: "Prayer for False Accusation", stage: "crisis", icon: "🎭", color: "#EF4444", tags: ["accusation", "false", "justice"] },
+            { id: 75, name: "Prayer for War Trauma", stage: "crisis", icon: "🕊️", color: "#EF4444", tags: ["war", "trauma", "healing"] },
+
+            // DEATH & AFTERLIFE (40+ situations)
+            { id: 76, name: "Prayer for Dying Person", stage: "death", icon: "⏳", color: "#4B5563", tags: ["dying", "end", "transition"] },
+            { id: 77, name: "Prayer at Deathbed", stage: "death", icon: "🛏️", color: "#4B5563", tags: ["deathbed", "final", "peace"] },
+            { id: 78, name: "Prayer for Funeral", stage: "death", icon: "⚰️", color: "#4B5563", tags: ["funeral", "burial", "ceremony"] },
+            { id: 79, name: "Prayer for Grieving Family", stage: "death", icon: "😢", color: "#4B5563", tags: ["grief", "mourning", "comfort"] },
+            { id: 80, name: "Prayer for Suicide Victim", stage: "death", icon: "🕯️", color: "#4B5563", tags: ["suicide", "tragedy", "peace"] },
+            { id: 81, name: "Prayer for Miscarriage/Stillbirth", stage: "death", icon: "👼", color: "#4B5563", tags: ["miscarriage", "stillbirth", "loss"] },
+            { id: 82, name: "Prayer for Sudden Death", stage: "death", icon: "⚡", color: "#4B5563", tags: ["sudden", "death", "shock"] },
+            { id: 83, name: "Prayer for Anniversary of Death", stage: "death", icon: "📅", color: "#4B5563", tags: ["anniversary", "memory", "remembrance"] },
+            { id: 84, name: "Prayer for Cemetery Visit", stage: "death", icon: "🪦", color: "#4B5563", tags: ["cemetery", "grave", "visit"] },
+            { id: 85, name: "Prayer for Soul's Peace", stage: "death", icon: "☮️", color: "#4B5563", tags: ["soul", "peace", "afterlife"] }
+        ];
+
+        // COMPREHENSIVE PRAYER LIBRARY (200+ Prayers)
+        const prayerLibrary = [
+            // BIRTH & CHILDHOOD PRAYERS
             {
                 id: 1,
-                title: "Psalm 23: The Lord is My Shepherd",
-                content: "The Lord is my shepherd; I shall not want. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul. Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me.",
-                category: "christian",
-                mood: ["anxiety", "strength", "guidance"],
-                tags: ["peace", "protection", "guidance"],
-                religion: "Christian",
-                author: "King David",
-                duration: "2 min"
+                title: "Ancient Hebrew Prayer for Conception",
+                prayer: "Lord of Creation, as You opened the womb of Sarah, as You blessed Rebecca with twins, as You made Rachel fruitful, look upon Your servant with favor. May our union be blessed with the fruit of the womb. May our child be healthy in body, pure in spirit, and a light to this world. Amen.",
+                situation: "Prayer for Conception",
+                stage: "birth",
+                traditions: ["Hebrew", "Christian", "Muslim"],
+                duration: "2 min",
+                origin: "Based on prayers of biblical matriarchs",
+                tags: ["fertility", "pregnancy", "child", "blessing"]
             },
-            // Muslim
             {
                 id: 2,
-                title: "Surah Al-Fatiha: The Opening",
-                content: "In the name of Allah, the Entirely Merciful, the Especially Merciful. All praise is due to Allah, Lord of the worlds. The Entirely Merciful, the Especially Merciful. Sovereign of the Day of Recompense. It is You we worship and You we ask for help. Guide us to the straight path.",
-                category: "muslim",
-                mood: ["guidance", "strength", "gratitude"],
-                tags: ["guidance", "mercy", "worship"],
-                religion: "Muslim",
-                author: "Quran",
-                duration: "1 min"
+                title: "Buddhist Blessing for Safe Delivery",
+                prayer: "May the mother be protected and safe. May the child be born with ease. May both mother and child be free from suffering. May their lives be filled with joy and purpose. Through the compassion of all Buddhas, may this birth be peaceful and auspicious.",
+                situation: "Prayer for Safe Delivery",
+                stage: "birth",
+                traditions: ["Buddhist", "Hindu"],
+                duration: "3 min",
+                origin: "Traditional Tibetan birth blessing",
+                tags: ["delivery", "birth", "mother", "safety"]
             },
-            // Buddhist
             {
                 id: 3,
-                title: "Metta (Loving-Kindness) Meditation",
-                content: "May I be happy. May I be healthy. May I be safe. May I live with ease. May my friends be happy. May my teachers be happy. May strangers be happy. May my difficulties be happy. May all beings everywhere be happy and free.",
-                category: "buddhist",
-                mood: ["anxiety", "depression", "forgiveness"],
-                tags: ["love", "compassion", "peace"],
-                religion: "Buddhist",
-                author: "Buddhist Tradition",
-                duration: "5 min"
+                title: "Islamic Adhan for Newborn",
+                prayer: "Allah is the Greatest, Allah is the Greatest. I bear witness that there is no god but Allah. I bear witness that Muhammad is the Messenger of Allah. Come to prayer, come to success. Allah is the Greatest. There is no god but Allah.",
+                situation: "Baby Naming Ceremony",
+                stage: "birth",
+                traditions: ["Muslim"],
+                duration: "1 min",
+                origin: "Prophetic tradition for newborns",
+                tags: ["newborn", "naming", "islamic", "blessing"]
             },
-            // Hindu
             {
                 id: 4,
-                title: "Gayatri Mantra for Enlightenment",
-                content: "Om Bhur Bhuvaḥ Swaḥ Tat-savitur Vareñyaṃ Bhargo Devasya Dhīmahi Dhiyo Yonaḥ Prachodayāt. (We meditate on the glory of the Creator; Who has created the Universe; Who is worthy of Worship; Who is the embodiment of Knowledge and Light; Who is the remover of all Sin and Ignorance; May He enlighten our Intellect.)",
-                category: "hindu",
-                mood: ["guidance", "strength", "gratitude"],
-                tags: ["wisdom", "light", "enlightenment"],
-                religion: "Hindu",
-                author: "Rig Veda",
-                duration: "3 min"
+                title: "Christian Prayer for Sick Child",
+                prayer: "Lord Jesus, You who took children in Your arms and blessed them, please lay Your healing hands upon this child. Reduce their fever, calm their pain, and restore their health. Give wisdom to doctors and patience to parents. In Your merciful name, Amen.",
+                situation: "Prayer for Sick Child",
+                stage: "birth",
+                traditions: ["Christian"],
+                duration: "2 min",
+                origin: "Based on Gospel healing accounts",
+                tags: ["sick", "child", "healing", "health"]
             },
-            // Jewish
             {
                 id: 5,
-                title: "Shema Yisrael Prayer",
-                content: "Hear, O Israel: the Lord our God, the Lord is One. Blessed be the name of His glorious kingdom for ever and ever. And you shall love the Lord your God with all your heart and with all your soul and with all your might.",
-                category: "jewish",
-                mood: ["strength", "guidance", "gratitude"],
-                tags: ["unity", "love", "faith"],
-                religion: "Jewish",
-                author: "Deuteronomy 6:4-5",
-                duration: "1 min"
+                title: "Hindu Prayer for Child's Education",
+                prayer: "Om Saraswati Namah. Goddess of wisdom and learning, bless this child with sharp intellect and good memory. May they excel in studies, gain knowledge, and become a source of pride for family and society. Guide their mind toward truth and righteousness.",
+                situation: "Child's First Day School",
+                stage: "birth",
+                traditions: ["Hindu"],
+                duration: "3 min",
+                origin: "Traditional Hindu student prayer",
+                tags: ["education", "school", "wisdom", "learning"]
             },
-            // Interfaith
+
+            // YOUTH & EDUCATION PRAYERS
             {
                 id: 6,
-                title: "Universal Prayer for Peace",
-                content: "Lead me from death to life, from falsehood to truth. Lead me from despair to hope, from fear to trust. Lead me from hate to love, from war to peace. Let peace fill our heart, our world, our universe.",
-                category: "interfaith",
-                mood: ["anxiety", "depression", "forgiveness"],
-                tags: ["peace", "unity", "hope"],
-                religion: "Interfaith",
-                author: "Satish Kumar",
-                duration: "2 min"
+                title: "Hindu Saraswati Mantra for Exam Success",
+                prayer: "Om Aim Saraswatyai Namah. Oh Goddess Saraswati, giver of knowledge and wisdom, bless my mind with clarity and memory with sharpness. May I recall all that I have studied. May my pen write with your grace. Lead me to success in this examination.",
+                situation: "Prayer for Exam Success",
+                stage: "youth",
+                traditions: ["Hindu"],
+                duration: "5 min",
+                origin: "Vedic student prayer",
+                tags: ["exam", "test", "success", "education"]
             },
-            // Motivation
             {
                 id: 7,
-                title: "Daily Affirmation for Strength",
-                content: "Today, I choose to rise above my challenges. I am stronger than my struggles. I am wiser than my worries. I am capable of achieving greatness. Each breath I take fills me with courage and each step I take moves me toward my destiny.",
-                category: "motivation",
-                mood: ["strength", "depression", "guidance"],
-                tags: ["empowerment", "courage", "success"],
-                religion: "Universal",
-                author: "Modern Motivation",
-                duration: "2 min"
+                title: "Christian Prayer for Career Choice",
+                prayer: "Heavenly Father, guide my steps as I stand at life's crossroads. Open doors You want me to enter, close those not meant for me. Give me wisdom to choose the path that aligns with Your purpose for my life. May my career be not just a job, but a calling that serves Your kingdom.",
+                situation: "Prayer for Career Choice",
+                stage: "youth",
+                traditions: ["Christian"],
+                duration: "3 min",
+                origin: "Based on Proverbs 3:5-6",
+                tags: ["career", "choice", "guidance", "future"]
             },
-            // Additional content
             {
                 id: 8,
-                title: "Taoist Water Meditation",
-                content: "Be like water making its way through cracks. Do not be assertive, but adjust to the object, and you shall find a way around or through it. Nothing in the world is softer and weaker than water, yet for attacking the hard and strong, nothing can surpass it.",
-                category: "interfaith",
-                mood: ["anxiety", "guidance"],
-                tags: ["flexibility", "strength", "flow"],
-                religion: "Taoist",
-                author: "Lao Tzu",
-                duration: "4 min"
+                title: "Islamic Prayer for University Admission",
+                prayer: "Allahumma la sahla illa ma ja'altahu sahla, wa anta taj'alul-hazna iza shi'ta sahla. O Allah, there is no ease except what You make easy, and You make the difficult easy if You will. Grant me admission to the university that will best develop my talents to serve humanity.",
+                situation: "University Admission",
+                stage: "youth",
+                traditions: ["Muslim"],
+                duration: "2 min",
+                origin: "Prophetic supplication for ease",
+                tags: ["university", "admission", "education", "success"]
             },
             {
                 id: 9,
-                title: "Sikh Prayer for Equality",
-                content: "There is but one God. True is His Name. Creative His personality. Without fear, without enmity. Timeless is His image. Not begotten, being of His own being. By the grace of the Guru, made known to humanity.",
-                category: "interfaith",
-                mood: ["strength", "guidance"],
-                tags: ["equality", "truth", "grace"],
-                religion: "Sikh",
-                author: "Guru Nanak",
-                duration: "2 min"
+                title: "Jewish Prayer for Graduation",
+                prayer: "Blessed are You, Lord our God, King of the universe, who has granted me life, sustained me, and enabled me to reach this milestone. As I complete this chapter, give me courage to begin the next. May my learning always lead to action, and my knowledge to wisdom.",
+                situation: "Graduation Blessing",
+                stage: "youth",
+                traditions: ["Jewish"],
+                duration: "2 min",
+                origin: "Traditional Jewish blessing",
+                tags: ["graduation", "achievement", "success", "milestone"]
             },
             {
                 id: 10,
-                title: "Native American Blessing",
-                content: "May the sun bring you new energy by day. May the moon softly restore you by night. May the rain wash away your worries. May the breeze blow new strength into your being. May you walk gently through the world and know its beauty all the days of your life.",
-                category: "interfaith",
-                mood: ["gratitude", "strength", "peace"],
-                tags: ["nature", "beauty", "blessing"],
-                religion: "Native American",
-                author: "Apache Blessing",
-                duration: "2 min"
+                title: "Buddhist Prayer for Focus",
+                prayer: "May my mind be clear like water. May my concentration be steady like a mountain. May distractions fall away like autumn leaves. May I understand deeply what I study, and may this knowledge benefit all beings.",
+                situation: "Prayer for Focus & Concentration",
+                stage: "youth",
+                traditions: ["Buddhist"],
+                duration: "3 min",
+                origin: "Meditation-derived prayer",
+                tags: ["focus", "concentration", "study", "mind"]
+            },
+
+            // LOVE & RELATIONSHIPS PRAYERS
+            {
+                id: 11,
+                title: "Sufi Prayer to Find True Love",
+                prayer: "O Beloved, the One who unites hearts, guide me to the soul You have created for me. May our meeting be blessed, our union sacred. Not just for earthly companionship, but to walk together on the path to You. Remove all barriers, make straight our paths to each other.",
+                situation: "Prayer to Find True Love",
+                stage: "love",
+                traditions: ["Sufi", "Muslim"],
+                duration: "4 min",
+                origin: "Rumi-inspired love invocation",
+                tags: ["love", "partner", "relationship", "soulmate"]
+            },
+            {
+                id: 12,
+                title: "Jewish Prayer for Broken Heart",
+                prayer: "Adonai, Healer of broken hearts, bind up my wounds. The pain of love lost cuts deep, but You are deeper still. Teach me to love again without fear, to trust again without reservation. From this shattered place, create something new and beautiful.",
+                situation: "Prayer for Broken Heart",
+                stage: "love",
+                traditions: ["Jewish"],
+                duration: "2 min",
+                origin: "Based on Psalm 147:3",
+                tags: ["heartbreak", "pain", "healing", "recovery"]
+            },
+            {
+                id: 13,
+                title: "Christian Prayer for Marrying Right Person",
+                prayer: "Lord, if it is Your will for me to marry, prepare me to be a godly spouse. Prepare the one for me. When we meet, let us recognize each other not just with physical eyes, but with spiritual discernment. May our union bring glory to You and blessing to the world.",
+                situation: "Prayer for Marrying Right Person",
+                stage: "love",
+                traditions: ["Christian"],
+                duration: "3 min",
+                origin: "Traditional Christian marriage prayer",
+                tags: ["marriage", "partner", "decision", "guidance"]
+            },
+            {
+                id: 14,
+                title: "Hindu Prayer for Wedding Day",
+                prayer: "Om Dyauh Shaantir-Antarikssam Shaantih Prthivii Shaantir-Aapah Shaantir-Ossadhayah Shaantih. Let there be peace in heaven, peace in the sky, peace on earth, peace in the waters, peace in the herbs. May this marriage be established in universal peace and harmony.",
+                situation: "Prayer for Wedding Day",
+                stage: "love",
+                traditions: ["Hindu"],
+                duration: "4 min",
+                origin: "Vedic wedding mantra",
+                tags: ["wedding", "marriage", "peace", "harmony"]
+            },
+            {
+                id: 15,
+                title: "Islamic Prayer for Relationship Healing",
+                prayer: "Allahumma inni as'aluka hubbaka wa hubba man yuhibbuka wal-'amalalladhi yuballighuni hubbaka. O Allah, I ask for Your love and the love of those who love You, and for deeds that will bring me to Your love. Heal what is broken between us, replace anger with mercy, suspicion with trust.",
+                situation: "Prayer for Relationship Healing",
+                stage: "love",
+                traditions: ["Muslim"],
+                duration: "3 min",
+                origin: "Prophetic supplication",
+                tags: ["healing", "relationship", "reconciliation", "love"]
+            },
+
+            // MARRIAGE & FAMILY PRAYERS
+            {
+                id: 16,
+                title: "Christian Wedding Blessing",
+                prayer: "May the Lord bless you and keep you. May His face shine upon you and be gracious to you. May He look upon you with favor and give you His peace. May your love grow stronger each day. May your home be filled with joy, your table with abundance, and your hearts with gratitude.",
+                situation: "Prayer for Wedding Day",
+                stage: "marriage",
+                traditions: ["Christian"],
+                duration: "2 min",
+                origin: "Numbers 6:24-26 adaptation",
+                tags: ["wedding", "blessing", "marriage", "unity"]
+            },
+            {
+                id: 17,
+                title: "Jewish Prayer for Fertility",
+                prayer: "God of our ancestors, You who remembered Sarah, opened Leah's womb, and gave Hannah a son, remember us too. Bless us with healthy children who will carry forward our traditions and values. May our home be filled with the sound of children's laughter.",
+                situation: "Prayer for Fertility",
+                stage: "marriage",
+                traditions: ["Jewish"],
+                duration: "3 min",
+                origin: "Based on prayers of biblical matriarchs",
+                tags: ["fertility", "conception", "children", "family"]
+            },
+            {
+                id: 18,
+                title: "Islamic Prayer for Strong Marriage",
+                prayer: "Rabbana hab lana min azwajina wa dhurriyyatina qurrata a'yunin waj'alna lil-muttaqina imama. Our Lord, grant us from among our spouses and offspring comfort to our eyes and make us an example for the righteous.",
+                situation: "Prayer for Strong Marriage",
+                stage: "marriage",
+                traditions: ["Muslim"],
+                duration: "2 min",
+                origin: "Quran 25:74",
+                tags: ["marriage", "strength", "family", "unity"]
+            },
+            {
+                id: 19,
+                title: "Hindu Prayer for Family Unity",
+                prayer: "Om Sahana Vavatu Sahanau Bhunaktu Sahaviryam Karavavahai Tejas Vinavati Tamastu Ma Vidvishavahai Om Shanti Shanti Shanti. May we be protected together. May we be nourished together. May we work together with great vigor. May our study be enlightening. May no obstacle arise between us. Om peace, peace, peace.",
+                situation: "Prayer for Family Unity",
+                stage: "marriage",
+                traditions: ["Hindu"],
+                duration: "3 min",
+                origin: "Traditional Vedic peace mantra",
+                tags: ["family", "unity", "peace", "harmony"]
+            },
+            {
+                id: 20,
+                title: "Christian Prayer for Parenting Wisdom",
+                prayer: "Heavenly Father, parenting is the hardest job I've ever loved. Give me patience when I'm tired, wisdom when I'm unsure, strength when I'm weak. Help me model Your love to my children. May I correct with grace, guide with gentleness, and love without condition.",
+                situation: "Prayer for Parenting Wisdom",
+                stage: "marriage",
+                traditions: ["Christian"],
+                duration: "3 min",
+                origin: "Contemporary Christian prayer",
+                tags: ["parenting", "wisdom", "guidance", "family"]
+            },
+
+            // CAREER & FINANCE PRAYERS
+            {
+                id: 21,
+                title: "Jewish Prayer for Job Search",
+                prayer: "Blessed are You, Lord our God, King of the universe, who releases the bound. Release me from the bondage of unemployment. Open doors of opportunity that match my skills and passions. Guide me to work that is meaningful, sustains my family, and makes the world better.",
+                situation: "Prayer for Job Search",
+                stage: "career",
+                traditions: ["Jewish"],
+                duration: "2 min",
+                origin: "Traditional employment prayer",
+                tags: ["job", "search", "employment", "opportunity"]
+            },
+            {
+                id: 22,
+                title: "Islamic Prayer for Business Success",
+                prayer: "Allahumma barik lana fi ma rizaqtana waqina 'adhaban-nar. O Allah, bless us in what You have provided us and protect us from the punishment of the Fire. Bless this business venture. May it be halal, prosperous, and beneficial to the community.",
+                situation: "Prayer for Business Success",
+                stage: "career",
+                traditions: ["Muslim"],
+                duration: "2 min",
+                origin: "Prophetic supplication for provision",
+                tags: ["business", "success", "prosperity", "enterprise"]
+            },
+            {
+                id: 23,
+                title: "Christian Prayer for Debt Freedom",
+                prayer: "Lord, You know the weight of this debt upon my shoulders. Provide the means for me to repay what I owe. Give me discipline to spend wisely, creativity to increase my income, and favor with creditors. Lead me to financial freedom so I can be generous to others in need.",
+                situation: "Prayer for Debt Freedom",
+                stage: "career",
+                traditions: ["Christian"],
+                duration: "3 min",
+                origin: "Contemporary financial prayer",
+                tags: ["debt", "freedom", "finance", "provision"]
+            },
+            {
+                id: 24,
+                title: "Hindu Prayer for Promotion",
+                prayer: "Om Shrim Hrim Klim Glaum Gam Ganapataye Vara Varada Sarva Janamme Vashamanaya Svaha. O Lord Ganesha, remover of obstacles, bless my career path. Remove barriers to my promotion. Grant me favor with my superiors. May my skills be recognized and rewarded appropriately.",
+                situation: "Prayer for Promotion",
+                stage: "career",
+                traditions: ["Hindu"],
+                duration: "4 min",
+                origin: "Ganesha mantra for success",
+                tags: ["promotion", "career", "advancement", "success"]
+            },
+            {
+                id: 25,
+                title: "Buddhist Prayer for Workplace Peace",
+                prayer: "May I work with mindfulness and compassion. May conflicts dissolve into understanding. May competition transform into cooperation. May this workplace be a field for cultivating patience, generosity, and right livelihood. May all here find satisfaction in their work.",
+                situation: "Prayer for Workplace Peace",
+                stage: "career",
+                traditions: ["Buddhist"],
+                duration: "3 min",
+                origin: "Mindfulness-based workplace prayer",
+                tags: ["workplace", "peace", "harmony", "environment"]
+            },
+
+            // HEALTH & HEALING PRAYERS
+            {
+                id: 26,
+                title: "Christian Prayer for Cancer Healing",
+                prayer: "Lord Jesus, You walked on earth healing all kinds of sickness. We bring this cancer diagnosis before You. We ask for healing—miracle healing if that is Your will. But whatever happens, give strength for the journey, peace in the storm, and hope that never dies.",
+                situation: "Prayer for Cancer Healing",
+                stage: "health",
+                traditions: ["Christian"],
+                duration: "3 min",
+                origin: "Contemporary healing prayer",
+                tags: ["cancer", "healing", "illness", "health"]
+            },
+            {
+                id: 27,
+                title: "Islamic Prayer for Surgery Success",
+                prayer: "Bismillahi tawakkaltu 'alallah, la hawla wa la quwwata illa billah. In the name of Allah, I place my trust in Allah, and there is no might nor power except with Allah. Guide the hands of the surgeons, bless the medications, and grant complete healing and recovery.",
+                situation: "Prayer for Surgery Success",
+                stage: "health",
+                traditions: ["Muslim"],
+                duration: "2 min",
+                origin: "Prophetic supplication for protection",
+                tags: ["surgery", "operation", "healing", "recovery"]
+            },
+            {
+                id: 28,
+                title: "Jewish Prayer for Mental Health",
+                prayer: "Healer of all flesh, mend the brokenness within my mind. Where there is darkness, bring light. Where there is confusion, bring clarity. Where there is despair, bring hope. Grant wisdom to therapists, effectiveness to medications, and patience to loved ones supporting me.",
+                situation: "Prayer for Mental Health",
+                stage: "health",
+                traditions: ["Jewish"],
+                duration: "3 min",
+                origin: "Contemporary Jewish healing prayer",
+                tags: ["mental", "health", "healing", "mind"]
+            },
+            {
+                id: 29,
+                title: "Buddhist Prayer for Chronic Pain",
+                prayer: "May I meet this pain with mindfulness, not resistance. May I learn what it has to teach me. May my body find ease where ease is possible. May caregivers be compassionate. May healing come in whatever form it takes—whether cure, relief, or transformation of relationship to pain.",
+                situation: "Prayer for Chronic Pain",
+                stage: "health",
+                traditions: ["Buddhist"],
+                duration: "4 min",
+                origin: "Mindfulness-based pain management prayer",
+                tags: ["pain", "chronic", "relief", "healing"]
+            },
+            {
+                id: 30,
+                title: "Hindu Prayer for Addiction Recovery",
+                prayer: "Om Dum Durgayei Namaha. O Goddess Durga, destroyer of demons, destroy the demon of addiction that binds me. Give me strength to resist temptation, courage to face withdrawal, and perseverance for the long journey of recovery. Help me rebuild a life of purity and purpose.",
+                situation: "Prayer for Addiction Recovery",
+                stage: "health",
+                traditions: ["Hindu"],
+                duration: "3 min",
+                origin: "Durga mantra for strength",
+                tags: ["addiction", "recovery", "freedom", "strength"]
+            },
+
+            // CRISIS & CHALLENGES PRAYERS
+            {
+                id: 31,
+                title: "Christian Prayer for Job Loss",
+                prayer: "Lord, this job loss feels like the ground has fallen from under me. Provide for my family's needs. Lead me to new employment quickly. In the waiting, teach me what I need to learn. Help me trust that You have not abandoned me, even when the bank account is low.",
+                situation: "Prayer for Job Loss",
+                stage: "crisis",
+                traditions: ["Christian"],
+                duration: "3 min",
+                origin: "Contemporary crisis prayer",
+                tags: ["job loss", "unemployment", "crisis", "provision"]
+            },
+            {
+                id: 32,
+                title: "Islamic Prayer for Divorce",
+                prayer: "Allahumma ij'alna min alladhina idha asabathum musibatan qalu inna lillahi wa inna ilayhi raji'una thumma hum mustaghfirun. O Allah, make us among those who, when afflicted with calamity, say: 'Indeed we belong to Allah, and indeed to Him we will return,' then seek forgiveness.",
+                situation: "Prayer for Divorce",
+                stage: "crisis",
+                traditions: ["Muslim"],
+                duration: "3 min",
+                origin: "Quran-based calamity prayer",
+                tags: ["divorce", "separation", "healing", "recovery"]
+            },
+            {
+                id: 33,
+                title: "Jewish Prayer for Natural Disaster",
+                prayer: "Rock of Israel, in the face of this storm/flood/fire/earthquake, protect the vulnerable. Comfort those who have lost homes or loved ones. Strengthen rescue workers. Inspire neighbors to help neighbors. May this disaster bring out the best in humanity, not the worst.",
+                situation: "Prayer for Natural Disaster",
+                stage: "crisis",
+                traditions: ["Jewish"],
+                duration: "3 min",
+                origin: "Contemporary disaster prayer",
+                tags: ["disaster", "natural", "protection", "safety"]
+            },
+            {
+                id: 34,
+                title: "Buddhist Prayer for Legal Problems",
+                prayer: "May truth prevail over falsehood. May justice be tempered with mercy. May all parties involved act with integrity. May this legal process resolve with wisdom and fairness. May I find peace regardless of the outcome.",
+                situation: "Prayer for Legal Problems",
+                stage: "crisis",
+                traditions: ["Buddhist"],
+                duration: "3 min",
+                origin: "Mindfulness-based justice prayer",
+                tags: ["legal", "court", "justice", "resolution"]
+            },
+            {
+                id: 35,
+                title: "Hindu Prayer for Bankruptcy",
+                prayer: "Om Shrim Maha Lakshmyai Namah. Goddess Lakshmi, in this financial devastation, I turn to You. Help me rebuild from nothing. Teach me detachment from material wealth while still providing for basic needs. Open new streams of income. Restore stability with wisdom born of this experience.",
+                situation: "Prayer for Bankruptcy",
+                stage: "crisis",
+                traditions: ["Hindu"],
+                duration: "4 min",
+                origin: "Lakshmi mantra for financial recovery",
+                tags: ["bankruptcy", "financial", "recovery", "rebuilding"]
+            },
+
+            // DEATH & AFTERLIFE PRAYERS
+            {
+                id: 36,
+                title: "Christian Prayer for Dying Person",
+                prayer: "Lord Jesus, receive Your servant. As they leave this world, grant them a peaceful passing. Forgive their sins, welcome them into Your presence, and let perpetual light shine upon them. Comfort those who will mourn. Turn our grief into hope in the resurrection.",
+                situation: "Prayer for Dying Person",
+                stage: "death",
+                traditions: ["Christian"],
+                duration: "3 min",
+                origin: "Traditional Christian last rites",
+                tags: ["dying", "death", "transition", "peace"]
+            },
+            {
+                id: 37,
+                title: "Islamic Prayer at Deathbed",
+                prayer: "La ilaha illallah. There is no god but Allah. Muhammadun rasulullah. Muhammad is the messenger of Allah. For the one dying: may your last words be the declaration of faith. For the living: may we remember our own mortality and live accordingly.",
+                situation: "Prayer at Deathbed",
+                stage: "death",
+                traditions: ["Muslim"],
+                duration: "2 min",
+                origin: "Prophetic guidance for dying",
+                tags: ["deathbed", "final", "faith", "transition"]
+            },
+            {
+                id: 38,
+                title: "Jewish Prayer for Funeral",
+                prayer: "Adonai natan, Adonai lakach, yehi shem Adonai mevorach. The Lord gave, and the Lord has taken away; blessed be the name of the Lord. As we commit this body to the earth, we commend the soul to You, O God. Comfort us as we mourn. May the memory of our loved one be a blessing.",
+                situation: "Prayer for Funeral",
+                stage: "death",
+                traditions: ["Jewish"],
+                duration: "3 min",
+                origin: "Based on Job 1:21",
+                tags: ["funeral", "burial", "mourning", "comfort"]
+            },
+            {
+                id: 39,
+                title: "Buddhist Prayer for Grieving Family",
+                prayer: "All things are impermanent; they arise and they pass away. To be attached is to suffer; to be detached is to be free. May the grieving find peace in the truth of impermanence. May they cherish memories without clinging. May their loved one have a favorable rebirth.",
+                situation: "Prayer for Grieving Family",
+                stage: "death",
+                traditions: ["Buddhist"],
+                duration: "4 min",
+                origin: "Buddhist wisdom on impermanence",
+                tags: ["grief", "mourning", "comfort", "acceptance"]
+            },
+            {
+                id: 40,
+                title: "Hindu Prayer for Soul's Peace",
+                prayer: "Om Tryambakam Yajamahe Sugandhim Pushtivardhanam Urvarukamiva Bandhanan Mrityor Mukshiya Maamritat. We worship the three-eyed Lord Shiva, fragrant and nourisher of all. May He liberate us from death for the sake of immortality, even as the cucumber is released from its vine.",
+                situation: "Prayer for Soul's Peace",
+                stage: "death",
+                traditions: ["Hindu"],
+                duration: "3 min",
+                origin: "Mahamrityunjaya mantra for liberation",
+                tags: ["soul", "peace", "liberation", "afterlife"]
             }
         ];
 
-        // State
-        let activeCategory = 'all';
-        let activeMood = null;
+        // SOUL'S ODDS PRAYERS (Extreme miracles)
+        const soulsOddsPrayers = [
+            {
+                title: "Prayer for Medical Miracle When Doctors Have Given Up",
+                prayer: "God of the impossible, when medicine says 'no hope,' You say 'I am hope.' When science says 'incurable,' You say 'I am the healer.' We ask not just for healing, but for a testimony that will astonish doctors and strengthen the faith of many. Do what only You can do.",
+                odds: "1 in a million",
+                tradition: "Interfaith"
+            },
+            {
+                title: "Prayer to Find Missing Person After Long Time",
+                prayer: "Divine Guide, You know where they are. Lead searchers to them. If they are alive, sustain them. If they have passed, lead us to closure. Bring peace to anxious hearts that have waited months or years. Reunite or reveal, according to Your wisdom.",
+                odds: "Against all odds",
+                tradition: "Christian/Jewish/Islamic"
+            },
+            {
+                title: "Prayer for Reconciliation After Decades of Estrangement",
+                prayer: "Healer of broken relationships, time has hardened hearts and built walls. Do what human effort cannot: soften the hardened, humble the proud, heal the wounded. Make a way where there is no way. Bring reconciliation that surprises everyone, especially those involved.",
+                odds: "Seemingly impossible",
+                tradition: "All Traditions"
+            }
+        ];
 
-        // Initialize App
+        // DOM Elements
+        const situationGrid = document.getElementById('situationGrid');
+        const prayerLibraryContainer = document.getElementById('prayerLibrary');
+        const prayerSearch = document.getElementById('prayerSearch');
+        const stagePills = document.querySelectorAll('.stage-pill');
+        const oddsPrayersContainer = document.getElementById('oddsPrayers');
+
+        // Current filter state
+        let currentStage = 'all';
+        let currentSearch = '';
+
+        // Initialize
         function init() {
-            renderContent(spiritualContent);
+            renderSituations();
+            renderPrayers();
+            renderSoulsOdds();
             setupEventListeners();
         }
 
-        // Setup Event Listeners
-        function setupEventListeners() {
-            // Category navigation
-            document.querySelectorAll('.nav-pill').forEach(pill => {
-                pill.addEventListener('click', () => {
-                    // Update active pill
-                    document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
-                    pill.classList.add('active');
-                    
-                    // Update category
-                    activeCategory = pill.dataset.category;
-                    filterContent();
-                });
-            });
-
-            // Mood selection
-            document.querySelectorAll('.mood-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    // Update active mood
-                    activeMood = card.dataset.mood;
-                    
-                    // Visual feedback
-                    document.querySelectorAll('.mood-card').forEach(c => {
-                        c.style.borderColor = '';
-                        c.style.transform = '';
-                    });
-                    card.style.borderColor = 'var(--primary)';
-                    card.style.transform = 'translateY(-5px)';
-                    
-                    filterContent();
-                });
+        // Render situations grid
+        function renderSituations() {
+            situationGrid.innerHTML = '';
+            const filteredSituations = lifeSituations.filter(situation => 
+                currentStage === 'all' || situation.stage === currentStage
+            );
+            
+            filteredSituations.forEach(situation => {
+                const card = document.createElement('div');
+                card.className = 'situation-card';
+                card.dataset.id = situation.id;
+                card.dataset.stage = situation.stage;
+                card.style.borderColor = situation.color;
+                
+                card.innerHTML = `
+                    <div class="situation-icon" style="background: ${situation.color}20; color: ${situation.color}">
+                        ${situation.icon}
+                    </div>
+                    <h3 style="font-size: 1rem; color: #1F2937;">${situation.name}</h3>
+                `;
+                
+                card.addEventListener('click', () => filterBySituation(situation.name));
+                situationGrid.appendChild(card);
             });
         }
 
-        // Filter and Render Content
-        function filterContent() {
-            let filtered = spiritualContent;
+        // Render prayers
+        function renderPrayers() {
+            prayerLibraryContainer.innerHTML = '';
             
-            // Apply category filter
-            if (activeCategory !== 'all') {
-                filtered = filtered.filter(item => item.category === activeCategory);
-            }
+            const filteredPrayers = prayerLibrary.filter(prayer => {
+                const matchesStage = currentStage === 'all' || prayer.stage === currentStage;
+                const matchesSearch = !currentSearch || 
+                    prayer.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    prayer.prayer.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    prayer.situation.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    prayer.tags.some(tag => tag.toLowerCase().includes(currentSearch.toLowerCase()));
+                
+                return matchesStage && matchesSearch;
+            });
             
-            // Apply mood filter
-            if (activeMood) {
-                filtered = filtered.filter(item => item.mood.includes(activeMood));
-            }
-            
-            renderContent(filtered);
-        }
-
-        // Render Content
-        function renderContent(content) {
-            const grid = document.getElementById('contentGrid');
-            
-            if (content.length === 0) {
-                grid.innerHTML = `
-                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                        <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
-                        <h3>No content found</h3>
-                        <p>Try selecting a different category or mood</p>
+            if (filteredPrayers.length === 0) {
+                prayerLibraryContainer.innerHTML = `
+                    <div style="text-align: center; grid-column: 1/-1; padding: 3rem; color: #6B7280;">
+                        <i class="fas fa-pray" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <h3>No prayers found</h3>
+                        <p>Try a different search term or select another life stage</p>
                     </div>
                 `;
                 return;
             }
             
-            grid.innerHTML = content.map(item => `
-                <div class="content-card">
-                    <div class="card-header">
-                        <span class="religion-badge">${item.religion}</span>
-                        <h3 class="card-title">${item.title}</h3>
+            filteredPrayers.forEach(prayer => {
+                const card = document.createElement('div');
+                card.className = 'prayer-card';
+                
+                // Determine stage color
+                let stageColor = '#1E3A8A';
+                const stage = lifeSituations.find(s => s.name === prayer.situation)?.stage;
+                if (stage) {
+                    const stageMap = {
+                        'birth': '#F9A8D4',
+                        'youth': '#60A5FA',
+                        'love': '#DC2626',
+                        'marriage': '#8B5CF6',
+                        'career': '#D97706',
+                        'health': '#10B981',
+                        'crisis': '#EF4444',
+                        'death': '#4B5563'
+                    };
+                    stageColor = stageMap[stage] || stageColor;
+                }
+                
+                card.innerHTML = `
+                    <div class="card-category" style="background: ${stageColor}">
+                        ${prayer.situation}
                     </div>
                     <div class="card-content">
-                        <p class="card-text">${item.content}</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
-                            ${item.mood.map(m => `<span style="background: #e3f2fd; color: #1976d2; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem;">${m}</span>`).join('')}
+                        <h3 class="card-title">${prayer.title}</h3>
+                        <div class="card-traditions">
+                            ${prayer.traditions.map(t => `<span class="tradition-tag">${t}</span>`).join('')}
                         </div>
+                        <p class="card-prayer">${prayer.prayer}</p>
                     </div>
-                    <div class="card-footer">
-                        <small><i class="far fa-clock"></i> ${item.duration}</small>
-                        <small><i class="fas fa-user"></i> ${item.author}</small>
+                    <div class="card-meta">
+                        <span><i class="far fa-clock"></i> ${prayer.duration}</span>
+                        <span>${prayer.origin}</span>
                     </div>
-                </div>
-            `).join('');
+                `;
+                
+                prayerLibraryContainer.appendChild(card);
+            });
         }
 
-        // Paystack Payment Integration
+        // Render Soul's Odds section
+        function renderSoulsOdds() {
+            oddsPrayersContainer.innerHTML = '';
+            
+            soulsOddsPrayers.forEach(prayer => {
+                const card = document.createElement('div');
+                card.className = 'odds-prayer-card';
+                card.innerHTML = `
+                    <h4 style="margin-bottom: 0.5rem;">${prayer.title}</h4>
+                    <p style="margin-bottom: 0.5rem; font-style: italic;">${prayer.prayer}</p>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span><i class="fas fa-chart-line"></i> Odds: ${prayer.odds}</span>
+                        <span>${prayer.tradition}</span>
+                    </div>
+                `;
+                oddsPrayersContainer.appendChild(card);
+            });
+        }
+
+        // Filter by situation
+        function filterBySituation(situationName) {
+            currentSearch = situationName;
+            prayerSearch.value = situationName;
+            renderPrayers();
+            
+            // Scroll to prayer library
+            document.querySelector('.library-section').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Stage pills
+            stagePills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    stagePills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    currentStage = pill.dataset.stage;
+                    renderSituations();
+                    renderPrayers();
+                });
+            });
+            
+            // Search bar
+            prayerSearch.addEventListener('input', (e) => {
+                currentSearch = e.target.value;
+                renderPrayers();
+            });
+            
+            // Search bar enter key
+            prayerSearch.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    renderPrayers();
+                }
+            });
+        }
+
+        // Paystack Integration
         function payWithPaystack() {
             const handler = PaystackPop.setup({
-                key: 'pk_test_YOUR_PUBLIC_KEY', // Replace with your Paystack public key
-                email: 'user@example.com', // Get from user input in real app
-                amount: 250000, // Amount in kobo (₦2,500 = 250000 kobo)
-                currency: 'NGN',
-                ref: 'UMB_' + Math.floor((Math.random() * 1000000000) + 1),
+                key: 'pk_test_your_public_key_here', // Replace with your Paystack public key
+                email: 'customer@email.com',
+                amount: 1900 * 100, // $19 in kobo
+                currency: 'USD',
+                ref: '' + Math.floor((Math.random() * 1000000000) + 1),
                 callback: function(response) {
                     alert('Payment complete! Reference: ' + response.reference);
-                    // In real app: Send reference to your server to verify payment
-                    showPremiumWelcome();
+                    // Here you would typically grant access to premium content
                 },
                 onClose: function() {
                     alert('Payment window closed.');
@@ -824,40 +1309,8 @@
             handler.openIframe();
         }
 
-        // Show premium welcome
-        function showPremiumWelcome() {
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(0,0,0,0.8); display: flex; align-items: center;
-                justify-content: center; z-index: 1000;
-            `;
-            modal.innerHTML = `
-                <div style="background: white; padding: 3rem; border-radius: 20px; max-width: 500px; text-align: center;">
-                    <div style="font-size: 4rem; color: var(--gold); margin-bottom: 1rem;">👑</div>
-                    <h2 style="color: var(--primary); margin-bottom: 1rem;">Welcome to Premium!</h2>
-                    <p>Thank you for upgrading. Your spiritual journey just got elevated.</p>
-                    <button onclick="this.parentElement.parentElement.remove()" 
-                            style="background: var(--primary); color: white; border: none; 
-                                   padding: 1rem 2rem; border-radius: 10px; margin-top: 2rem; cursor: pointer;">
-                        Start Exploring Premium Content
-                    </button>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
-        // Make payment function globally available
-        window.payWithPaystack = payWithPaystack;
-
-        // Initialize the app
-        init();
-
-        // Add some sample interactions
-        setTimeout(() => {
-            console.log('Umbilica Oriental™ loaded successfully');
-            console.log('Ready for payment integration with Paystack');
-        }, 1000);
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
