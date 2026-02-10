@@ -1,55 +1,23 @@
 {
   "prayers": [
+    // ... existing prayers
     {
-      "id": 1,
-      "title": "Ancient Egyptian Prayer for Conception",
-      "prayer": "Oh Isis, great of magic, who conceived Horus in darkness and brought forth light, bless this womb. As the Nile floods and brings life to the desert, let life quicken within. May the child be strong like Horus, wise like Thoth, and beautiful like Hathor.",
+      "id": 4,
+      "title": "Ancient Greek Prayer for Business Success",
+      "prayer": "Hermes, god of commerce and luck, guide this venture...",
       "ritual": {
-        "title": "Nile Water Ritual",
-        "instructions": "At dawn, face east with a bowl of water mixed with Nile mud (or local earth). Dip your fingers seven times while chanting. Plant lotus seeds (or any seeds) in the mud as an offering.",
-        "items": ["Bowl of water", "Earth/mud", "Seeds", "White cloth"],
-        "timing": "Dawn during waxing moon",
-        "duration": "7 days"
+        "title": "Hermes Market Ritual",
+        "instructions": "Place a silver coin at a crossroads at dawn...",
+        "items": ["Silver coin", "Incense", "Business ledger"],
+        "timing": "Dawn on Wednesday",
+        "duration": "Once"
       },
-      "situation": "Prayer for Conception",
-      "stage": "birth",
-      "traditions": ["Ancient Egyptian"],
-      "elements": ["Water", "Earth"],
-      "tags": ["fertility", "conception", "pregnancy", "egyptian"]
+      "situation": "Prayer for Business Success",
+      "stage": "career",
+      "traditions": ["Ancient Greek"],
+      "elements": ["Air", "Metal"],
+      "tags": ["business", "commerce", "success", "greek"]
     },
-    {
-      "id": 2,
-      "title": "Vedic Wedding Fire Ceremony",
-      "prayer": "Agni deva, witness of truth, carry our vows to the heavens. As this flame consumes the offerings, may it purify our union. May our lives be intertwined like the sacred threads, strong through all seasons.",
-      "ritual": {
-        "title": "Saptapadi - Seven Steps Ritual",
-        "instructions": "Walk seven steps around the sacred fire together, each step representing a marital vow. With each step, offer ghee, rice, or flowers into the fire.",
-        "items": ["Sacred fire (or candle)", "Ghee or oil", "Rice", "Flowers", "Red thread"],
-        "timing": "During wedding ceremony",
-        "duration": "1 hour"
-      },
-      "situation": "Prayer for Wedding Day",
-      "stage": "marriage",
-      "traditions": ["Hindu Vedic"],
-      "elements": ["Fire", "Earth"],
-      "tags": ["wedding", "marriage", "fire ceremony", "vedic"]
-    },
-    {
-      "id": 3,
-      "title": "Native American Healing Chant",
-      "prayer": "Great Spirit, Mother Earth, send your healing winds. Let the eagle's feather brush away sickness. May the bear's strength enter this body. As the willow bends but does not break, may this spirit withstand all trials.",
-      "ritual": {
-        "title": "Sweat Lodge Healing",
-        "instructions": "In a sacred space, heat stones and pour water over them to create steam. Wave sacred herbs (sage, sweetgrass) around the person while chanting. Use a feather to direct the healing smoke.",
-        "items": ["Heated stones", "Water", "Sacred herbs", "Feather", "Drum"],
-        "timing": "New moon for cleansing",
-        "duration": "2-3 hours"
-      },
-      "situation": "Prayer for Chronic Illness",
-      "stage": "health",
-      "traditions": ["Native American"],
-      "elements": ["Fire", "Air", "Water"],
-      "tags": ["healing", "illness", "native american", "chant"]
-    }
+    // Add more here...
   ]
 }
