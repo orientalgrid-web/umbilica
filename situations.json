@@ -1,0 +1,60 @@
+{
+  "situations": [
+    {
+      "id": "birth",
+      "name": "Birth & Conception",
+      "icon": "👶",
+      "color": "#F9A8D4",
+      "description": "Rituals for fertility, pregnancy, and newborn blessings"
+    },
+    {
+      "id": "youth",
+      "name": "Youth & Initiation",
+      "icon": "🌱",
+      "color": "#60A5FA",
+      "description": "Coming of age ceremonies and educational blessings"
+    },
+    {
+      "id": "love",
+      "name": "Love & Union",
+      "icon": "💘",
+      "color": "#DC2626",
+      "description": "Courtship rituals and marriage preparations"
+    },
+    {
+      "id": "marriage",
+      "name": "Marriage & Family",
+      "icon": "👨‍👩‍👧‍👦",
+      "color": "#8B5CF6",
+      "description": "Wedding ceremonies and family unity rituals"
+    },
+    {
+      "id": "career",
+      "name": "Career & Wealth",
+      "icon": "💰",
+      "color": "#D97706",
+      "description": "Business blessings and prosperity rituals"
+    },
+    {
+      "id": "health",
+      "name": "Health & Healing",
+      "icon": "🌿",
+      "color": "#10B981",
+      "description": "Ancient healing prayers and wellness rituals"
+    },
+    {
+      "id": "crisis",
+      "name": "Crisis & Protection",
+      "icon": "🛡️",
+      "color": "#EF4444",
+      "description": "Protection spells and crisis intervention prayers"
+    },
+    {
+      "id": "death",
+      "name": "Death & Ancestors",
+      "icon": "⚰️",
+      "color": "#4B5563",
+      "description": "Funeral rites and ancestral communication rituals"
+    }
+  ]
+}
