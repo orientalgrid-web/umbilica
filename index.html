@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umubilica™ - 200+ Ancient Prayers & Rituals</title>
+    <title>Umubilica™ - Ancient Prayers & Rituals</title>
     <!-- Paystack -->
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <!-- Fonts & Icons -->
@@ -20,14 +20,12 @@
             --spirit-purple: #7C3AED;
             --shadow-gray: #4B5563;
             --parchment: #F5E6D3;
+            --free-badge: #10B981;
+            --premium-badge: #D4AF37;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+       
+        * { margin:0; padding:0; box-sizing:border-box; }
+       
         body {
             font-family: 'Merriweather', serif;
             background: linear-gradient(to bottom, #0F172A, #1E293B);
@@ -35,39 +33,26 @@
             line-height: 1.7;
             min-height: 100vh;
         }
-        
-        /* Ancient Header */
+       
         .ancient-header {
             background: linear-gradient(135deg, var(--earth-brown) 0%, #2C1810 100%);
             color: var(--ancient-gold);
             padding: 2rem 0;
             text-align: center;
-            position: relative;
-            overflow: hidden;
             border-bottom: 5px solid var(--ancient-gold);
         }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
+       
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+       
         .ancient-logo {
             font-family: 'Cinzel', serif;
             font-size: 3rem;
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            letter-spacing: 1px;
         }
-        
-        .ancient-subtitle {
-            font-size: 1.1rem;
-            color: #FBBF24;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        
+       
+        .ancient-subtitle { font-size: 1.1rem; color: #FBBF24; font-style: italic; margin-bottom: 1rem; }
+       
         .prayer-count {
             background: rgba(212, 175, 55, 0.2);
             color: #FBBF24;
@@ -76,14 +61,24 @@
             display: inline-block;
             font-weight: 600;
         }
-        
-        /* Search Bar */
+
+        .premium-status {
+            background: linear-gradient(135deg, var(--ancient-gold), #FBBF24);
+            color: #2C1810;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: 600;
+            margin-left: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+       
         .search-container {
             max-width: 600px;
             margin: 1rem auto;
             position: relative;
         }
-        
+       
         .search-bar {
             width: 100%;
             padding: 1rem 3rem 1rem 1.5rem;
@@ -92,14 +87,18 @@
             font-size: 1.1rem;
             background: rgba(0,0,0,0.7);
             color: white;
-            font-family: 'Merriweather', serif;
         }
         
-        .search-bar:focus {
-            outline: none;
+        .search-bar:focus { 
+            outline: none; 
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
         
+        .search-bar:focus-visible {
+            outline: 3px solid var(--ancient-gold);
+            outline-offset: 2px;
+        }
+       
         .search-icon {
             position: absolute;
             right: 1.5rem;
@@ -107,8 +106,7 @@
             transform: translateY(-50%);
             color: var(--ancient-gold);
         }
-        
-        /* Quick Access */
+       
         .quick-access {
             display: flex;
             flex-wrap: wrap;
@@ -116,7 +114,7 @@
             justify-content: center;
             margin: 1.5rem 0;
         }
-        
+       
         .quick-btn {
             background: rgba(212, 175, 55, 0.1);
             border: 1px solid var(--ancient-gold);
@@ -126,7 +124,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
         }
         
         .quick-btn:hover {
@@ -134,43 +131,148 @@
             color: #2C1810;
         }
         
-        /* Prayer Display */
-        .prayer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem;
+        .quick-btn:focus-visible {
+            outline: 3px solid white;
+            outline-offset: 2px;
         }
         
+        .quick-btn[aria-pressed="true"] {
+            background: var(--ancient-gold);
+            color: #2C1810;
+        }
+        
+        .quick-btn.premium-btn {
+            background: linear-gradient(135deg, var(--ancient-gold), #FBBF24);
+            color: #2C1810;
+            font-weight: bold;
+        }
+       
+        .prayer-container { max-width: 1200px; margin: 0 auto; padding: 1rem; }
+       
+        .loading-spinner {
+            text-align: center;
+            padding: 3rem;
+            color: var(--ancient-gold);
+        }
+        
+        .loading-spinner i {
+            font-size: 3rem;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            background: rgba(178, 34, 34, 0.2);
+            border: 2px solid var(--fire-red);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem;
+            color: #FCA5A5;
+        }
+        
+        .error-message button {
+            background: var(--fire-red);
+            color: white;
+            border: none;
+            padding: 0.5rem 2rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+        
+        .error-message button:hover {
+            background: #991B1B;
+        }
+       
         .prayer-card {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+            background: linear-gradient(145deg, rgba(30,41,59,0.95), rgba(15,23,42,0.95));
             border: 2px solid var(--ancient-gold);
             border-radius: 15px;
             margin-bottom: 2rem;
             overflow: hidden;
             transition: all 0.4s ease;
+            position: relative;
         }
         
+        .prayer-card.premium-locked {
+            opacity: 0.9;
+            filter: blur(0.5px);
+            border-color: var(--spirit-purple);
+        }
+        
+        .prayer-card.premium-locked:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(124,58,237,0.2);
+        }
+        
+        .prayer-card:focus-within {
+            box-shadow: 0 0 0 3px white, 0 0 0 6px var(--ancient-gold);
+        }
+       
         .prayer-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(212,175,55,0.15);
         }
-        
+       
         .card-header {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(212,175,55,0.1);
             padding: 1.5rem;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+            position: relative;
         }
-        
-        .card-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: var(--ancient-gold);
+       
+        .card-title { 
+            font-family: 'Cinzel', serif; 
+            font-size: 1.5rem; 
+            color: var(--ancient-gold); 
+            margin-bottom: 0.5rem; 
+            padding-right: 3rem;
+        }
+       
+        .card-badge {
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
             margin-bottom: 0.5rem;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
         }
         
+        .badge-free {
+            background: var(--free-badge);
+            color: #2C1810;
+            border: 1px solid #059669;
+        }
+        
+        .badge-premium {
+            background: var(--premium-badge);
+            color: #2C1810;
+            border: 1px solid #B8860B;
+        }
+        
+        .badge-locked {
+            background: var(--spirit-purple);
+            color: white;
+            border: 1px solid #5B21B6;
+        }
+        
+        .badge-unlocked {
+            background: #10B981;
+            color: #2C1810;
+            border: 1px solid #059669;
+        }
+       
         .card-tradition {
             display: inline-block;
-            background: rgba(212, 175, 55, 0.2);
+            background: rgba(212,175,55,0.2);
             color: #FBBF24;
             padding: 0.3rem 1rem;
             border-radius: 20px;
@@ -178,20 +280,99 @@
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
         }
-        
-        .card-content {
-            padding: 2rem;
+       
+        .favorite-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--ancient-gold);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+            border-radius: 50%;
+            transition: all 0.2s ease;
         }
         
+        .favorite-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        .favorite-btn:focus-visible {
+            outline: 3px solid white;
+            outline-offset: 2px;
+        }
+        
+        .premium-lock-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            z-index: 10;
+            backdrop-filter: blur(3px);
+        }
+        
+        .premium-lock-overlay i {
+            font-size: 3rem;
+            color: var(--ancient-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .premium-lock-overlay p {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .unlock-btn {
+            background: linear-gradient(135deg, var(--ancient-gold), #FBBF24);
+            color: #2C1810;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            transition: all 0.3s ease;
+        }
+        
+        .unlock-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(212,175,55,0.4);
+        }
+        
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+       
+        .card-content { padding: 2rem; }
+       
         .prayer-text {
             font-style: italic;
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 2rem;
             padding-left: 1rem;
-            border-left: 3px solid rgba(212, 175, 55, 0.5);
+            border-left: 3px solid rgba(212,175,55,0.5);
         }
-        
+       
         .ritual-section {
             background: rgba(0,0,0,0.3);
             border-radius: 10px;
@@ -199,17 +380,9 @@
             margin: 1.5rem 0;
             border-left: 4px solid var(--ancient-gold);
         }
-        
-        .ritual-title {
-            color: #FBBF24;
-            margin-bottom: 1rem;
-            font-family: 'Cinzel', serif;
-        }
-        
-        .ritual-items {
-            margin-top: 1rem;
-        }
-        
+       
+        .ritual-title { color: #FBBF24; margin-bottom: 1rem; font-family: 'Cinzel', serif; }
+       
         .ritual-item {
             display: flex;
             align-items: center;
@@ -217,38 +390,34 @@
             margin: 0.5rem 0;
             color: #CBD5E1;
         }
-        
-        /* Soul's Odds */
+       
         .souls-odds {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.9), rgba(30, 58, 138, 0.9));
+            background: linear-gradient(135deg, rgba(124,58,237,0.9), rgba(30,58,138,0.9));
             border: 3px solid var(--ancient-gold);
             border-radius: 20px;
             padding: 2rem;
             margin: 3rem auto;
             max-width: 1000px;
-            position: relative;
-            overflow: hidden;
         }
-        
+       
         .odds-title {
             font-family: 'Cinzel', serif;
             font-size: 2rem;
             text-align: center;
             margin-bottom: 1.5rem;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        
-        /* Pagination */
+       
         .pagination {
             display: flex;
             justify-content: center;
             gap: 0.5rem;
             margin: 2rem 0;
+            flex-wrap: wrap;
         }
-        
+       
         .page-btn {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(212,175,55,0.1);
             border: 1px solid var(--ancient-gold);
             color: var(--ancient-gold);
             width: 40px;
@@ -261,19 +430,29 @@
             transition: all 0.3s ease;
         }
         
+        .page-btn:hover:not(:disabled) {
+            background: var(--ancient-gold);
+            color: #2C1810;
+        }
+        
+        .page-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+       
         .page-btn.active {
             background: var(--ancient-gold);
             color: #2C1810;
             font-weight: bold;
         }
         
-        .page-btn:hover:not(.active) {
-            background: rgba(212, 175, 55, 0.3);
+        .page-btn:focus-visible {
+            outline: 3px solid white;
+            outline-offset: 2px;
         }
-        
-        /* Premium Section */
+       
         .premium-sanctum {
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(44, 24, 16, 0.9));
+            background: linear-gradient(135deg, rgba(139,69,19,0.95), rgba(44,24,16,0.95));
             border: 3px solid var(--ancient-gold);
             border-radius: 20px;
             padding: 3rem;
@@ -284,20 +463,65 @@
             overflow: hidden;
         }
         
+        .premium-sanctum::before {
+            content: "PREMIUM";
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: var(--ancient-gold);
+            color: #2C1810;
+            padding: 0.5rem 3rem;
+            transform: rotate(45deg);
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+       
         .premium-title {
             font-family: 'Cinzel', serif;
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--ancient-gold);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
+        .price-tag {
+            font-size: 3.5rem;
+            color: var(--ancient-gold);
+            margin: 2rem 0;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .price-tag small {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .premium-features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #FBBF24;
+        }
+        
+        .feature-item i {
+            color: var(--ancient-gold);
+        }
+       
         .paystack-btn {
             background: linear-gradient(135deg, var(--ancient-gold), #FBBF24);
             color: #2C1810;
             border: none;
             padding: 1.2rem 3rem;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
@@ -306,15 +530,100 @@
             align-items: center;
             gap: 15px;
             font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(212,175,55,0.3);
         }
-        
+       
         .paystack-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 30px rgba(212,175,55,0.5);
         }
         
-        /* Footer */
+        .paystack-btn:focus-visible {
+            outline: 3px solid white;
+            outline-offset: 2px;
+        }
+        
+        .paystack-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .toast-notification {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--earth-brown);
+            color: var(--ancient-gold);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--ancient-gold);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .fade-out {
+            animation: fadeOut 0.3s ease forwards;
+        }
+        
+        @keyframes fadeOut {
+            to { opacity: 0; transform: translateX(100%); }
+        }
+        
+        .free-sample-banner {
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .free-sample-banner i {
+            color: var(--ancient-gold);
+            margin-right: 0.5rem;
+        }
+        
+        .payment-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .payment-modal-content {
+            background: linear-gradient(145deg, #1E293B, #0F172A);
+            border: 3px solid var(--ancient-gold);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--ancient-gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+       
         .ancient-footer {
             background: rgba(0,0,0,0.9);
             color: var(--ancient-gold);
@@ -322,1514 +631,2120 @@
             margin-top: 4rem;
             border-top: 3px solid var(--ancient-gold);
         }
-        
-        /* Responsive */
+       
         @media (max-width: 768px) {
             .ancient-logo { font-size: 2rem; }
             .prayer-card { margin: 1rem; }
             .card-content { padding: 1.5rem; }
             .premium-sanctum { padding: 2rem 1rem; margin: 2rem 1rem; }
+            .toast-notification {
+                left: 1rem;
+                right: 1rem;
+                bottom: 1rem;
+            }
+            .premium-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Ancient Header -->
-    <header class="ancient-header">
+    <a href="#main-content" class="sr-only" style="position:absolute; left:0; top:0; background:var(--ancient-gold); color:black; padding:1rem; z-index:1000;">Skip to main content</a>
+
+    <header class="ancient-header" role="banner">
         <div class="header-content">
-            <h1 class="ancient-logo">Umubilica™</h1>
-            <p class="ancient-subtitle">
-                Ancient Prayers & Sacred Rituals for Every Life Passage
-            </p>
-            <div class="prayer-count">
-                <i class="fas fa-scroll"></i> 200+ Built-in Prayers with Rituals
+            <h1 class="ancient-logo" id="site-title">Umubilica™</h1>
+            <p class="ancient-subtitle">Ancient Prayers & Sacred Rituals for Every Life Passage</p>
+            <div style="margin-bottom:1rem;">
+                <span class="prayer-count" aria-live="polite" id="prayerCount">
+                    <i class="fas fa-scroll" aria-hidden="true"></i> <span id="totalPrayers">83</span> Total Prayers
+                </span>
+                <span class="premium-status" id="premiumStatus">
+                    <i class="fas fa-crown"></i> <span id="statusText">Free Version</span>
+                </span>
             </div>
             
-            <!-- Search Bar -->
-            <div class="search-container">
-                <input type="text" class="search-bar" id="prayerSearch" 
-                       placeholder="Search 200+ prayers: 'healing', 'love', 'money', 'protection'..." 
-                       autocomplete="off">
-                <i class="fas fa-search search-icon"></i>
+            <div class="free-sample-banner">
+                <i class="fas fa-gift"></i> <strong>3 Free Sample Prayers</strong> - Unlock 80+ Premium Prayers with Rituals for $19/month
             </div>
-            
-            <!-- Quick Access -->
-            <div class="quick-access">
-                <button class="quick-btn" onclick="filterByCategory('emergency')">
-                    <i class="fas fa-exclamation-triangle"></i> Emergency
-                </button>
-                <button class="quick-btn" onclick="filterByCategory('healing')">
-                    <i class="fas fa-heartbeat"></i> Healing
-                </button>
-                <button class="quick-btn" onclick="filterByCategory('love')">
-                    <i class="fas fa-heart"></i> Love
-                </button>
-                <button class="quick-btn" onclick="filterByCategory('money')">
-                    <i class="fas fa-coins"></i> Money
-                </button>
-                <button class="quick-btn" onclick="filterByCategory('protection')">
-                    <i class="fas fa-shield-alt"></i> Protection
-                </button>
-                <button class="quick-btn" onclick="filterByCategory('family')">
-                    <i class="fas fa-home"></i> Family
-                </button>
-                <button class="quick-btn" onclick="showAllPrayers()">
-                    <i class="fas fa-infinity"></i> All Prayers
+           
+            <div class="search-container" role="search">
+                <label for="prayerSearch" class="sr-only">Search prayers</label>
+                <input type="text" class="search-bar" id="prayerSearch"
+                       placeholder="Search free prayers or preview premium..." 
+                       autocomplete="off"
+                       aria-label="Search prayers"
+                       aria-describedby="searchHint">
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                <div id="searchHint" class="sr-only">Type to filter prayers by title, tradition, or keywords</div>
+            </div>
+           
+            <div class="quick-access" role="group" aria-label="Quick filters">
+                <button class="quick-btn" onclick="filterByCategory('free')" aria-pressed="false"><i class="fas fa-gift"></i> Free Samples</button>
+                <button class="quick-btn" onclick="filterByCategory('healing')" aria-pressed="false"><i class="fas fa-heartbeat"></i> Healing</button>
+                <button class="quick-btn" onclick="filterByCategory('love')" aria-pressed="false"><i class="fas fa-heart"></i> Love</button>
+                <button class="quick-btn" onclick="filterByCategory('money')" aria-pressed="false"><i class="fas fa-coins"></i> Money</button>
+                <button class="quick-btn" onclick="filterByCategory('protection')" aria-pressed="false"><i class="fas fa-shield-alt"></i> Protection</button>
+                <button class="quick-btn" onclick="filterByCategory('career')" aria-pressed="false"><i class="fas fa-briefcase"></i> Career</button>
+                <button class="quick-btn" onclick="filterByCategory('ancestors')" aria-pressed="false"><i class="fas fa-tree"></i> Ancestors</button>
+                <button class="quick-btn" onclick="filterByCategory('birth')" aria-pressed="false"><i class="fas fa-baby"></i> Fertility</button>
+                <button class="quick-btn" onclick="showFavorites()" aria-pressed="false"><i class="fas fa-star"></i> Favorites</button>
+                <button class="quick-btn" onclick="showRandomPrayer()" aria-pressed="false"><i class="fas fa-dice"></i> Daily Guidance</button>
+                <button class="quick-btn" onclick="showAllPrayers()" aria-pressed="true"><i class="fas fa-infinity"></i> All</button>
+                <button class="quick-btn premium-btn" onclick="document.getElementById('premium-sanctum').scrollIntoView({behavior:'smooth'})">
+                    <i class="fas fa-crown"></i> UPGRADE
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Prayer Display -->
-    <section class="prayer-container">
-        <div id="prayerList"></div>
-        
-        <!-- Pagination -->
-        <div class="pagination" id="pagination"></div>
-    </section>
+    <main id="main-content" tabindex="-1">
+        <section class="prayer-container" aria-labelledby="prayers-heading">
+            <h2 id="prayers-heading" class="sr-only">Prayers List</h2>
+            <div id="prayerList" role="region" aria-live="polite"></div>
+            <div class="pagination" id="pagination" role="navigation" aria-label="Prayer pages"></div>
+        </section>
 
-    <!-- Soul's Odds -->
-    <section class="souls-odds">
-        <h2 class="odds-title">The Soul's Odds</h2>
-        <p style="text-align: center; margin-bottom: 2rem; font-style: italic;">
-            Extreme Miracle Prayers for Impossible Situations
-        </p>
-        <div id="oddsPrayers"></div>
-    </section>
+        <section class="souls-odds" aria-labelledby="odds-title">
+            <h2 class="odds-title" id="odds-title">The Soul's Odds</h2>
+            <p style="text-align:center; margin-bottom:2rem; font-style:italic;">
+                Extreme Miracle Prayers for Impossible Situations
+            </p>
+            <div id="oddsPrayers"></div>
+            <div style="text-align:center; margin-top:2rem;">
+                <button class="quick-btn premium-btn" onclick="document.getElementById('premium-sanctum').scrollIntoView({behavior:'smooth'})">
+                    <i class="fas fa-lock"></i> Unlock Extreme Prayers
+                </button>
+            </div>
+        </section>
 
-    <!-- Premium Sanctum -->
-    <section class="premium-sanctum">
-        <h2 class="premium-title">Unlock All 200+ Prayers</h2>
-        <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #FBBF24;">
-            Full access to complete ancient rituals and premium features
-        </p>
-        
-        <div style="font-size: 3.5rem; color: var(--ancient-gold); margin: 2rem 0; font-family: 'Cinzel', serif;">
-            $19<span style="font-size: 1.5rem;">/month</span>
-        </div>
-        
-        <div style="margin: 2rem 0; color: #E2E8F0; text-align: left; max-width: 600px; margin: 2rem auto;">
-            <p style="margin-bottom: 1rem;">
-                <i class="fas fa-check-circle" style="color: var(--ancient-gold);"></i> All 200+ built-in prayers
+        <section class="premium-sanctum" id="premium-sanctum" aria-labelledby="premium-title">
+            <h2 class="premium-title" id="premium-title">✨ Unlock Full Library ✨</h2>
+            <p style="font-size:1.2rem; margin-bottom:1rem; color:#FBBF24;">
+                80+ Complete Prayers with Sacred Rituals
             </p>
-            <p style="margin-bottom: 1rem;">
-                <i class="fas fa-check-circle" style="color: var(--ancient-gold);"></i> Complete ritual instructions
+            
+            <div class="premium-features">
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i> All 83 Prayers
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i> Complete Rituals
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i> PDF Downloads
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i> Personalized Requests
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check-circle"></i> Monthly New Prayers
+                </div>
+            </div>
+            
+            <div class="price-tag">
+                $19<span style="font-size:1.2rem;">/month</span>
+                <div style="font-size:1rem; color:#FBBF24; margin-top:0.5rem;">
+                    <i class="fas fa-tag"></i> All payments in USD
+                </div>
+            </div>
+            
+            <button class="paystack-btn" onclick="payWithPaystack()" id="premiumBtn">
+                <i class="fas fa-unlock-alt"></i> UNLOCK PREMIUM - $19/MONTH
+            </button>
+            
+            <div style="display:flex; justify-content:center; gap:2rem; margin-top:1.5rem; font-size:0.9rem; color:#94A3B8;">
+                <span><i class="fas fa-shield-alt"></i> Secure SSL</span>
+                <span><i class="fas fa-credit-card"></i> All Cards Accepted</span>
+                <span><i class="fas fa-undo"></i> Cancel Anytime</span>
+            </div>
+            
+            <p style="margin-top:1.5rem; font-size:0.9rem; color:#FBBF24; opacity:0.8;">
+                7-day free trial • Paystack Secure • USD Billing
             </p>
-            <p style="margin-bottom: 1rem;">
-                <i class="fas fa-check-circle" style="color: var(--ancient-gold);"></i> Download PDF prayer books
-            </p>
-            <p style="margin-bottom: 1rem;">
-                <i class="fas fa-check-circle" style="color: var(--ancient-gold);"></i> Personalized prayer requests
-            </p>
-            <p>
-                <i class="fas fa-check-circle" style="color: var(--ancient-gold);"></i> 24/7 prayer support
-            </p>
-        </div>
-        
-        <!-- Paystack Button -->
-        <button class="paystack-btn" onclick="payWithPaystack()">
-            <i class="fas fa-unlock-alt"></i> UNLOCK FULL LIBRARY - $19/MONTH
-        </button>
-        
-        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #FBBF24; opacity: 0.8;">
-            7-day free trial • Cancel anytime • Secure payment via Paystack
-        </p>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="ancient-footer">
-        <div style="text-align: center; padding: 0 1rem;">
-            <h3 style="color: #FBBF24; margin-bottom: 1rem; font-family: 'Cinzel', serif; font-size: 1.2rem;">
-                Umubilica™ - Complete Prayer Solution
-            </h3>
-            <p>200+ Ancient Prayers • Complete Rituals • All Traditions</p>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">
-                <i class="fas fa-envelope"></i> orientalgrid@gmail.com • 
-                <i class="fas fa-phone"></i> +234 810 336 5359
+    <footer class="ancient-footer" role="contentinfo">
+        <div style="text-align:center; padding:0 1rem;">
+            <h3 style="color:#FBBF24; margin-bottom:1rem; font-family:'Cinzel',serif;">Umubilica™</h3>
+            <p>Ancient Prayers • Complete Rituals • All Traditions</p>
+            <p style="margin-top:1rem; font-size:0.9rem;">
+                <i class="fas fa-envelope" aria-hidden="true"></i> orientalgrid@gmail.com •
+                <i class="fas fa-phone" aria-hidden="true"></i> +234 810 336 5359
+            </p>
+            <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.7;">
+                © 2024 Umubilica™ - All Rights Reserved • Payments in USD
             </p>
         </div>
     </footer>
 
-    <!-- JavaScript with COMPLETE 200+ PRAYER LIBRARY -->
+    <div id="toastContainer" style="position:fixed; bottom:2rem; right:2rem; z-index:1000;"></div>
+    <div id="modalContainer"></div>
+
     <script>
         // ==============================================
-        // COMPLETE 200+ PRAYER DATABASE
+        // COMPLETE PRAYER DATABASE (1-83)
         // ==============================================
-        
-        // ALL 200+ PRAYERS WITH COMPLETE RITUALS
         const ALL_PRAYERS = [
-            // ========== BIRTH & CONCEPTION (25 prayers) ==========
+            // === FREE SAMPLE PRAYERS (IDs 1-3) ===
             {
                 id: 1,
-                title: "Ancient Egyptian Prayer for Conception",
-                prayer: "Oh Isis, great of magic, who conceived Horus in darkness and brought forth light, bless this womb. As the Nile floods and brings life to the desert, let life quicken within. May the child be strong like Horus, wise like Thoth, and beautiful like Hathor.",
+                title: "FREE SAMPLE: Universal Prayer for Healing",
+                prayer: "Divine Source of All Healing, send your healing light to every cell of my body, mind, and spirit. Restore balance and wholeness within me.",
                 ritual: {
-                    title: "Nile Water Ritual",
-                    instructions: "At dawn, face east with a bowl of water mixed with earth. Dip your fingers seven times while chanting. Plant lotus seeds (or any seeds) in the mud as offering.",
-                    items: ["Bowl of water", "Earth/mud", "Seeds", "White linen cloth", "Frankincense"],
-                    timing: "Dawn during waxing moon",
-                    duration: "7 consecutive mornings"
+                    title: "Light Immersion Ritual (Sample)",
+                    instructions: "Sit in sunlight or candlelight. Visualize golden light entering through crown and filling every cell.",
+                    items: ["Candle", "Glass of water", "Comfortable seat"],
+                    timing: "Sunrise or noon",
+                    duration: "15-20 minutes daily for 7 days"
                 },
-                tradition: "Ancient Egyptian",
-                category: ["birth", "fertility"],
-                tags: ["conception", "pregnancy", "isis", "egyptian", "fertility"]
+                tradition: "Universal",
+                category: ["free", "healing", "sample"],
+                tags: ["free", "sample", "healing", "universal", "light"],
+                isFree: true
             },
             {
                 id: 2,
-                title: "Celtic Goddess Brigid Pregnancy Blessing",
-                prayer: "Brigid of the sacred flame, keeper of the hearth, protector of mothers, weave your protection around this womb. As the fire transforms, may this pregnancy transform with grace.",
+                title: "FREE SAMPLE: Ancient Protection Prayer",
+                prayer: "Sacred light surround me, divine love protect me, ancient wisdom guide me. I am safe, I am held, I am protected.",
                 ritual: {
-                    title: "Brigid's Hearth Ritual",
-                    instructions: "Light a candle at your hearth. Place bowl of milk and honey beside it. Each evening, tend flame while chanting.",
-                    items: ["White candle", "Milk", "Honey", "Silver coin", "Green cloth"],
-                    timing: "Sunset, Imbolc season",
-                    duration: "7 evenings"
+                    title: "Salt Circle Ritual (Sample)",
+                    instructions: "Create circle of salt. Sit in center, visualize protective bubble of light.",
+                    items: ["Sea salt", "Black candle", "Protective stone (black tourmaline)"],
+                    timing: "Evening",
+                    duration: "Single session, repeat as needed"
                 },
-                tradition: "Celtic",
-                category: ["birth", "protection"],
-                tags: ["pregnancy", "protection", "brigid", "celtic", "motherhood"]
+                tradition: "Universal",
+                category: ["free", "protection", "sample"],
+                tags: ["free", "sample", "protection", "safety", "boundaries"],
+                isFree: true
             },
             {
                 id: 3,
-                title: "Yoruba Orisha Pregnancy Protection",
-                prayer: "Yemoja, mother of all, queen of the ocean, wrap your watery embrace around this child. As the sea nurtures all life, nurture this pregnancy.",
+                title: "FREE SAMPLE: Prayer for Abundance",
+                prayer: "I open my hands to receive the abundance that flows from the universe. Prosperity in all forms comes to me easily and freely.",
                 ritual: {
-                    title: "Ocean Offering",
-                    instructions: "Go to body of water. Offer seven blue flowers and seashells while chanting.",
-                    items: ["Blue flowers", "Seashells", "Coconut water", "Blue fabric"],
-                    timing: "High tide or full moon",
-                    duration: "Once monthly"
+                    title: "Abundance Bowl (Sample)",
+                    instructions: "Place coins, green candle, and written intention in bowl. Add coins daily.",
+                    items: ["Bowl", "Coins", "Green candle", "Paper", "Pen"],
+                    timing: "Thursday, waxing moon",
+                    duration: "30 days"
                 },
-                tradition: "Yoruba",
-                category: ["birth", "protection"],
-                tags: ["pregnancy", "protection", "yemoja", "yoruba"]
+                tradition: "Universal",
+                category: ["free", "money", "sample"],
+                tags: ["free", "sample", "abundance", "prosperity", "money"],
+                isFree: true
             },
+            
+            // === PREMIUM PRAYERS START HERE (IDs 4-83) ===
             {
                 id: 4,
-                title: "Christian Prayer for Fertility",
-                prayer: "Lord God, who opened the womb of Sarah in her old age, who blessed Elizabeth with John, look with favor upon us. May our union be fruitful, our child healthy, our family blessed.",
+                title: "Prayer for Love",
+                prayer: "My heart opens to give and receive love freely. I attract loving relationships that nurture my soul.",
                 ritual: {
-                    title: "Altar Prayer Ritual",
-                    instructions: "Create small altar with cross, candle, and Bible. Light candle daily while praying for 40 days.",
-                    items: ["Cross/crucifix", "White candle", "Bible", "Olive oil"],
-                    timing: "Daily prayer",
-                    duration: "40 days"
+                    title: "Rose Quartz Heart",
+                    instructions: "Place rose quartz on heart. Recite prayer 7x while visualizing pink light.",
+                    items: ["Rose quartz", "Pink candle", "Rose petals"],
+                    timing: "Friday, Venus hour",
+                    duration: "7 days"
                 },
-                tradition: "Christian",
-                category: ["birth", "fertility"],
-                tags: ["fertility", "conception", "christian", "prayer"]
+                tradition: "Universal",
+                category: ["love", "relationships"],
+                tags: ["love", "heart", "relationships", "self-love"],
+                isFree: false
             },
             {
                 id: 5,
-                title: "Hindu Garbhadhana Samskara",
-                prayer: "Om bhur bhuvah svah tat savitur varenyam bhargo devasya dhimahi dhiyo yo nah pracodayat. May divine light enter this conception, creating a pure soul for a noble life.",
+                title: "Prayer for Inner Peace",
+                prayer: "Still my mind, calm my heart. Let peace flow through me like a gentle river.",
                 ritual: {
-                    title: "Conception Ceremony",
-                    instructions: "After purification bath, both partners chant mantras together. Offer ghee into sacred fire.",
-                    items: ["Sacred fire/hotplate", "Ghee", "Rice", "Flowers", "Incense"],
-                    timing: "Favorable astrological time",
-                    duration: "Single ceremony"
+                    title: "Breath Meditation",
+                    instructions: "Sit quietly, breathe deeply, repeat prayer silently with each exhale.",
+                    items: ["Comfortable seat", "Calming incense"],
+                    timing: "Morning or evening",
+                    duration: "10-20 minutes"
                 },
-                tradition: "Hindu",
-                category: ["birth", "fertility"],
-                tags: ["conception", "hindu", "vedic", "samskara"]
+                tradition: "Universal",
+                category: ["healing", "peace"],
+                tags: ["peace", "calm", "meditation", "anxiety"],
+                isFree: false
             },
             {
                 id: 6,
-                title: "Islamic Prayer for Healthy Pregnancy",
-                prayer: "Allahumma inni as'aluka salamatan fil-iman, wa salamatan fil-islam, wa salamatan fil-quran. O Allah, I ask You for safety in faith, safety in Islam, and safety in the Quran for this pregnancy.",
+                title: "Prayer for Wisdom",
+                prayer: "Ancient wisdom, guide my thoughts and actions. Grant me clarity and right understanding.",
                 ritual: {
-                    title: "Quran Recitation Ritual",
-                    instructions: "Recite Surah Maryam daily. Place hand on belly while reciting blessings.",
-                    items: ["Quran", "Prayer mat", "Dates", "Water"],
-                    timing: "After Fajr prayer",
-                    duration: "Daily throughout pregnancy"
+                    title: "Candle Gazing",
+                    instructions: "Gaze at candle flame, contemplate question, write insights.",
+                    items: ["Purple candle", "Journal", "Pen"],
+                    timing: "Evening",
+                    duration: "Until answer comes"
                 },
-                tradition: "Islamic",
-                category: ["birth", "health"],
-                tags: ["pregnancy", "islamic", "quran", "health"]
+                tradition: "Universal",
+                category: ["career", "success"],
+                tags: ["wisdom", "clarity", "decision", "guidance"],
+                isFree: false
             },
             {
                 id: 7,
-                title: "Jewish Prayer for Safe Delivery",
-                prayer: "May the One who blessed our mothers Sarah, Rebecca, Rachel, and Leah bless this mother and child. May delivery be swift, pain manageable, and outcome joyful.",
+                title: "Prayer for Forgiveness",
+                prayer: "I release all resentment and forgive those who have wronged me. I forgive myself completely.",
                 ritual: {
-                    title: "Mikvah Preparation",
-                    instructions: "Visit mikvah (ritual bath) in ninth month. Recite Psalms 20 and 121.",
-                    items: ["Mikvah access", "White robe", "Prayer book", "Candle"],
-                    timing: "Ninth month of pregnancy",
-                    duration: "Single ritual"
-                },
-                tradition: "Jewish",
-                category: ["birth", "protection"],
-                tags: ["delivery", "pregnancy", "jewish", "protection"]
-            },
-            {
-                id: 8,
-                title: "Buddhist Prayer for Child's Good Fortune",
-                prayer: "May this child be free from suffering. May they find the path to enlightenment. May their life benefit all beings.",
-                ritual: {
-                    title: "Mantra Blessing",
-                    instructions: "Chant Om Mani Padme Hum 108 times daily. Visualize white light surrounding the womb.",
-                    items: ["Mala beads", "White cloth", "Incense", "Buddha image"],
-                    timing: "Daily meditation",
-                    duration: "Throughout pregnancy"
-                },
-                tradition: "Buddhist",
-                category: ["birth", "blessing"],
-                tags: ["child", "blessing", "buddhist", "protection"]
-            },
-            {
-                id: 9,
-                title: "Native American Pregnancy Blessing",
-                prayer: "Great Spirit, as the corn grows from single seed to nourishing plant, may this pregnancy grow healthy and strong. Earth Mother, hold this mother gently.",
-                ritual: {
-                    title: "Corn Planting Ritual",
-                    instructions: "Plant corn seeds while praying. Water daily with intentions for healthy pregnancy.",
-                    items: ["Corn seeds", "Pot with soil", "Water", "Feather"],
-                    timing: "New moon",
-                    duration: "Until corn sprouts"
-                },
-                tradition: "Native American",
-                category: ["birth", "fertility"],
-                tags: ["pregnancy", "native american", "fertility", "earth"]
-            },
-            {
-                id: 10,
-                title: "Ancient Greek Prayer to Hera for Conception",
-                prayer: "Hera, queen of Olympus, protector of marriage and childbirth, bless this union with offspring. As you bore Hephaestus and Ares, grant us divine children.",
-                ritual: {
-                    title: "Hera's Peacock Ritual",
-                    instructions: "Create altar with peacock feathers. Offer pomegranate seeds and milk. Chant at dawn.",
-                    items: ["Peacock feathers", "Pomegranate", "Milk", "Silver bowl"],
-                    timing: "Dawn on Monday",
-                    duration: "7 consecutive Mondays"
-                },
-                tradition: "Ancient Greek",
-                category: ["birth", "fertility"],
-                tags: ["conception", "hera", "greek", "fertility"]
-            },
-
-            // ========== LOVE & RELATIONSHIPS (30 prayers) ==========
-            {
-                id: 11,
-                title: "Ancient Greek Prayer to Aphrodite for True Love",
-                prayer: "Aphrodite, born of sea foam, whose beauty moves both gods and mortals, guide me to the love meant for my soul.",
-                ritual: {
-                    title: "Sea Foam and Rose Ritual",
-                    instructions: "At dawn by water, mix sea salt into water. Float rose petals while chanting.",
-                    items: ["Sea salt", "Rose petals", "Shell", "Rose quartz"],
-                    timing: "Friday dawn",
-                    duration: "7 Fridays"
-                },
-                tradition: "Ancient Greek",
-                category: ["love", "attraction"],
-                tags: ["love", "soulmate", "aphrodite", "attraction"]
-            },
-            {
-                id: 12,
-                title: "Sufi Prayer for Healing Broken Heart",
-                prayer: "Ya Wadud, the Most Loving, physician of shattered hearts. Where love has left wounds, pour your healing balm.",
-                ritual: {
-                    title: "Whirling Meditation",
-                    instructions: "In private space, turn slowly while repeating 'Ya Wadud'. Visualize pain leaving.",
-                    items: ["Comfortable space", "Journal", "Rose water"],
-                    timing: "Sunset",
-                    duration: "7-21 days"
-                },
-                tradition: "Sufi",
-                category: ["love", "healing"],
-                tags: ["heartbreak", "healing", "sufi", "recovery"]
-            },
-            {
-                id: 13,
-                title: "Hindu Prayer for Marrying Right Person",
-                prayer: "Om Kleem Krishnaya Namah. Lord Krishna, divine matchmaker, guide me to my destined partner.",
-                ritual: {
-                    title: "Tulsi Plant Ritual",
-                    instructions: "Care for tulsi plant daily. Water while chanting mantra for 40 days.",
-                    items: ["Tulsi plant", "Clay pot", "Ganga water", "Incense"],
-                    timing: "Morning",
-                    duration: "40 days"
-                },
-                tradition: "Hindu",
-                category: ["love", "marriage"],
-                tags: ["marriage", "partner", "krishna", "destiny"]
-            },
-            {
-                id: 14,
-                title: "Christian Prayer for Relationship Healing",
-                prayer: "Lord Jesus, who restored Peter after denial, heal what is broken between us.",
-                ritual: {
-                    title: "Reconciliation Ritual",
-                    instructions: "Light two candles side by side. As they burn, pray for unity.",
-                    items: ["Two white candles", "Bible", "Olive oil"],
-                    timing: "Evening prayer time",
-                    duration: "7 days"
-                },
-                tradition: "Christian",
-                category: ["love", "healing"],
-                tags: ["relationship", "healing", "christian", "reconciliation"]
-            },
-            {
-                id: 15,
-                title: "African Love Binding Spell",
-                prayer: "Ancestors who loved deeply in life, bind our hearts with invisible threads.",
-                ritual: {
-                    title: "Thread Binding Ceremony",
-                    instructions: "Take red thread. Each partner holds one end while speaking vows.",
-                    items: ["Red thread", "Two candles", "Love herbs", "Small bag"],
+                    title: "Release Ceremony",
+                    instructions: "Write grievances on paper, burn safely, scatter ashes.",
+                    items: ["Paper", "Fire-safe bowl", "Matches"],
                     timing: "Full moon",
                     duration: "Single ceremony"
                 },
-                tradition: "African Traditional",
-                category: ["love", "binding"],
-                tags: ["love", "binding", "african", "commitment"]
+                tradition: "Universal",
+                category: ["healing", "emotional"],
+                tags: ["forgiveness", "release", "healing", "emotional"],
+                isFree: false
+            },
+            {
+                id: 8,
+                title: "Prayer for Courage",
+                prayer: "Fill me with courage to face my fears and take right action. I am strong and capable.",
+                ritual: {
+                    title: "Warrior Visualization",
+                    instructions: "Stand tall, visualize red light in core, affirm strength.",
+                    items: ["Red stone", "Open space"],
+                    timing: "Morning",
+                    duration: "5 minutes daily"
+                },
+                tradition: "Universal",
+                category: ["emergency", "protection"],
+                tags: ["courage", "strength", "fear", "bravery"],
+                isFree: false
+            },
+            {
+                id: 9,
+                title: "Prayer for Gratitude",
+                prayer: "Thank you for the blessings in my life. I appreciate all that I have and all that I am.",
+                ritual: {
+                    title: "Gratitude Journal",
+                    instructions: "Write 3 things grateful for daily, place hand on heart while reading.",
+                    items: ["Journal", "Pen"],
+                    timing: "Before bed",
+                    duration: "Daily practice"
+                },
+                tradition: "Universal",
+                category: ["general", "spiritual"],
+                tags: ["gratitude", "appreciation", "blessings"],
+                isFree: false
+            },
+            {
+                id: 10,
+                title: "Prayer for Ancestors",
+                prayer: "Honored ancestors, I remember you with love. Guide me from the spirit world.",
+                ritual: {
+                    title: "Ancestor Altar",
+                    instructions: "Set photos, water, candle. Speak to ancestors daily.",
+                    items: ["Photos", "White candle", "Glass of water", "Incense"],
+                    timing: "Daily",
+                    duration: "Ongoing"
+                },
+                tradition: "Universal",
+                category: ["spiritual", "protection"],
+                tags: ["ancestors", "lineage", "guidance", "spirits"],
+                isFree: false
+            },
+
+            // === PRAYERS 11-20: Christian & Catholic (All Premium) ===
+            {
+                id: 11,
+                title: "The Lord's Prayer (Ancient Aramaic)",
+                prayer: "Our Father who art in heaven, hallowed be thy name. Thy kingdom come, thy will be done, on earth as it is in heaven.",
+                ritual: {
+                    title: "Rosary Meditation",
+                    instructions: "Pray with rosary beads, meditating on each phrase.",
+                    items: ["Rosary", "Crucifix"],
+                    timing: "Morning or evening",
+                    duration: "20 minutes"
+                },
+                tradition: "Christian",
+                category: ["general", "spiritual"],
+                tags: ["jesus", "pater noster", "catholic", "prayer"],
+                isFree: false
+            },
+            {
+                id: 12,
+                title: "Prayer to Archangel Raphael for Healing",
+                prayer: "Archangel Raphael, divine healer, lay your hands upon me and restore my health. Remove all sickness and pain.",
+                ritual: {
+                    title: "Green Candle Healing",
+                    instructions: "Light green candle, place hands on affected area, visualize green light.",
+                    items: ["Green candle", "Olive oil", "Archangel Raphael image"],
+                    timing: "Wednesday",
+                    duration: "9 days"
+                },
+                tradition: "Christian",
+                category: ["healing", "protection"],
+                tags: ["raphael", "healing", "archangel", "sickness"],
+                isFree: false
+            },
+            {
+                id: 13,
+                title: "St. Jude Prayer for Impossible Cases",
+                prayer: "St. Jude, faithful servant of Jesus, help me in this desperate situation. I am hopeless without your intercession.",
+                ritual: {
+                    title: "Novena to St. Jude",
+                    instructions: "Pray 9 consecutive days, light candle at St. Jude image.",
+                    items: ["St. Jude candle", "Prayer card", "Holy water"],
+                    timing: "Any time",
+                    duration: "9 days"
+                },
+                tradition: "Catholic",
+                category: ["emergency", "healing"],
+                tags: ["st jude", "hopeless", "desperate", "catholic"],
+                isFree: false
+            },
+            {
+                id: 14,
+                title: "Prayer to St. Michael for Protection",
+                prayer: "St. Michael the Archangel, defend us in battle. Be our protection against the wickedness and snares of the devil.",
+                ritual: {
+                    title: "St. Michael Chaplet",
+                    instructions: "Pray chaplet while holding St. Michael medal.",
+                    items: ["St. Michael medal", "Blue candle", "Holy water"],
+                    timing: "Evening",
+                    duration: "9 evenings"
+                },
+                tradition: "Catholic",
+                category: ["protection", "emergency"],
+                tags: ["michael", "protection", "catholic", "evil"],
+                isFree: false
+            },
+            {
+                id: 15,
+                title: "Prayer to St. Anthony for Lost Items",
+                prayer: "St. Anthony, perfect imitator of Jesus, help me find what I have lost. Restore what is missing.",
+                ritual: {
+                    title: "Lost Item Search",
+                    instructions: "Pray prayer, then light candle and search calmly.",
+                    items: ["St. Anthony candle", "Brown scapular"],
+                    timing: "Immediately",
+                    duration: "Until found"
+                },
+                tradition: "Catholic",
+                category: ["general"],
+                tags: ["st anthony", "lost", "found", "catholic"],
+                isFree: false
             },
             {
                 id: 16,
-                title: "Wiccan Handfasting Prayer",
-                prayer: "Goddess of the moon, God of the sun, witness our love. Bind our hands, unite our hearts.",
+                title: "Prayer to St. Joseph for Work",
+                prayer: "St. Joseph, patron of workers, intercede for me to find meaningful employment that supports my family.",
                 ritual: {
-                    title: "Handfasting Ceremony",
-                    instructions: "Tie hands together with colored cords while speaking vows.",
-                    items: ["Colored cords", "Athame", "Chalice", "Salt"],
-                    timing: "Sabbat or full moon",
-                    duration: "Ceremony"
+                    title: "St. Joseph Employment Novena",
+                    instructions: "Pray novena, place St. Joseph statue upside down until prayer answered.",
+                    items: ["St. Joseph statue", "White candle", "Lily"],
+                    timing: "Wednesday",
+                    duration: "9 days or until job found"
                 },
-                tradition: "Wiccan",
-                category: ["love", "marriage"],
-                tags: ["handfasting", "wiccan", "marriage", "pagan"]
+                tradition: "Catholic",
+                category: ["career", "money"],
+                tags: ["st joseph", "work", "job", "employment", "catholic"],
+                isFree: false
             },
             {
                 id: 17,
-                title: "Islamic Prayer for Good Spouse",
-                prayer: "Rabbanā hab lanā min azwājinā wa dhurriyyātinā qurrata aʿyunin. Our Lord, grant us spouses and offspring who will be the comfort of our eyes.",
+                title: "Divine Mercy Chaplet",
+                prayer: "Eternal Father, I offer you the Body and Blood, Soul and Divinity of Your Dearly Beloved Son, Our Lord Jesus Christ.",
                 ritual: {
-                    title: "Istikhara for Marriage",
-                    instructions: "Perform two rak'ahs of prayer specifically for guidance in marriage decision.",
-                    items: ["Prayer mat", "Quran", "Water for wudu"],
-                    timing: "Last third of night",
-                    duration: "Until clarity comes"
+                    title: "3pm Mercy Hour",
+                    instructions: "Pray chaplet at 3pm using rosary beads.",
+                    items: ["Rosary", "Divine Mercy image"],
+                    timing: "3pm daily",
+                    duration: "9 days or ongoing"
                 },
-                tradition: "Islamic",
-                category: ["love", "marriage"],
-                tags: ["marriage", "guidance", "islamic", "spouse"]
+                tradition: "Catholic",
+                category: ["healing", "spiritual"],
+                tags: ["divine mercy", "faustina", "jesus", "catholic"],
+                isFree: false
             },
             {
                 id: 18,
-                title: "Jewish Prayer for Finding Bashert",
-                prayer: "May I meet my bashert, my destined one, at the right time. May we recognize each other's souls.",
+                title: "Prayer to Our Lady of Guadalupe",
+                prayer: "Our Lady of Guadalupe, Mother of the Americas, protect the unborn and bring peace to our families.",
                 ritual: {
-                    title: "Shabbat Candle Lighting",
-                    instructions: "Light Shabbat candles with specific intention to find true partner.",
-                    items: ["Shabbat candles", "Wine", "Challah", "Prayer book"],
-                    timing: "Friday before sunset",
-                    duration: "Weekly"
+                    title: "Rose Petition",
+                    instructions: "Bring roses to church, pray before image.",
+                    items: ["Roses", "Candle", "Image of Virgin"],
+                    timing: "December 12th or any day",
+                    duration: "Single or novena"
                 },
-                tradition: "Jewish",
-                category: ["love", "attraction"],
-                tags: ["soulmate", "jewish", "bashert", "destiny"]
+                tradition: "Catholic",
+                category: ["protection", "family"],
+                tags: ["guadalupe", "mary", "mother", "catholic", "mexican"],
+                isFree: false
             },
             {
                 id: 19,
-                title: "Buddhist Prayer for Loving-kindness",
-                prayer: "May I be happy. May you be happy. May all beings be happy. May love grow where fear once lived.",
+                title: "Prayer to St. Therese - The Little Flower",
+                prayer: "St. Therese, send a shower of roses from heaven. Grant me this favor if it be God's will.",
                 ritual: {
-                    title: "Metta Meditation",
-                    instructions: "Sit in meditation. Send loving-kindness to self, then to others.",
-                    items: ["Meditation cushion", "Bell", "Incense"],
-                    timing: "Morning meditation",
-                    duration: "Daily"
+                    title: "Rose Petal Request",
+                    instructions: "Write petition, place with rose petals, light candle.",
+                    items: ["Rose petals", "St. Therese image", "Pink candle"],
+                    timing: "Tuesday",
+                    duration: "Until sign received"
                 },
-                tradition: "Buddhist",
-                category: ["love", "healing"],
-                tags: ["loving-kindness", "buddhist", "meditation", "compassion"]
+                tradition: "Catholic",
+                category: ["general"],
+                tags: ["st therese", "little flower", "roses", "catholic"],
+                isFree: false
             },
             {
                 id: 20,
-                title: "Ancient Roman Prayer to Venus",
-                prayer: "Venus, goddess of love and beauty, let your grace shine upon my heart. Bring love that is true and lasting.",
+                title: "Prayer to St. Christopher for Travelers",
+                prayer: "St. Christopher, protect me as I travel. Guard my journey and bring me safely to my destination.",
                 ritual: {
-                    title: "Venus Mirror Ritual",
-                    instructions: "At dawn, look in mirror while speaking prayer. Anoint with rose oil.",
-                    items: ["Mirror", "Rose oil", "Rose petals", "Copper coin"],
-                    timing: "Friday dawn",
-                    duration: "7 consecutive Fridays"
+                    title: "Travel Blessing",
+                    instructions: "Bless vehicle with holy water, place St. Christopher medal inside.",
+                    items: ["St. Christopher medal", "Holy water", "Vehicle"],
+                    timing: "Before journey",
+                    duration: "One-time blessing"
                 },
-                tradition: "Ancient Roman",
-                category: ["love", "attraction"],
-                tags: ["love", "venus", "roman", "attraction"]
+                tradition: "Catholic",
+                category: ["protection"],
+                tags: ["st christopher", "travel", "journey", "safety", "catholic"],
+                isFree: false
             },
 
-            // ========== HEALTH & HEALING (40 prayers) ==========
+            // === PRAYERS 21-30: African Traditions (All Premium) ===
             {
                 id: 21,
-                title: "Tibetan Medicine Buddha Healing",
-                prayer: "Om Bekandze Bekandze Maha Bekandze Radza Samudgate Soha. Medicine Buddha, lapis lazuli light, penetrate every cell of this body.",
+                title: "Yoruba Prayer to Ogun",
+                prayer: "Ogun, opener of roads, clear my path. Remove obstacles and grant me victory in my endeavors.",
                 ritual: {
-                    title: "Healing Water Empowerment",
-                    instructions: "Place glass of water before blue candle. Chant mantra 108 times over water.",
-                    items: ["Glass of water", "Blue candle", "Mala beads", "Lapis stone"],
-                    timing: "Dawn or during illness",
-                    duration: "Daily until healing"
+                    title: "Iron Offering",
+                    instructions: "Offer metal tools or objects at crossroads. Pour rum or palm oil.",
+                    items: ["Metal objects", "Palm oil", "Rum", "Crossroads location"],
+                    timing: "Tuesday",
+                    duration: "Single ceremony"
                 },
-                tradition: "Tibetan Buddhist",
-                category: ["health", "healing"],
-                tags: ["healing", "illness", "medicine buddha", "buddhist"]
+                tradition: "Yoruba",
+                category: ["career", "protection"],
+                tags: ["ogun", "yoruba", "orisha", "roads", "iron"],
+                isFree: false
             },
             {
                 id: 22,
-                title: "Christian Prayer for Healing",
-                prayer: "Lord Jesus, who healed the sick and raised the dead, lay your healing hands upon me.",
+                title: "Ifa Prayer for Guidance",
+                prayer: "Orunmila, witness of destiny, reveal my path. Show me the way forward.",
                 ritual: {
-                    title: "Anointing with Oil",
-                    instructions: "Anoint with blessed oil while praying. Light candle as symbol of Christ's light.",
-                    items: ["Blessed oil", "White candle", "Bible", "Holy water"],
-                    timing: "During suffering",
-                    duration: "As needed"
+                    title: "Ifa Divination",
+                    instructions: "Consult Babalawo for reading, make prescribed offerings.",
+                    items: ["Divination tools", "Offerings as indicated", "White cloth"],
+                    timing: "Morning",
+                    duration: "As directed"
                 },
-                tradition: "Christian",
-                category: ["health", "healing"],
-                tags: ["healing", "christian", "prayer", "illness"]
+                tradition: "Yoruba",
+                category: ["spiritual"],
+                tags: ["ifa", "orunmila", "divination", "yoruba", "destiny"],
+                isFree: false
             },
             {
                 id: 23,
-                title: "Islamic Ruqyah for Sickness",
-                prayer: "Bismillahi arqika min kulli shay'in yu'dhika, min sharri kulli nafsin aw 'aynin hasidin. In the name of Allah I perform ruqyah for you, from everything that harms you.",
+                title: "Prayer to Yemaya for Fertility",
+                prayer: "Yemaya, mother of waters, bless me with children. Open my womb as the ocean births waves.",
                 ritual: {
-                    title: "Ruqyah Healing",
-                    instructions: "Recite specific Quran verses over person or water. Blow gently after recitation.",
-                    items: ["Quran", "Water", "Olive oil", "Prayer beads"],
-                    timing: "After prayer",
-                    duration: "7 days"
+                    title: "Ocean Offering",
+                    instructions: "Bring blue items, watermelon, molasses to ocean. Pray at water's edge.",
+                    items: ["Blue fabric", "Watermelon", "Molasses", "Seven coins"],
+                    timing: "Saturday, full moon",
+                    duration: "7 Saturdays"
                 },
-                tradition: "Islamic",
-                category: ["health", "healing"],
-                tags: ["healing", "islamic", "ruqyah", "sickness"]
+                tradition: "Yoruba",
+                category: ["birth", "fertility"],
+                tags: ["yemaya", "yoruba", "fertility", "ocean", "motherhood"],
+                isFree: false
             },
             {
                 id: 24,
-                title: "Jewish Prayer for Healing - Mi Sheberakh",
-                prayer: "Mi sheberakh avoteinu, Avraham, Yitzhak, v'Yaakov, hu yevarekh et hacholeh [name]. May the One who blessed our ancestors bless this sick person.",
+                title: "Akan Prayer to Ancestors",
+                prayer: "Nsamanfo, revered ancestors, accept this libation and guide your children walking on earth.",
                 ritual: {
-                    title: "Healing Prayer at Synagogue",
-                    instructions: "Recite during Torah reading. Give charity in sick person's name.",
-                    items: ["Prayer book", "Charity money", "Tallit", "Tehillim"],
-                    timing: "Shabbat service",
-                    duration: "Until recovery"
+                    title: "Libation Ceremony",
+                    instructions: "Pour water or gin on ground while calling ancestors by name.",
+                    items: ["Water or gin", "Calabash", "White cloth"],
+                    timing: "Thursday",
+                    duration: "Ongoing"
                 },
-                tradition: "Jewish",
-                category: ["health", "healing"],
-                tags: ["healing", "jewish", "prayer", "illness"]
+                tradition: "Akan",
+                category: ["spiritual", "protection"],
+                tags: ["akan", "ghana", "ancestors", "libation", "african"],
+                isFree: false
             },
             {
                 id: 25,
-                title: "Native American Healing Chant",
-                prayer: "Great Spirit, send your healing winds. Let the eagle's feather brush away sickness.",
+                title: "Zulu Prayer to Unkulunkulu",
+                prayer: "Unkulunkulu, Great One, who created all things, bless my family and our land.",
                 ritual: {
-                    title: "Sage Smudging",
-                    instructions: "Burn sage bundle. Wave smoke around person while chanting.",
-                    items: ["Sage bundle", "Feather", "Abalone shell", "Drum"],
-                    timing: "Sunrise",
-                    duration: "Daily until healing"
+                    title: "Family Blessing",
+                    instructions: "Gather family, sacrifice goat or offer beer, pray together.",
+                    items: ["Traditional beer", "White beads", "Family gathered"],
+                    timing: "Important occasions",
+                    duration: "One day ceremony"
                 },
-                tradition: "Native American",
-                category: ["health", "healing"],
-                tags: ["healing", "native american", "smudging", "ritual"]
+                tradition: "Zulu",
+                category: ["family", "protection"],
+                tags: ["zulu", "south africa", "unkulunkulu", "family"],
+                isFree: false
             },
             {
                 id: 26,
-                title: "Hindu Prayer to Dhanvantari",
-                prayer: "Om Namo Bhagavate Dhanvantaraye Amrita-kalasa Hastaaya Sarva-amaya Vinashaaya. Salutations to Lord Dhanvantari, holding pot of nectar, destroyer of all diseases.",
+                title: "Hausa Prayer for Protection",
+                prayer: "Allah, grant me barka (blessing) and kariya (protection) from all harm.",
                 ritual: {
-                    title: "Dhanvantari Puja",
-                    instructions: "Create altar with Dhanvantari image. Offer turmeric water and neem leaves.",
-                    items: ["Dhanvantari image", "Turmeric", "Neem leaves", "Ghee lamp"],
-                    timing: "Dhanteras or daily",
-                    duration: "9 days"
+                    title: "Laya (Amulet) Preparation",
+                    instructions: "Write Quranic verses, sew into leather, wear as protection.",
+                    items: ["Leather", "Paper", "Ink", "Needle", "Thread"],
+                    timing: "Thursday",
+                    duration: "Wear always"
                 },
-                tradition: "Hindu",
-                category: ["health", "healing"],
-                tags: ["healing", "dhanvantari", "hindu", "ayurveda"]
+                tradition: "Hausa",
+                category: ["protection"],
+                tags: ["hausa", "nigeria", "islamic", "amulet", "protection"],
+                isFree: false
             },
             {
                 id: 27,
-                title: "Ancient Egyptian Prayer to Sekhmet",
-                prayer: "Sekhmet, lioness goddess, destroyer of disease, turn your fierce healing power upon this illness.",
+                title: "Maasai Prayer for Rain",
+                prayer: "Enkai, give us rain. Bless our cattle and our children.",
                 ritual: {
-                    title: "Sekhmet Offering",
-                    instructions: "Offer red beer or pomegranate juice. Light red candle while chanting.",
-                    items: ["Red candle", "Pomegranate juice", "Lion image", "Incense"],
-                    timing: "Tuesday (Mars day)",
-                    duration: "7 Tuesdays"
+                    title: "Rain Ceremony",
+                    instructions: "Elder prays under sacred tree, community offers milk and honey.",
+                    items: ["Milk", "Honey", "Sacred tree", "Community"],
+                    timing: "During drought",
+                    duration: "Until rain comes"
                 },
-                tradition: "Ancient Egyptian",
-                category: ["health", "healing"],
-                tags: ["healing", "sekhmet", "egyptian", "protection"]
+                tradition: "Maasai",
+                category: ["general"],
+                tags: ["maasai", "kenya", "tanzania", "rain", "enkai"],
+                isFree: false
             },
             {
                 id: 28,
-                title: "Celtic Healing Well Prayer",
-                prayer: "Spirit of the sacred well, waters that heal since ancient times, flow through this body with cleansing power.",
+                title: "Igbo Prayer to Chineke",
+                prayer: "Chineke, Creator, grant me ihu ọma (good fortune) and chebe m (protect me).",
                 ritual: {
-                    title: "Well Visiting Ritual",
-                    instructions: "Visit sacred well or create one. Tie cloth to tree while praying.",
-                    items: ["Cloth strip", "Coin", "Water from well", "Herbs"],
-                    timing: "Dawn",
-                    duration: "Visit 3 times"
+                    title: "Kola Nut Ceremony",
+                    instructions: "Break kola nut, offer to ancestors and God, share among family.",
+                    items: ["Kola nut", "Ofo stick", "White chalk (nzu)"],
+                    timing: "Important gatherings",
+                    duration: "Ceremony"
                 },
-                tradition: "Celtic",
-                category: ["health", "healing"],
-                tags: ["healing", "celtic", "well", "water"]
+                tradition: "Igbo",
+                category: ["general", "family"],
+                tags: ["igbo", "nigeria", "chineke", "kola nut", "ofo"],
+                isFree: false
             },
             {
                 id: 29,
-                title: "Shinto Prayer for Health",
-                prayer: "Kami of this place, purify this body. Wash away impurity as river washes stones.",
+                title: "Egyptian Prayer to Isis",
+                prayer: "Isis, Great Mother, Goddess of Magic, weave your protection around me.",
                 ritual: {
-                    title: "Misogi Purification",
-                    instructions: "Pour cold water over hands and face while reciting prayer.",
-                    items: ["Clean water", "White cloth", "Salt", "Sakaki branch"],
-                    timing: "Morning",
-                    duration: "Daily purification"
+                    title: "Knot Magic",
+                    instructions: "Tie red thread with 7 knots, wear as bracelet.",
+                    items: ["Red thread", "Ankh symbol", "Frankincense incense"],
+                    timing: "Full moon",
+                    duration: "7 days"
                 },
-                tradition: "Shinto",
-                category: ["health", "purification"],
-                tags: ["healing", "shinto", "purification", "japanese"]
+                tradition: "Egyptian",
+                category: ["protection", "healing"],
+                tags: ["isis", "egyptian", "magic", "mother goddess"],
+                isFree: false
             },
             {
                 id: 30,
-                title: "Zoroastrian Prayer for Health",
-                prayer: "Asha Vahishta, greatest truth and health, flow through this body. Banish disease as light banishes darkness.",
+                title: "Ethiopian Orthodox Prayer",
+                prayer: "In the name of the Father, Son, and Holy Spirit, One God. Kyrie Eleison.",
                 ritual: {
-                    title: "Fire Offering",
-                    instructions: "Offer sandalwood to sacred fire while reciting prayers.",
-                    items: ["Fire urn", "Sandalwood", "Milk", "Fruit"],
-                    timing: "Dawn",
-                    duration: "9 days"
+                    title: "Prayer Stick Meditation",
+                    instructions: "Hold maqamiya (prayer stick), pray with incense.",
+                    items: ["Maqamiya", "Incense", "Icon"],
+                    timing: "Morning and evening",
+                    duration: "Daily"
                 },
-                tradition: "Zoroastrian",
-                category: ["health", "healing"],
-                tags: ["healing", "zoroastrian", "fire", "prayer"]
+                tradition: "Ethiopian Orthodox",
+                category: ["spiritual"],
+                tags: ["ethiopian", "orthodox", "coptic", "african"],
+                isFree: false
             },
 
-            // ========== MONEY & PROSPERITY (35 prayers) ==========
+            // === PRAYERS 31-40: Eastern Traditions (All Premium) ===
             {
                 id: 31,
-                title: "Ancient Roman Prayer to Mercury",
-                prayer: "Mercury, fleet-footed, god of commerce, open roads to opportunity. Speed transactions favorably.",
+                title: "Tibetan Buddhist Prayer for Compassion",
+                prayer: "Om Mani Padme Hum. May all beings be happy, may all beings be free.",
                 ritual: {
-                    title: "Mercury's Market Ritual",
-                    instructions: "At crossroads, bury silver coin facing north. Pour wine libation.",
-                    items: ["Silver coin", "Wine", "Caduceus symbol", "Incense"],
-                    timing: "Wednesday dawn",
-                    duration: "Once per venture"
+                    title: "Mala Meditation",
+                    instructions: "Chant mantra 108x on mala beads, visualize Chenrezig.",
+                    items: ["Mala beads", "Image of Chenrezig", "Incense"],
+                    timing: "Morning",
+                    duration: "108 repetitions"
                 },
-                tradition: "Ancient Roman",
-                category: ["money", "business"],
-                tags: ["money", "mercury", "business", "roman"]
+                tradition: "Buddhist",
+                category: ["healing", "peace"],
+                tags: ["buddhist", "compassion", "chenrezig", "om mani"],
+                isFree: false
             },
             {
                 id: 32,
-                title: "Hindu Prayer to Lakshmi",
-                prayer: "Om Shrim Maha Lakshmyai Namah. Goddess Lakshmi, whose lotus feet shower gold, bless this home with prosperity.",
+                title: "Hindu Ganesh Prayer for New Beginnings",
+                prayer: "Vakratunda Mahakaya, Suryakoti Samaprabha. Nirvighnam Kuru Me Deva, Sarva-Kaaryeshu Sarvada.",
                 ritual: {
-                    title: "Lakshmi Puja",
-                    instructions: "Create altar with Lakshmi image. Offer flowers, coins, and sweets.",
-                    items: ["Lakshmi image", "Coins", "Flowers", "Sweets", "Diya"],
-                    timing: "Friday evening",
-                    duration: "Weekly"
+                    title: "Ganesh Puja",
+                    instructions: "Offer modak, light ghee lamp, chant mantras.",
+                    items: ["Ganesh idol", "Modak", "Ghee lamp", "Red flowers"],
+                    timing: "Before any new venture",
+                    duration: "Single puja"
                 },
                 tradition: "Hindu",
-                category: ["money", "prosperity"],
-                tags: ["money", "lakshmi", "hindu", "prosperity"]
+                category: ["career", "success"],
+                tags: ["ganesh", "hindu", "obstacles", "beginnings"],
+                isFree: false
             },
             {
                 id: 33,
-                title: "Buddhist Prayer for Right Livelihood",
-                prayer: "May my work harm none. May it benefit many. May abundance flow from righteous action.",
+                title: "Shinto Prayer for Purification",
+                prayer: "Harai tamae, kiyome tamae, rokon shojo. Please purify me completely.",
                 ritual: {
-                    title: "Offering Bowl Practice",
-                    instructions: "Place empty bowl on altar. Add coin daily, then give to charity.",
-                    items: ["Empty bowl", "Coins", "Altar", "Incense"],
-                    timing: "Daily",
-                    duration: "40 days"
+                    title: "Temizu Purification",
+                    instructions: "Wash hands and mouth at shrine, bow twice, clap twice, pray.",
+                    items: ["Water", "Shrine visit"],
+                    timing: "Morning",
+                    duration: "Daily practice"
                 },
-                tradition: "Buddhist",
-                category: ["money", "career"],
-                tags: ["money", "buddhist", "livelihood", "ethics"]
+                tradition: "Shinto",
+                category: ["spiritual", "healing"],
+                tags: ["shinto", "japanese", "purification", "kami"],
+                isFree: false
             },
             {
                 id: 34,
-                title: "Christian Prayer for Financial Breakthrough",
-                prayer: "Lord, You own cattle on a thousand hills. Provide for my needs according to Your riches.",
+                title: "Taoist Prayer for Balance",
+                prayer: "Yin and yang, find harmony within. The Tao guides my steps.",
                 ritual: {
-                    title: "Tithe Blessing",
-                    instructions: "Set aside 10% of income as offering. Pray over it before giving.",
-                    items: ["Money for tithe", "Envelope", "Bible", "Candle"],
-                    timing: "When receiving income",
-                    duration: "Each income"
+                    title: "Tai Chi Meditation",
+                    instructions: "Practice Tai Chi forms outdoors, connect with nature.",
+                    items: ["Comfortable clothing", "Outdoor space"],
+                    timing: "Sunrise",
+                    duration: "20-30 minutes"
                 },
-                tradition: "Christian",
-                category: ["money", "prosperity"],
-                tags: ["money", "christian", "prosperity", "tithe"]
+                tradition: "Taoist",
+                category: ["healing", "peace"],
+                tags: ["taoist", "tao", "balance", "yin yang", "chi"],
+                isFree: false
             },
             {
                 id: 35,
-                title: "Islamic Prayer for Wealth",
-                prayer: "Allahumma barik lana fi ma rizaqtana waqina 'adhaban-nar. O Allah, bless us in what You have provided.",
+                title: "Sikh Prayer for Equality",
+                prayer: "Ik Onkar, Sat Nam. One God, truth is his name. All beings are equal.",
                 ritual: {
-                    title: "Sadaqah Giving",
-                    instructions: "Give charity before praying for increase. Recite specific duas for rizq.",
-                    items: ["Charity money", "Prayer mat", "Quran", "Dates"],
-                    timing: "Before Fajr",
-                    duration: "Consistent practice"
+                    title: "Simran Meditation",
+                    instructions: "Meditate on divine name, serve langar (free meal).",
+                    items: ["Prayer beads", "Gurdwara visit"],
+                    timing: "Early morning",
+                    duration: "Amritvela (pre-dawn)"
                 },
-                tradition: "Islamic",
-                category: ["money", "prosperity"],
-                tags: ["money", "islamic", "rizq", "charity"]
+                tradition: "Sikh",
+                category: ["spiritual", "peace"],
+                tags: ["sikh", "ik onkar", "equality", "guru granth"],
+                isFree: false
             },
             {
                 id: 36,
-                title: "Jewish Prayer for Parnassah",
-                prayer: "Blessed are You, Lord, who provides parnassah for all Your creatures. Open gates of livelihood for me.",
+                title: "Vietnamese Ancestor Veneration",
+                prayer: "Kính mời ông bà tổ tiên về chứng giám lòng thành của con cháu.",
                 ritual: {
-                    title: "Tzedakah Box",
-                    instructions: "Put coin in tzedakah box daily while reciting prayer for livelihood.",
-                    items: ["Tzedakah box", "Coins", "Prayer book", "Candle"],
-                    timing: "Morning",
-                    duration: "Daily"
+                    title: "Ancestor Altar Offering",
+                    instructions: "Clean altar, offer food, incense, and prayers to ancestors.",
+                    items: ["Incense", "Fruit", "Tea", "Photos"],
+                    timing: "New moon and full moon",
+                    duration: "Ongoing"
                 },
-                tradition: "Jewish",
-                category: ["money", "livelihood"],
-                tags: ["money", "jewish", "parnassah", "livelihood"]
+                tradition: "Vietnamese",
+                category: ["family", "spiritual"],
+                tags: ["vietnamese", "ancestors", "altar", "family"],
+                isFree: false
             },
             {
                 id: 37,
-                title: "African Prayer for Business Success",
-                prayer: "Ancestors who were traders and farmers, bless this venture. Let profit come with honor.",
+                title: "Korean Shaman Prayer for Healing",
+                prayer: "Grandmother Spirit, heal this sickness. Make this person whole again.",
                 ritual: {
-                    title: "Market Ancestor Offering",
-                    instructions: "At market opening, pour libation and speak to ancestors.",
-                    items: ["Palm wine", "Kola nuts", "White cloth", "Cowrie shells"],
-                    timing: "Market day dawn",
-                    duration: "Weekly"
+                    title: "Gut Ceremony",
+                    instructions: "Shaman leads ceremony with drumming and offerings.",
+                    items: ["Food offerings", "White cloth", "Rice wine", "Drum"],
+                    timing: "As needed",
+                    duration: "Several hours"
                 },
-                tradition: "African Traditional",
-                category: ["money", "business"],
-                tags: ["money", "african", "business", "ancestors"]
+                tradition: "Korean Shamanism",
+                category: ["healing"],
+                tags: ["korean", "shaman", "gut", "healing", "mudang"],
+                isFree: false
             },
             {
                 id: 38,
-                title: "Ancient Chinese Prayer to Caishen",
-                prayer: "Caishen, god of wealth, riding black tiger, bring treasures to this home.",
+                title: "Japanese Prayer for Safe Travel",
+                prayer: "Dōchū anzen, safe journey. Protect me on the road ahead.",
                 ritual: {
-                    title: "Caishen Altar",
-                    instructions: "Create altar with Caishen image. Offer tea, rice, and gold symbols.",
-                    items: ["Caishen image", "Gold-colored items", "Incense", "Tea"],
-                    timing: "Chinese New Year or daily",
-                    duration: "Ongoing"
+                    title: "Omamori Purchase",
+                    instructions: "Buy travel omamori from shrine, carry during journey.",
+                    items: ["Travel omamori", "Shrine visit"],
+                    timing: "Before travel",
+                    duration: "Until return"
                 },
-                tradition: "Chinese Folk",
-                category: ["money", "wealth"],
-                tags: ["money", "caishen", "chinese", "wealth"]
+                tradition: "Japanese",
+                category: ["protection"],
+                tags: ["japanese", "travel", "omamori", "safety"],
+                isFree: false
             },
             {
                 id: 39,
-                title: "Wiccan Money Spell",
-                prayer: "God and Goddess, as moon grows full, let my wealth grow. As sun shines bright, let opportunities multiply.",
+                title: "Chinese Prayer for Prosperity",
+                prayer: "Cai Shen, God of Wealth, bring abundance to this home.",
                 ritual: {
-                    title: "Green Candle Spell",
-                    instructions: "Carve symbols into green candle. Anoint with prosperity oil. Burn while visualizing abundance.",
-                    items: ["Green candle", "Prosperity oil", "Coin", "Bay leaves"],
-                    timing: "Waxing moon",
-                    duration: "7 days"
+                    title: "Chinese New Year Offering",
+                    instructions: "Offer oranges, burn incense, display wealth symbols.",
+                    items: ["Oranges", "Incense", "Red envelopes", "Cai Shen image"],
+                    timing: "Chinese New Year",
+                    duration: "15 days celebration"
                 },
-                tradition: "Wiccan",
-                category: ["money", "prosperity"],
-                tags: ["money", "wiccan", "spell", "prosperity"]
+                tradition: "Chinese",
+                category: ["money", "abundance"],
+                tags: ["chinese", "cai shen", "wealth", "prosperity"],
+                isFree: false
             },
             {
                 id: 40,
-                title: "Greek Prayer to Plutus",
-                prayer: "Plutus, son of Demeter, blind god of wealth, pour your cornucopia's bounty into my life.",
+                title: "Thai Buddhist Prayer for Blessings",
+                prayer: "Buddham saranam gacchami. I go to the Buddha for refuge.",
                 ritual: {
-                    title: "Cornucopia Offering",
-                    instructions: "Fill horn-shaped basket with fruits and coins. Place at doorway.",
-                    items: ["Cornucopia basket", "Fruits", "Coins", "Wheat stalks"],
-                    timing: "New moon",
-                    duration: "Monthly renewal"
+                    title: "Monk Blessing",
+                    instructions: "Offer food to monks, receive holy water blessing.",
+                    items: ["Food offering", "Yellow robe", "Holy water"],
+                    timing: "Morning",
+                    duration: "Blessing ceremony"
                 },
-                tradition: "Ancient Greek",
-                category: ["money", "wealth"],
-                tags: ["money", "plutus", "greek", "wealth"]
+                tradition: "Thai Buddhist",
+                category: ["general", "protection"],
+                tags: ["thai", "buddhist", "monk", "blessing", "wat"],
+                isFree: false
             },
 
-            // ========== PROTECTION & SAFETY (30 prayers) ==========
+            // === PRAYERS 41-50: Indigenous & Earth-Based (All Premium) ===
             {
                 id: 41,
-                title: "Christian Prayer for Protection",
-                prayer: "Lord, be a shield about me. Let no evil prosper against me. Cover me with Your precious blood.",
+                title: "Native American Prayer for Healing",
+                prayer: "Great Spirit, heal your child. Restore balance to body, mind, and spirit.",
                 ritual: {
-                    title: "Home Blessing",
-                    instructions: "Pray in each room. Anoint doorposts with oil. Place Bible in home.",
-                    items: ["Olive oil", "Bible", "Cross", "Holy water"],
-                    timing: "When moving in or when threatened",
-                    duration: "Single blessing"
+                    title: "Sweat Lodge Ceremony",
+                    instructions: "Participate in sweat lodge with community and elder.",
+                    items: ["Sweat lodge", "Hot stones", "Water", "Tobacco"],
+                    timing: "Full moon",
+                    duration: "4 rounds"
                 },
-                tradition: "Christian",
-                category: ["protection", "safety"],
-                tags: ["protection", "christian", "safety", "home"]
+                tradition: "Native American",
+                category: ["healing", "spiritual"],
+                tags: ["native american", "sweat lodge", "great spirit", "healing"],
+                isFree: false
             },
             {
                 id: 42,
-                title: "Islamic Prayer for Protection - Ayat al-Kursi",
-                prayer: "Allahu la ilaha illa Huwa, al-Hayy al-Qayyum... His Throne extends over heavens and earth.",
+                title: "Celtic Prayer to Brigid",
+                prayer: "Brigid of the healing wells, tend my soul. Brigid of the sacred flame, light my way.",
                 ritual: {
-                    title: "Ayat al-Kursi Recitation",
-                    instructions: "Recite after each prayer and before sleeping. Blow on hands and wipe over body.",
-                    items: ["Quran", "Prayer beads", "Water"],
-                    timing: "After prayers and bedtime",
-                    duration: "Daily"
+                    title: "Brigid's Cross Making",
+                    instructions: "Make Brigid's cross from rushes, place in home for protection.",
+                    items: ["Rushes", "Straw", "White cloth"],
+                    timing: "Imbolc (Feb 1)",
+                    duration: "Yearly"
                 },
-                tradition: "Islamic",
-                category: ["protection", "safety"],
-                tags: ["protection", "islamic", "ayat al-kursi", "safety"]
+                tradition: "Celtic",
+                category: ["healing", "protection"],
+                tags: ["brigid", "celtic", "irish", "imbolc", "healing"],
+                isFree: false
             },
             {
                 id: 43,
-                title: "Jewish Prayer for Protection - Shema",
-                prayer: "Shema Yisrael Adonai Eloheinu Adonai Echad. Hear O Israel, the Lord is our God, the Lord is One.",
+                title: "Mayan Prayer to Ixchel",
+                prayer: "Ixchel, Rainbow Lady, weave your healing light through my body.",
                 ritual: {
-                    title: "Mezuzah Affixing",
-                    instructions: "Affix mezuzah to doorposts. Recite blessing each time entering.",
-                    items: ["Mezuzah scroll", "Mezuzah case", "Nails/hammer", "Prayer book"],
-                    timing: "When moving in",
-                    duration: "Permanent"
+                    title: "Moon Bathing",
+                    instructions: "Bathe in moonlight at sacred cenote or under open sky.",
+                    items: ["Copal incense", "Jade stone", "Moon water"],
+                    timing: "Full moon",
+                    duration: "Night of full moon"
                 },
-                tradition: "Jewish",
-                category: ["protection", "safety"],
-                tags: ["protection", "jewish", "shema", "mezuzah"]
+                tradition: "Mayan",
+                category: ["healing", "fertility"],
+                tags: ["mayan", "ixchel", "moon", "healing", "cenote"],
+                isFree: false
             },
             {
                 id: 44,
-                title: "Hindu Prayer to Hanuman for Protection",
-                prayer: "Om Shri Hanumate Namah. Hanuman, vanquisher of demons, protect me from all dangers.",
+                title: "Aboriginal Australian Prayer",
+                prayer: "Ancestors of this land, I honor you. Heal me with your ancient song.",
                 ritual: {
-                    title: "Hanuman Chalisa Recitation",
-                    instructions: "Recite Hanuman Chalisa daily. Offer sindoor and bananas.",
-                    items: ["Hanuman image", "Sindoor", "Bananas", "Incense"],
-                    timing: "Tuesday or Saturday",
-                    duration: "Daily or weekly"
+                    title: "Smoking Ceremony",
+                    instructions: "Pass through smoke of native plants for purification.",
+                    items: ["Native leaves", "Fire pit", "Water"],
+                    timing: "Special occasions",
+                    duration: "Ceremony"
                 },
-                tradition: "Hindu",
-                category: ["protection", "safety"],
-                tags: ["protection", "hanuman", "hindu", "safety"]
+                tradition: "Aboriginal",
+                category: ["healing", "spiritual"],
+                tags: ["aboriginal", "australia", "smoking", "ancestors"],
+                isFree: false
             },
             {
                 id: 45,
-                title: "Buddhist Prayer for Protection",
-                prayer: "May I be safe. May I be protected. May no harm come to me or those I love.",
+                title: "Inca Prayer to Pachamama",
+                prayer: "Pachamama, Mother Earth, accept my offering. Bless me with abundance.",
                 ritual: {
-                    title: "Protective Meditation",
-                    instructions: "Visualize protective light surrounding you. Recite protective mantras.",
-                    items: ["Buddha image", "Candle", "Incense", "Bell"],
-                    timing: "Morning meditation",
-                    duration: "Daily"
+                    title: "Despacho Ceremony",
+                    instructions: "Create offering bundle with sweets, flowers, and coca leaves.",
+                    items: ["Coca leaves", "Flowers", "Sweets", "Wine"],
+                    timing: "August 1st",
+                    duration: "Ceremony"
                 },
-                tradition: "Buddhist",
-                category: ["protection", "safety"],
-                tags: ["protection", "buddhist", "meditation", "safety"]
+                tradition: "Inca",
+                category: ["money", "protection"],
+                tags: ["inca", "pachamama", "andes", "earth", "offering"],
+                isFree: false
             },
             {
                 id: 46,
-                title: "Ancient Egyptian Prayer to Bes",
-                prayer: "Bes, dwarf god who guards homes and mothers, stand at my doorway. Frighten away evil with your grimace.",
+                title: "Hawaiian Prayer for Forgiveness",
+                prayer: "Ho'oponopono: I'm sorry, please forgive me, thank you, I love you.",
                 ritual: {
-                    title: "Bes Amulet Placement",
-                    instructions: "Place Bes image or amulet near entrance. Offer beer and bread.",
-                    items: ["Bes amulet/image", "Beer", "Bread", "Incense"],
-                    timing: "New moon",
-                    duration: "Permanent placement"
+                    title: "Ho'oponopono Practice",
+                    instructions: "Repeat phrases while visualizing reconciliation.",
+                    items: ["Sea water", "Lei", "Quiet space"],
+                    timing: "Daily",
+                    duration: "Ongoing"
                 },
-                tradition: "Ancient Egyptian",
-                category: ["protection", "home"],
-                tags: ["protection", "bes", "egyptian", "home"]
+                tradition: "Hawaiian",
+                category: ["healing", "peace"],
+                tags: ["hawaiian", "ho'oponopono", "forgiveness", "reconciliation"],
+                isFree: false
             },
             {
                 id: 47,
-                title: "Celtic Prayer for Travel Protection",
-                prayer: "May the road rise to meet you. May wind be always at your back. May sun shine warm upon your face.",
+                title: "Norse Prayer to Freyja",
+                prayer: "Freyja, Lady of the Cats, grant me love and prosperity.",
                 ritual: {
-                    title: "Traveler's Blessing",
-                    instructions: "Before journey, light candle. Ask for protection from land, sea, and sky spirits.",
-                    items: ["Candle", "Small stone", "Water", "Feather"],
-                    timing: "Before travel",
-                    duration: "Per journey"
+                    title: "Amber Offering",
+                    instructions: "Offer amber, honey, and roses at small altar.",
+                    items: ["Amber", "Honey", "Roses", "Cat figurine"],
+                    timing: "Friday",
+                    duration: "9 days"
                 },
-                tradition: "Celtic",
-                category: ["protection", "travel"],
-                tags: ["protection", "celtic", "travel", "blessing"]
+                tradition: "Norse",
+                category: ["love", "money"],
+                tags: ["norse", "freyja", "viking", "love", "amber"],
+                isFree: false
             },
             {
                 id: 48,
-                title: "Native American Protection Prayer",
-                prayer: "Great Spirit, wrap me in blanket of stars. Hide me in shadow of eagle's wing.",
+                title: "Sami Prayer to Beaivi",
+                prayer: "Beaivi, Sun Mother, warm our hearts and heal our people.",
                 ritual: {
-                    title: "Protection Pouch",
-                    instructions: "Create pouch with protective herbs and stones. Carry or place in home.",
-                    items: ["Small pouch", "Sage", "Tobacco", "Protective stones", "Feather"],
-                    timing: "When needed",
-                    duration: "Until danger passes"
+                    title: "Sun Greeting",
+                    instructions: "Greet sunrise with raised hands, offer butter to sun.",
+                    items: ["Butter", "Reindeer hide", "Sun-facing location"],
+                    timing: "Winter solstice",
+                    duration: "12 days"
                 },
-                tradition: "Native American",
-                category: ["protection", "safety"],
-                tags: ["protection", "native american", "pouch", "safety"]
+                tradition: "Sami",
+                category: ["healing", "general"],
+                tags: ["sami", "lapland", "sun", "beaivi", "indigenous"],
+                isFree: false
             },
             {
                 id: 49,
-                title: "Nordic Prayer to Thor for Protection",
-                prayer: "Thor, wielder of Mjolnir, protector of Midgard, let your hammer guard this place.",
+                title: "Polynesian Prayer for Navigation",
+                prayer: "Hina, guide my way across the ocean. Keep me safe on my journey.",
                 ritual: {
-                    title: "Thor's Hammer Ritual",
-                    instructions: "Draw or place Thor's hammer symbol. Offer mead and oats.",
-                    items: ["Mjolnir symbol", "Mead/beer", "Oats", "Candle"],
-                    timing: "Thursday",
-                    duration: "Weekly"
+                    title: "Star Compass",
+                    instructions: "Study stars, offer kava to ocean before voyage.",
+                    items: ["Kava", "Canoe", "Tapa cloth"],
+                    timing: "Before voyage",
+                    duration: "Voyage length"
                 },
-                tradition: "Norse",
-                category: ["protection", "safety"],
-                tags: ["protection", "thor", "norse", "safety"]
+                tradition: "Polynesian",
+                category: ["protection"],
+                tags: ["polynesian", "navigation", "ocean", "hina", "voyage"],
+                isFree: false
             },
             {
                 id: 50,
-                title: "African Protection Prayer",
-                prayer: "Ancestors, build wall of fire around me. Let evil see only wilderness where I stand.",
+                title: "Mongolian Shaman Prayer",
+                prayer: "Blue Sky Father, hear my prayer. Grant your blessing to your child.",
                 ritual: {
-                    title: "Ancestral Protection",
-                    instructions: "Pour libation. Speak to ancestors asking for protective watch.",
-                    items: ["Palm wine/water", "Kola nuts", "White cloth", "Cowrie shells"],
-                    timing: "Evening",
-                    duration: "When threatened"
+                    title: "Ovoo Ceremony",
+                    instructions: "Walk around ovoo 3x, leave offering, tie prayer flag.",
+                    items: ["Blue scarf", "Milk", "Prayer flags", "Stones"],
+                    timing: "Mountain visits",
+                    duration: "Ceremony"
                 },
-                tradition: "African Traditional",
-                category: ["protection", "ancestors"],
-                tags: ["protection", "african", "ancestors", "safety"]
+                tradition: "Mongolian",
+                category: ["general", "protection"],
+                tags: ["mongolian", "shaman", "ovoo", "sky", "blue"],
+                isFree: false
             },
 
-            // ========== DEATH & GRIEF (25 prayers) ==========
+            // === PRAYERS 51-60: Love & Relationships (All Premium) ===
             {
                 id: 51,
-                title: "Christian Prayer for the Dying",
-                prayer: "Into Your hands, O Lord, I commend my spirit. Lord Jesus, receive my soul.",
+                title: "Prayer for Soulmate Connection",
+                prayer: "Divine love, bring my soulmate to me. Let us recognize each other.",
                 ritual: {
-                    title: "Last Rites",
-                    instructions: "Anoint with oil. Offer communion if possible. Recite Psalms.",
-                    items: ["Anointing oil", "Cross", "Bible", "Candle"],
-                    timing: "When death approaches",
-                    duration: "Final moments"
+                    title: "Honey Jar",
+                    instructions: "Write qualities in honey jar, light pink candle daily.",
+                    items: ["Honey", "Pink candle", "Paper", "Rose quartz"],
+                    timing: "Friday, Venus hour",
+                    duration: "30 days"
                 },
-                tradition: "Christian",
-                category: ["death", "transition"],
-                tags: ["death", "christian", "dying", "transition"]
+                tradition: "Folk Magic",
+                category: ["love"],
+                tags: ["soulmate", "love", "honey jar", "attraction"],
+                isFree: false
             },
             {
                 id: 52,
-                title: "Islamic Prayer for the Dying",
-                prayer: "La ilaha illallah. There is no god but Allah. Muhammadun rasulullah.",
+                title: "Prayer for Marriage Blessing",
+                prayer: "Bless this marriage, keep us united through all challenges.",
                 ritual: {
-                    title: "Shahada at Deathbed",
-                    instructions: "Help dying person recite shahada. Turn toward Mecca.",
-                    items: ["Quran", "Prayer mat", "Water"],
-                    timing: "Final moments",
-                    duration: "Until passing"
+                    title: "Handfasting Renewal",
+                    instructions: "Tie hands with cord, renew vows, share wine.",
+                    items: ["Cord", "Wine", "Rings", "Flowers"],
+                    timing: "Anniversary",
+                    duration: "Ceremony"
                 },
-                tradition: "Islamic",
-                category: ["death", "transition"],
-                tags: ["death", "islamic", "shahada", "transition"]
+                tradition: "Universal",
+                category: ["love", "family"],
+                tags: ["marriage", "wedding", "union", "commitment"],
+                isFree: false
             },
             {
                 id: 53,
-                title: "Jewish Prayer for Mourning - Kaddish",
-                prayer: "Yitgadal v'yitkadash sh'mei raba... Magnified and sanctified be His great name.",
+                title: "Prayer for Self-Love",
+                prayer: "I love and accept myself completely. I am worthy of love and happiness.",
                 ritual: {
-                    title: "Kaddish Recitation",
-                    instructions: "Recite Kaddish with minyan for 11 months. Light yahrzeit candle.",
-                    items: ["Prayer book", "Tallit", "Yahrzeit candle", "Kippah"],
-                    timing: "Daily for 11 months",
-                    duration: "11 months"
+                    title: "Mirror Work",
+                    instructions: "Look in mirror, say affirmations with hand on heart.",
+                    items: ["Mirror", "Journal", "Rose oil"],
+                    timing: "Morning",
+                    duration: "21 days"
                 },
-                tradition: "Jewish",
-                category: ["death", "grief"],
-                tags: ["death", "jewish", "kaddish", "mourning"]
+                tradition: "Universal",
+                category: ["healing", "love"],
+                tags: ["self-love", "self-esteem", "confidence", "acceptance"],
+                isFree: false
             },
             {
                 id: 54,
-                title: "Buddhist Prayer for the Dying",
-                prayer: "May you go to pure land. May you be free from suffering. May you attain enlightenment.",
+                title: "Prayer to Heal a Broken Heart",
+                prayer: "Divine healer, mend my broken heart. Replace pain with peace.",
                 ritual: {
-                    title: "Phowa Practice",
-                    instructions: "Guide consciousness through crown chakra. Recite Buddha names.",
-                    items: ["Buddha image", "Incense", "Bell", "White cloth"],
-                    timing: "During dying process",
-                    duration: "Until passing"
+                    title: "Rose Quartz Bath",
+                    instructions: "Bath with rose quartz and rose petals, release tears.",
+                    items: ["Rose quartz", "Rose petals", "Epsom salts", "Pink candle"],
+                    timing: "Waning moon",
+                    duration: "Until healed"
                 },
-                tradition: "Buddhist",
-                category: ["death", "transition"],
-                tags: ["death", "buddhist", "phowa", "transition"]
+                tradition: "Universal",
+                category: ["healing", "love"],
+                tags: ["heartbreak", "healing", "grief", "emotional"],
+                isFree: false
             },
             {
                 id: 55,
-                title: "Hindu Prayer for the Dead - Antyesti",
-                prayer: "Om tryambakam yajamahe sugandhim pushtivardhanam. We worship the three-eyed Lord.",
+                title: "Prayer for Family Harmony",
+                prayer: "Bring peace to our family. Heal old wounds and unite us in love.",
                 ritual: {
-                    title: "Antyesti Rituals",
-                    instructions: "Perform last rites. Offer pinda (rice balls) and water.",
-                    items: ["Sacred fire", "Rice", "Ghee", "Water", "Tulsi leaves"],
-                    timing: "After death",
-                    duration: "13 days of rituals"
+                    title: "Family Dinner Blessing",
+                    instructions: "Light candle during family meal, each person shares gratitude.",
+                    items: ["Candle", "Shared meal", "Photos"],
+                    timing: "Sunday dinner",
+                    duration: "Weekly"
                 },
-                tradition: "Hindu",
-                category: ["death", "rituals"],
-                tags: ["death", "hindu", "antyeshti", "rituals"]
+                tradition: "Universal",
+                category: ["family", "peace"],
+                tags: ["family", "harmony", "peace", "unity"],
+                isFree: false
             },
             {
                 id: 56,
-                title: "Ancient Egyptian Book of the Dead Prayer",
-                prayer: "My heart is pure. I have not sinned. Let me pass into the Field of Reeds.",
+                title: "Aphrodite Prayer for Beauty",
+                prayer: "Aphrodite, goddess of love, bless me with beauty and grace.",
                 ritual: {
-                    title: "Weighing of the Heart Ritual",
-                    instructions: "Place heart scarab amulet on body. Recite negative confessions.",
-                    items: ["Heart scarab", "Papyrus with prayers", "Incense", "Food offerings"],
-                    timing: "During mummification",
-                    duration: "Funeral rites"
+                    title: "Sea Foam Beauty Bath",
+                    instructions: "Bath with sea salt, honey, and rose oil.",
+                    items: ["Sea salt", "Honey", "Rose oil", "Sea shells"],
+                    timing: "Friday",
+                    duration: "7 Fridays"
                 },
-                tradition: "Ancient Egyptian",
-                category: ["death", "afterlife"],
-                tags: ["death", "egyptian", "afterlife", "book of dead"]
+                tradition: "Greek",
+                category: ["love"],
+                tags: ["aphrodite", "beauty", "greek", "love", "goddess"],
+                isFree: false
             },
             {
                 id: 57,
-                title: "Native American Prayer for the Dead",
-                prayer: "Go to spirit world. Join ancestors. Watch over us from other side.",
+                title: "Prayer for Fertility",
+                prayer: "Divine Mother, bless my womb. Bring forth new life.",
                 ritual: {
-                    title: "Feast for the Dead",
-                    instructions: "Prepare favorite foods of deceased. Place at grave or burn offerings.",
-                    items: ["Food offerings", "Tobacco", "Feather", "Drum"],
-                    timing: "Anniversary of death",
-                    duration: "Annual remembrance"
+                    title: "Moon Cycle Meditation",
+                    instructions: "Meditate during ovulation, place crystals on womb.",
+                    items: ["Moonstone", "Garnet", "Fertility symbols"],
+                    timing: "Ovulation",
+                    duration: "Each cycle"
                 },
-                tradition: "Native American",
-                category: ["death", "ancestors"],
-                tags: ["death", "native american", "ancestors", "mourning"]
+                tradition: "Universal",
+                category: ["birth", "fertility"],
+                tags: ["fertility", "conception", "pregnancy", "womb"],
+                isFree: false
             },
             {
                 id: 58,
-                title: "Celtic Samhain Prayer",
-                prayer: "Ancestors, thin veil between worlds, we honor you. Visit us, guide us, protect us.",
+                title: "Prayer for Lasting Friendship",
+                prayer: "Bless my friendships with loyalty, trust, and joy.",
                 ritual: {
-                    title: "Dumb Supper",
-                    instructions: "Set place at table for ancestors. Eat in silence, listening for messages.",
-                    items: ["Extra place setting", "Food", "Candle", "Photos of deceased"],
-                    timing: "Samhain/Halloween",
-                    duration: "Annual"
+                    title: "Friendship Bracelet Exchange",
+                    instructions: "Make bracelets together, tie on each other's wrists.",
+                    items: ["Thread", "Beads", "Shared meal"],
+                    timing: "Any time",
+                    duration: "One ceremony"
                 },
-                tradition: "Celtic",
-                category: ["death", "ancestors"],
-                tags: ["death", "celtic", "samhain", "ancestors"]
+                tradition: "Universal",
+                category: ["love", "general"],
+                tags: ["friendship", "friends", "loyalty", "connection"],
+                isFree: false
             },
             {
                 id: 59,
-                title: "Mexican Day of the Dead Prayer",
-                prayer: "Abuelitos, tíos, familia, vengan a visitar. Ofrecemos flores, comida, amor.",
+                title: "Oshun Prayer for Love",
+                prayer: "Oshun, sweet river goddess, open my heart to receive love.",
                 ritual: {
-                    title: "Ofrenda Creation",
-                    instructions: "Create altar with photos, marigolds, food, and possessions of deceased.",
-                    items: ["Photos", "Marigolds", "Favorite foods", "Candles", "Sugar skulls"],
-                    timing: "Día de los Muertos",
-                    duration: "Nov 1-2 annually"
+                    title: "River Offering",
+                    instructions: "Bring honey, oranges, and flowers to river.",
+                    items: ["Honey", "Oranges", "Sunflowers", "Copper"],
+                    timing: "Saturday",
+                    duration: "5 Saturdays"
                 },
-                tradition: "Mexican",
-                category: ["death", "ancestors"],
-                tags: ["death", "mexican", "day of dead", "ancestors"]
+                tradition: "Yoruba",
+                category: ["love", "money"],
+                tags: ["oshun", "yoruba", "river", "love", "orisha"],
+                isFree: false
             },
             {
                 id: 60,
-                title: "Zoroastrian Prayer for the Dead",
-                prayer: "May your soul cross Chinvat Bridge to House of Song. May you dwell in Garothman.",
+                title: "Prayer for Relationship Reconciliation",
+                prayer: "Heal our differences and bring us back together in love.",
                 ritual: {
-                    title: "Tower of Silence Ritual",
-                    instructions: "Expose body to elements and vultures. Pray for soul's journey.",
-                    items: ["Fire", "Sandalwood", "Milk", "Flowers"],
-                    timing: "After death",
-                    duration: "4 days of prayers"
+                    title: "Cord Cutting and Reconnecting",
+                    instructions: "Cut cord symbolically, then retie with pink ribbon.",
+                    items: ["Ribbon", "Scissors", "Photos", "Pink candle"],
+                    timing: "Venus hour",
+                    duration: "Single ritual"
                 },
-                tradition: "Zoroastrian",
-                category: ["death", "rituals"],
-                tags: ["death", "zoroastrian", "afterlife", "rituals"]
+                tradition: "Universal",
+                category: ["love", "healing"],
+                tags: ["reconciliation", "relationship", "forgiveness", "love"],
+                isFree: false
             },
 
-            // ========== CAREER & SUCCESS (20 prayers) ==========
+            // === PRAYERS 61-70: Money & Career (All Premium) ===
             {
                 id: 61,
                 title: "Prayer for Job Interview Success",
-                prayer: "Grant me confidence to showcase my skills. Help me speak with clarity and wisdom.",
+                prayer: "Grant me confidence, clarity, and the right words to succeed.",
                 ritual: {
-                    title: "Interview Preparation Ritual",
-                    instructions: "Dress in interview clothes early. Practice answers before mirror with confidence visualization.",
-                    items: ["Interview outfit", "Mirror", "Resume copy", "Confidence oil"],
-                    timing: "Morning of interview",
-                    duration: "Before interview"
+                    title: "Green Candle Preparation",
+                    instructions: "Dress green candle with success oil, carve name, burn before interview.",
+                    items: ["Green candle", "Success oil", "Resume copy"],
+                    timing: "Night before interview",
+                    duration: "Single use"
                 },
-                tradition: "Interfaith",
+                tradition: "Universal",
                 category: ["career", "success"],
-                tags: ["job", "interview", "success", "career"]
+                tags: ["job", "interview", "success", "career"],
+                isFree: false
             },
             {
                 id: 62,
-                title: "Prayer for Promotion",
-                prayer: "May my work be recognized. May advancement come at right time.",
+                title: "Prayer for Business Success",
+                prayer: "Bless my business with prosperity, growth, and happy customers.",
                 ritual: {
-                    title: "Professional Altar",
-                    instructions: "Create small work altar with symbols of your goals. Light candle while visualizing promotion.",
-                    items: ["Candle", "Symbols of goals", "Business card", "Vision board"],
-                    timing: "New moon",
-                    duration: "Until promotion comes"
+                    title: "Prosperity Bowl",
+                    instructions: "Create bowl with rice, coins, cinnamon, and business card.",
+                    items: ["Rice", "Coins", "Cinnamon", "Business card", "Green candle"],
+                    timing: "Thursday",
+                    duration: "Renew monthly"
                 },
-                tradition: "Interfaith",
-                category: ["career", "success"],
-                tags: ["promotion", "career", "advancement", "work"]
+                tradition: "Universal",
+                category: ["money", "career"],
+                tags: ["business", "success", "prosperity", "entrepreneur"],
+                isFree: false
             },
             {
                 id: 63,
-                title: "Prayer for Business Opening",
-                prayer: "Bless this venture. May it prosper while serving community well.",
+                title: "Prayer for Debt Relief",
+                prayer: "Divine abundance, release me from debt and financial burden.",
                 ritual: {
-                    title: "Grand Opening Blessing",
-                    instructions: "Walk through space with incense or sage. Bless each area for specific purpose.",
-                    items: ["Sage/incense", "Salt", "Water", "Coins"],
-                    timing: "Before opening",
-                    duration: "Opening ceremony"
+                    title: "Debt Release Ceremony",
+                    instructions: "Write debts on paper, burn, visualize freedom.",
+                    items: ["Paper", "Pen", "Fire-safe bowl", "Green candle"],
+                    timing: "New moon",
+                    duration: "Monthly until debt-free"
                 },
-                tradition: "Interfaith",
-                category: ["career", "business"],
-                tags: ["business", "opening", "success", "venture"]
+                tradition: "Universal",
+                category: ["money"],
+                tags: ["debt", "money", "relief", "financial"],
+                isFree: false
             },
             {
                 id: 64,
-                title: "Prayer for Creativity at Work",
-                prayer: "Divine Muse, flow through me. Let ideas come like rushing river.",
+                title: "Prayer for Promotion",
+                prayer: "My work is recognized and rewarded. I am ready for advancement.",
                 ritual: {
-                    title: "Creative Space Activation",
-                    instructions: "Create inspiring workspace. Keep fresh flowers. Play inspiring music while working.",
-                    items: ["Fresh flowers", "Inspiring art", "Music", "Notebook"],
-                    timing: "When starting creative work",
-                    duration: "Work session"
+                    title: "Desk Blessing",
+                    instructions: "Bless workspace with holy water or Florida water.",
+                    items: ["Florida water", "Bay leaves", "Cinnamon stick"],
+                    timing: "Monday morning",
+                    duration: "Until promotion"
                 },
-                tradition: "Interfaith",
-                category: ["career", "creativity"],
-                tags: ["creativity", "work", "inspiration", "muse"]
+                tradition: "Universal",
+                category: ["career", "success"],
+                tags: ["promotion", "career", "advancement", "work"],
+                isFree: false
             },
             {
                 id: 65,
-                title: "Prayer for Workplace Harmony",
-                prayer: "May respect flow between colleagues. May conflicts resolve in understanding.",
+                title: "Prayer for Gambling Luck",
+                prayer: "Lady Luck, smile upon me. Bring me fortune today.",
                 ritual: {
-                    title: "Office Peace Ritual",
-                    instructions: "Place amethyst or rose quartz in workspace. Visualize harmonious interactions.",
-                    items: ["Amethyst", "Rose quartz", "Peaceful image", "Lavender"],
-                    timing: "Monday morning",
-                    duration: "Ongoing"
+                    title: "Lucky Hand Charm",
+                    instructions: "Carry lucky charm, rub before playing.",
+                    items: ["Lucky charm", "Money blessing oil", "Green candle"],
+                    timing: "Friday",
+                    duration: "As needed"
                 },
-                tradition: "Interfaith",
-                category: ["career", "harmony"],
-                tags: ["workplace", "harmony", "peace", "colleagues"]
+                tradition: "Folk Magic",
+                category: ["money"],
+                tags: ["luck", "gambling", "fortune", "money"],
+                isFree: false
             },
-
-            // ========== FAMILY & HOME (15 prayers) ==========
             {
                 id: 66,
-                title: "Prayer for Family Unity",
-                prayer: "Bind us together in love. May our home be sanctuary of peace.",
+                title: "Prayer for Selling Property",
+                prayer: "Bring the right buyer quickly. Let this sale be smooth and profitable.",
                 ritual: {
-                    title: "Family Altar Creation",
-                    instructions: "Create family altar with photos, symbols, and candle. Gather weekly for shared prayer.",
-                    items: ["Family photos", "Candle", "Unity symbols", "Journal"],
-                    timing: "Weekly family time",
-                    duration: "Weekly"
+                    title: "Bay Leaf Wish",
+                    instructions: "Write 'SOLD' on bay leaf, burn while visualizing sale.",
+                    items: ["Bay leaf", "Pen", "Fire-safe dish", "Cinnamon"],
+                    timing: "Thursday",
+                    duration: "Until sold"
                 },
-                tradition: "Interfaith",
-                category: ["family", "unity"],
-                tags: ["family", "unity", "home", "peace"]
+                tradition: "Folk Magic",
+                category: ["money"],
+                tags: ["real estate", "sale", "property", "selling"],
+                isFree: false
             },
             {
                 id: 67,
-                title: "Prayer for Children's Protection",
-                prayer: "Guardian angels, watch over my children. Keep them safe in body, pure in heart.",
+                title: "Prayer for Investment Returns",
+                prayer: "Bless my investments with growth and protection.",
                 ritual: {
-                    title: "Children's Bedtime Blessing",
-                    instructions: "Bless each child before sleep. Make sign of protection over them.",
-                    items: ["Blessed oil", "Prayer book", "Night light", "Comfort object"],
-                    timing: "Bedtime",
-                    duration: "Nightly"
+                    title: "Money Drawing Candle",
+                    instructions: "Burn green candle dressed with money oil on investment documents.",
+                    items: ["Green candle", "Money oil", "Investment papers"],
+                    timing: "Thursday",
+                    duration: "Ongoing"
                 },
-                tradition: "Interfaith",
-                category: ["family", "protection"],
-                tags: ["children", "protection", "family", "safety"]
+                tradition: "Universal",
+                category: ["money"],
+                tags: ["investment", "stocks", "returns", "wealth"],
+                isFree: false
             },
             {
                 id: 68,
-                title: "Prayer for Harmonious Home",
-                prayer: "May this home be filled with laughter. May walls absorb love, not anger.",
+                title: "Prayer for New Job",
+                prayer: "Open doors to the perfect job for my skills and purpose.",
                 ritual: {
-                    title: "Home Cleansing Ritual",
-                    instructions: "Clean home thoroughly. Then spiritually cleanse with salt water and blessings.",
-                    items: ["Salt", "Water", "Broom", "Incense"],
-                    timing: "New moon",
-                    duration: "Complete cleaning"
+                    title: "Road Opening",
+                    instructions: "Place cinnamon sticks at front door, sweep outward.",
+                    items: ["Cinnamon sticks", "Broom", "Job applications"],
+                    timing: "Sunday",
+                    duration: "7 days"
                 },
-                tradition: "Interfaith",
-                category: ["family", "home"],
-                tags: ["home", "harmony", "cleansing", "family"]
+                tradition: "Folk Magic",
+                category: ["career"],
+                tags: ["job", "employment", "work", "career"],
+                isFree: false
             },
             {
                 id: 69,
-                title: "Prayer for Parent-Child Understanding",
-                prayer: "Bridge gap between generations. Let us see each other's hearts.",
+                title: "Prayer for Exam Success",
+                prayer: "Grant me memory, clarity, and calm during my exams.",
                 ritual: {
-                    title: "Shared Activity Ritual",
-                    instructions: "Choose activity to do together without devices. Focus on listening, not lecturing.",
-                    items: ["Shared activity materials", "Open mind", "Patience", "Tea/coffee"],
-                    timing: "Weekly quality time",
-                    duration: "Regular practice"
+                    title: "Rosemary Study",
+                    instructions: "Place rosemary on desk while studying, wear as crown.",
+                    items: ["Rosemary", "Blue candle", "Study materials"],
+                    timing: "Before exams",
+                    duration: "Exam period"
                 },
-                tradition: "Interfaith",
-                category: ["family", "understanding"],
-                tags: ["parenting", "understanding", "family", "communication"]
+                tradition: "Universal",
+                category: ["career", "success"],
+                tags: ["exam", "study", "test", "education", "success"],
+                isFree: false
             },
             {
                 id: 70,
-                title: "Prayer for Family Meals",
-                prayer: "Bless this food, nourish our bodies. Bless this time, nourish our bonds.",
+                title: "Prayer for Career Change",
+                prayer: "Guide me to the right path. Open doors to my true calling.",
                 ritual: {
-                    title: "Gratitude Meal Ritual",
-                    instructions: "Before eating, each shares one gratitude. Eat first few bites in silence of appreciation.",
-                    items: ["Food", "Candle", "Gratitude journal", "Bell"],
-                    timing: "Meal times",
-                    duration: "Daily practice"
+                    title: "Career Path Visualization",
+                    instructions: "Visualize new career, write action steps, light candle.",
+                    items: ["Journal", "Pen", "Yellow candle", "Career materials"],
+                    timing: "New moon",
+                    duration: "Until change occurs"
+                },
+                tradition: "Universal",
+                category: ["career"],
+                tags: ["career change", "calling", "purpose", "transition"],
+                isFree: false
+            },
+
+            // === PRAYERS 71-77: Mixed Traditions (All Premium) ===
+            {
+                id: 71,
+                title: "Slavic Prayer to Mokosh for Fertility & Safe Birth",
+                prayer: "Mokosh, Mother Earth, spinner of fate and protector of women, weave strong thread of life in this womb. Guard mother and child as you guard the fields. Let the child come whole, strong, and blessed by your fertile hands.",
+                ritual: {
+                    title: "Earth & Thread Ritual",
+                    instructions: "Bury a small clay figure or red thread in fertile soil. Water daily with milk while praying. Retrieve thread on 9th day and wear until birth.",
+                    items: ["Red thread", "Clay figure", "Milk", "Soil", "Candle"],
+                    timing: "Waxing moon, spring preferred",
+                    duration: "9 days + carry thread"
+                },
+                tradition: "Slavic",
+                category: ["birth", "fertility", "protection"],
+                tags: ["mokosh", "slavic", "fertility", "birth", "earth"],
+                isFree: false
+            },
+            {
+                id: 72,
+                title: "St. Gerard Majella – Patron of Expectant Mothers",
+                prayer: "Good St. Gerard, powerful intercessor and friend of expectant mothers, protect this mother and child. Obtain for us safe delivery and healthy child.",
+                ritual: {
+                    title: "Medal & Candle Devotion",
+                    instructions: "Place St. Gerard medal near bed. Light white candle daily, touch belly or medal while praying.",
+                    items: ["St. Gerard medal", "White candle", "Flower", "Prayer card"],
+                    timing: "Morning",
+                    duration: "Throughout pregnancy"
+                },
+                tradition: "Catholic",
+                category: ["birth", "protection"],
+                tags: ["st gerard", "catholic", "pregnancy", "motherhood"],
+                isFree: false
+            },
+            {
+                id: 73,
+                title: "St. Joseph of Cupertino – Success in Exams & Interviews",
+                prayer: "Humble St. Joseph of Cupertino, who received divine help in studies, grant me clarity, memory, and confidence in this examination / interview.",
+                ritual: {
+                    title: "Study Desk Blessing",
+                    instructions: "Place image of St. Joseph on desk. Light yellow candle before studying. Recite prayer ×3.",
+                    items: ["St. Joseph image", "Yellow candle", "Study notes"],
+                    timing: "Before study/exam",
+                    duration: "Preparation period"
+                },
+                tradition: "Catholic",
+                category: ["career", "success"],
+                tags: ["exam", "interview", "st joseph", "study", "catholic"],
+                isFree: false
+            },
+            {
+                id: 74,
+                title: "Ganesh Mantra – Remove Obstacles in Career",
+                prayer: "Om Gam Ganapataye Namaha. O Ganesh, destroyer of obstacles, clear my path to success. Grant wisdom, favor, and right timing.",
+                ritual: {
+                    title: "Modak & Japa Ritual",
+                    instructions: "Offer sweets before Ganesh image. Chant mantra 108× using mala before important meeting or interview.",
+                    items: ["Ganesh image", "Sweets", "Mala beads", "Incense"],
+                    timing: "Morning before event",
+                    duration: "Single or 21 days"
+                },
+                tradition: "Hindu",
+                category: ["career", "success"],
+                tags: ["ganesh", "obstacles", "career", "interview", "hindu"],
+                isFree: false
+            },
+            {
+                id: 75,
+                title: "Prayer for Calm & Confidence Before Interview",
+                prayer: "Divine Light, quiet my mind and strengthen my voice. Let me speak truth with clarity and attract the right opportunity.",
+                ritual: {
+                    title: "Breath & Light Visualization",
+                    instructions: "Sit quietly 5–10 min. Breathe deeply ×10 while visualizing golden light in throat & heart.",
+                    items: ["Quiet space", "Water", "Calming stone (optional)"],
+                    timing: "Right before interview",
+                    duration: "Short session"
                 },
                 tradition: "Interfaith",
-                category: ["family", "gratitude"],
-                tags: ["family", "meals", "gratitude", "bonding"]
+                category: ["career", "success"],
+                tags: ["interview", "calm", "confidence", "job"],
+                isFree: false
+            },
+            {
+                id: 76,
+                title: "Prayer to Archangel Michael for Urgent Protection",
+                prayer: "Archangel Michael, prince of the heavenly host, defend us in battle. Be our protection against wickedness and snares of the devil.",
+                ritual: {
+                    title: "Blue Flame Shield",
+                    instructions: "Visualize blue flame surrounding you. Recite prayer 3× while holding blue candle or stone.",
+                    items: ["Blue candle or lapis", "Holy water (optional)"],
+                    timing: "When feeling threatened",
+                    duration: "As needed"
+                },
+                tradition: "Christian / Angelic",
+                category: ["protection", "emergency"],
+                tags: ["michael", "protection", "emergency", "archangel"],
+                isFree: false
+            },
+            {
+                id: 77,
+                title: "Yemaya Prayer for Emotional Healing & Money Flow",
+                prayer: "Yemaya, mother of waters, wash away sorrow and bring gentle abundance. Let money flow like your ocean waves to my hands.",
+                ritual: {
+                    title: "Sea Water Offering",
+                    instructions: "Pour sea water or salted water into bowl. Add coins and blue flowers. Pray at edge of water if possible.",
+                    items: ["Bowl", "Sea water/salt", "Coins", "Blue flowers"],
+                    timing: "Friday or full moon",
+                    duration: "7 days"
+                },
+                tradition: "Yoruba / Santería",
+                category: ["healing", "money"],
+                tags: ["yemaya", "emotional healing", "money", "yoruba"],
+                isFree: false
+            },
+            
+            // === NEW IGBO PRAYERS 78-83 (All Premium) ===
+            {
+                id: 78,
+                title: "Igbo Morning Prayer with Kola Nut (Ịgọ Ọjị Ụtụtụ)",
+                prayer: "Chineke, Chukwu Okike Abiama, who created heaven and earth, accept this kola nut. Agu my father, Okaibe, Ogbaugu, Ezenna—come and chew. You caused the kola tree to grow and bear fruit. Take the biggest share. May this day bring long life, good health, prosperity, good children, and peace in our land. Iseee!",
+                ritual: {
+                    title: "Kola Nut Offering Ritual",
+                    instructions: "Hold the kola nut (preferably ọjị Igbo/ọjị ugo). Break it in the presence of family or alone at dawn. Speak the prayer while offering pieces first to ancestors/Chi, then to the living. Eat the cotyledons together if with others. Spit a small piece or pour libation if using wine.",
+                    items: ["Kola nut (ọjị)", "Small plate or ọkwá bowl", "Palm wine or water for libation (optional)", "Nzu (white chalk) to mark forehead if desired"],
+                    timing: "Dawn / morning, any day but especially market days (Eke, Orie, Afo, Nkwo)",
+                    duration: "Daily or at gatherings"
+                },
+                tradition: "Igbo Traditional",
+                category: ["blessing", "ancestors", "prosperity"],
+                tags: ["morning prayer", "kola nut", "chineke", "ancestors", "ọjị", "igbo", "libation"],
+                isFree: false
+            },
+            {
+                id: 79,
+                title: "Prayer to Chi for Personal Success & Protection",
+                prayer: "Chi m eze, my personal guardian spirit given by Chukwu Okike, guide my steps today. Protect me from evil eyes and wicked hands. Let my hands work prosperously, my mouth speak wisdom, and my path be clear of obstacles. Grant me ikenga strength and long life. Iseee!",
+                ritual: {
+                    title: "Chi Invocation with Nzu",
+                    instructions: "Mark your forehead or right hand with nzu (white chalk) in the morning. Face east or your personal altar. Speak the prayer aloud 3–7 times while visualizing light around you. Offer a small coin or kola piece to your Chi.",
+                    items: ["Nzu (white chalk)", "Small mirror or personal item representing your Chi", "Kola nut or coin as offering"],
+                    timing: "Morning upon waking",
+                    duration: "Daily for ongoing protection/success"
+                },
+                tradition: "Igbo Traditional",
+                category: ["protection", "success", "career"],
+                tags: ["chi", "personal guardian", "protection", "success", "nzu", "ikenga"],
+                isFree: false
+            },
+            {
+                id: 80,
+                title: "Igbo Prayer for Prosperity & Business Breakthrough",
+                prayer: "Chukwu Okike, Chineke nke m, source of all abundance, open the gates of wealth for me. As the river flows without end, let money and opportunities flow to my hands. May my farm/business yield plenty, my customers increase, and no evil devour my labor. Protect my hustle and let me eat the fruit of my hands in peace. Iseee!",
+                ritual: {
+                    title: "Market Day Offering",
+                    instructions: "On Eke/Orie/Afo/Nkwo market day, take a small kola nut or palm wine to your shop/business place or crossroads. Pour libation to ancestors and Chukwu while praying. Bury a small coin in soil near entrance as seed of prosperity.",
+                    items: ["Kola nut", "Palm wine", "Coin or small money", "Small calabash for libation"],
+                    timing: "Market days or when starting new venture",
+                    duration: "Repeat weekly or at new moon"
+                },
+                tradition: "Igbo Traditional",
+                category: ["money", "prosperity", "business"],
+                tags: ["prosperity", "business", "chukwu okike", "libation", "market day"],
+                isFree: false
+            },
+            {
+                id: 81,
+                title: "Prayer for Fertility & Safe Childbearing (To Alusi Ọmụmụ)",
+                prayer: "Chineke, who gives children, and Alusi Ọmụmụ of our land, look upon this womb. As you bless the fields with yam and corn, bless this woman with strong, healthy children. Remove barrenness, protect from miscarriage, and grant easy delivery. Let the child come with chi that shines bright. Iseee!",
+                ritual: {
+                    title: "Yam & Water Offering",
+                    instructions: "Place a small yam tuber and bowl of clean water on white cloth. Pray over it daily. Wife (or couple) dips hands in water while chanting. Offer at family shrine or under sacred tree.",
+                    items: ["Small yam", "Bowl of water", "White cloth", "Kola nut"],
+                    timing: "Waxing moon or Eke day",
+                    duration: "7–21 days or throughout trying period"
+                },
+                tradition: "Igbo Traditional",
+                category: ["birth", "fertility"],
+                tags: ["fertility", "childbearing", "ọmụmụ", "chineke", "igbo"],
+                isFree: false
+            },
+            {
+                id: 82,
+                title: "Ancestral Protection Prayer (Against Evil Forces)",
+                prayer: "Ndị ichie anyị, ancestors of our lineage, stand as shield around us. You who walked this land before us, drive away evil spirits, enemies known and unknown, and any who wish us harm. With your ofọ and ọgu, declare us innocent and victorious. Chukwu Okike witness this call. Iseee!",
+                ritual: {
+                    title: "Libation to Ancestors",
+                    instructions: "Pour palm wine or water on ground (or into small hole). Hold kola nut while praying. Call names of known ancestors if remembered. End by saying 'Iseee' three times.",
+                    items: ["Palm wine / clean water", "Kola nut", "Small ground spot or ancestral pot"],
+                    timing: "Evening or when danger felt",
+                    duration: "As needed, or weekly"
+                },
+                tradition: "Igbo Traditional",
+                category: ["protection", "ancestors", "emergency"],
+                tags: ["ancestors", "ndị ichie", "protection", "libation", "ofọ"],
+                isFree: false
+            },
+            {
+                id: 83,
+                title: "Healing Prayer to Chukwu & Ancestors",
+                prayer: "Chukwu Okike Abiama, great healer, and our healing ancestors, send your medicine into this body. Remove sickness as wind removes dry leaves. Restore strength, vitality, and wholeness. Let no disease linger. By your power, health returns. Iseee!",
+                ritual: {
+                    title: "Herbal Water Blessing",
+                    instructions: "Place clean water in bowl with medicinal leaf (like scent leaf/efirin if available). Pray over it morning and night. Drink or bathe with it while affirming healing.",
+                    items: ["Bowl of water", "Medicinal herbs/leaves", "Kola nut for offering"],
+                    timing: "Morning and evening during illness",
+                    duration: "Until recovery"
+                },
+                tradition: "Igbo Traditional",
+                category: ["health", "healing"],
+                tags: ["healing", "chukwu okike", "ancestors", "igbo medicine"],
+                isFree: false
             }
         ];
 
-        // SOUL'S ODDS PRAYERS
+        // ==============================================
+        // SOUL'S ODDS - EXTREME MIRACLE PRAYERS (Premium)
+        // ==============================================
         const SOULS_ODDS_PRAYERS = [
             {
-                title: "Ancient Sumerian Prayer for Terminal Illness Reversal",
-                prayer: "Enki, god of wisdom and healing, who knows the plant of life and the water of life, look upon this afflicted one. As you restored Inanna from the underworld, restore health to this body. Let the illness retreat like darkness before dawn.",
-                ritual: "Create clay tablet with sick person's name. At sunset, place in flowing water with seven healing herbs while chanting for seven nights.",
-                tradition: "Ancient Sumerian",
-                odds: "1 in 10,000"
+                id: 'odds1',
+                title: "The Lazarus Prayer - For Resurrection of Lost Causes",
+                prayer: "By the power that called Lazarus from the tomb, I call forth life into this dead situation. What was lost shall be found. What was dead shall live again. Every grave shall open, every stone shall roll away.",
+                ritual: {
+                    title: "Tomb & Resurrection Ritual",
+                    instructions: "Write dead situation on paper. Place in box for 3 days (tomb). On 3rd day, burn paper at sunrise (resurrection). Scatter ashes to wind while declaring 'It is alive again!'",
+                    items: ["Box (tomb)", "Paper", "Red candle", "Sunrise location", "Scattering wind"],
+                    timing: "Sunrise, 3 consecutive days",
+                    duration: "3 days, climax on 3rd day"
+                },
+                tradition: "Miracle Mysticism",
+                odds: "1 in 100,000 - For the utterly impossible",
+                isFree: false
             },
             {
-                title: "Celtic Druid Prayer to Find Missing Person After Years",
-                prayer: "Spirits of the forest, eyes of the hawk, wisdom of the oak. Guide our search through dream and vision. Show us the path to the lost one. Let no veil of time or distance hide them from our seeking.",
-                ritual: "Tie personal item of missing to oak branch. Each dawn for nine days, walk sunwise around tree chanting while scattering oats for birds.",
-                tradition: "Celtic Druid",
-                odds: "Against all odds"
+                id: 'odds2',
+                title: "The Job's Prayer - For Restoration of Everything",
+                prayer: "I have lost all, yet I bless your name. I did not curse. Now, I claim double for my trouble. What the enemy stole, you will restore sevenfold. I shall see the latter rain greater than the former.",
+                ritual: {
+                    title: "Ashes to Beauty Ritual",
+                    instructions: "Wear sackcloth or simple cloth for 7 days. On 7th day, burn it with candle. From ashes, plant seeds of what you want restored. Water with tears of faith.",
+                    items: ["Sackcloth", "Fire-safe bowl", "Candle", "Seeds", "Pot with soil"],
+                    timing: "7 days, ending on Sunday",
+                    duration: "7 days of mourning, 1 day of restoration"
+                },
+                tradition: "Desert Mysticism",
+                odds: "1 in 50,000 - When you've lost everything",
+                isFree: false
             },
             {
-                title: "Tibetan Buddhist Prayer for Financial Miracle After Bankruptcy",
-                prayer: "Jambhala, treasure holder, shower your golden blessings. Turn dust into gold, despair into hope. May wealth flow like rivers in spring, unexpected, abundant, life-giving.",
-                ritual: "Place bowl of water with gold-colored coins before Buddha image. Each morning for 21 days, change water and chant prayer 108 times.",
-                tradition: "Tibetan Buddhist",
-                odds: "Divine intervention"
+                id: 'odds3',
+                title: "The Crossing Over Prayer - For Those at Death's Door",
+                prayer: "Angel of Death, pass over this house. I have marked the door with blood of covenant. Life, not death, is appointed. I shall live and not die, and declare the works of the Lord.",
+                ritual: {
+                    title: "Door Marking Ritual",
+                    instructions: "Mark doorpost with blessed oil or red thread. Place candle in window at night. Recite prayer 3x facing each direction. Keep vigil until crisis passes.",
+                    items: ["Blessed oil", "Red thread", "Candle", "Window", "Vigil keeper"],
+                    timing: "During life-threatening crisis",
+                    duration: "Until crisis passes"
+                },
+                tradition: "Ancient Covenant Path",
+                odds: "1 in 10,000 - Life and death threshold",
+                isFree: false
             }
         ];
 
         // ==============================================
-        // APPLICATION LOGIC
+        // APPLICATION STATE & LOGIC
         // ==============================================
-
-        // State
         let currentPrayers = [];
         let currentPage = 1;
         const prayersPerPage = 5;
+        let favorites = [];
         let isPremium = false;
+        let isLoading = false;
+        let error = null;
 
         // DOM Elements
         const prayerList = document.getElementById('prayerList');
         const pagination = document.getElementById('pagination');
         const oddsContainer = document.getElementById('oddsPrayers');
         const searchInput = document.getElementById('prayerSearch');
+        const totalPrayersSpan = document.getElementById('totalPrayers');
+        const premiumBtn = document.getElementById('premiumBtn');
+        const statusText = document.getElementById('statusText');
+        const premiumStatus = document.getElementById('premiumStatus');
 
         // Initialize
         function init() {
-            currentPrayers = ALL_PRAYERS;
-            renderPrayers();
-            renderPagination();
-            renderSoulsOdds();
-            setupEventListeners();
+            showLoading();
             
-            // Show initial message
-            prayerList.innerHTML = `
-                <div style="text-align: center; padding: 3rem; color: #FBBF24;">
-                    <h3 style="font-family: 'Cinzel', serif;">✨ Welcome to Umubilica™</h3>
-                    <p>You have access to ${ALL_PRAYERS.length} built-in prayers with complete rituals</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #94A3B8;">
-                        Use quick access buttons or search above • Premium unlocks additional features
-                    </p>
-                </div>
-            ` + prayerList.innerHTML;
+            try {
+                // Load favorites from localStorage
+                const savedFavorites = localStorage.getItem('umubilica_favorites');
+                favorites = savedFavorites ? JSON.parse(savedFavorites) : [];
+                
+                // Load premium status
+                const savedPremium = localStorage.getItem('umubilica_premium');
+                isPremium = savedPremium === 'true';
+                
+                updatePremiumStatus();
+                
+                // Verify it's an array
+                if (!Array.isArray(favorites)) favorites = [];
+                
+                currentPrayers = ALL_PRAYERS;
+                updatePrayerCount();
+                
+                // Small delay to show loading state
+                setTimeout(() => {
+                    renderPrayers();
+                    renderPagination();
+                    renderSoulsOdds();
+                    setupEventListeners();
+                    hideLoading();
+                }, 300);
+                
+            } catch (err) {
+                console.error('Initialization error:', err);
+                error = 'Failed to load prayers. Please refresh the page.';
+                showError(error);
+            }
         }
 
-        // Render prayers
-        function renderPrayers() {
-            prayerList.innerHTML = '';
+        function updatePremiumStatus() {
+            if (statusText && premiumStatus) {
+                if (isPremium) {
+                    statusText.textContent = 'Premium Active';
+                    premiumStatus.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+                    premiumStatus.style.color = 'white';
+                } else {
+                    statusText.textContent = 'Free Version (3 Free Samples)';
+                    premiumStatus.style.background = 'linear-gradient(135deg, var(--ancient-gold), #FBBF24)';
+                    premiumStatus.style.color = '#2C1810';
+                }
+            }
+        }
+
+        function showLoading() {
+            isLoading = true;
+            prayerList.innerHTML = `
+                <div class="loading-spinner" role="status" aria-live="polite">
+                    <i class="fas fa-circle-notch" aria-hidden="true"></i>
+                    <p>Loading sacred prayers...</p>
+                </div>`;
+        }
+
+        function hideLoading() {
+            isLoading = false;
+        }
+
+        function showError(message) {
+            prayerList.innerHTML = `
+                <div class="error-message" role="alert">
+                    <i class="fas fa-exclamation-triangle" style="font-size:3rem; margin-bottom:1rem;"></i>
+                    <h3>Something went wrong</h3>
+                    <p>${message}</p>
+                    <button onclick="init()" class="quick-btn">Try Again</button>
+                </div>`;
+        }
+
+        function showToast(message, type = 'success') {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
             
+            const icon = type === 'success' ? 'fa-check-circle' : 'fa-info-circle';
+            toast.innerHTML = `
+                <i class="fas ${icon}" style="margin-right:10px;"></i>
+                ${message}
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('fade-out');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function updatePrayerCount() {
+            if (totalPrayersSpan) {
+                totalPrayersSpan.textContent = ALL_PRAYERS.length;
+            }
+        }
+
+        function renderPrayers() {
+            if (isLoading) return;
+            
+            prayerList.innerHTML = '';
+
             const start = (currentPage - 1) * prayersPerPage;
             const end = start + prayersPerPage;
             const pagePrayers = currentPrayers.slice(start, end);
-            
+
             if (pagePrayers.length === 0) {
                 prayerList.innerHTML = `
-                    <div style="text-align: center; padding: 3rem; color: #94A3B8;">
-                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                        <h3>No Prayers Found</h3>
-                        <p>Try a different search or browse all prayers</p>
-                    </div>
-                `;
+                    <div style="text-align:center; padding:3rem; color:#94A3B8;">
+                        <i class="fas fa-search" style="font-size:3rem; margin-bottom:1rem; opacity:0.5;"></i>
+                        <h3>No prayers found</h3>
+                        <p>Try different keywords or <button class="quick-btn" onclick="showAllPrayers()">show all prayers</button></p>
+                    </div>`;
                 return;
             }
-            
+
             pagePrayers.forEach(prayer => {
                 const card = document.createElement('div');
                 card.className = 'prayer-card';
+                if (!prayer.isFree && !isPremium) {
+                    card.classList.add('premium-locked');
+                }
+                card.setAttribute('aria-labelledby', `prayer-title-${prayer.id}`);
+
+                const isFavorite = favorites.includes(prayer.id);
+                
+                // Determine badge
+                let badgeHtml = '';
+                if (prayer.isFree) {
+                    badgeHtml = `<span class="card-badge badge-free"><i class="fas fa-gift"></i> FREE SAMPLE</span>`;
+                } else if (isPremium) {
+                    badgeHtml = `<span class="card-badge badge-unlocked"><i class="fas fa-unlock"></i> UNLOCKED</span>`;
+                } else {
+                    badgeHtml = `<span class="card-badge badge-premium"><i class="fas fa-crown"></i> PREMIUM</span>`;
+                }
                 
                 card.innerHTML = `
                     <div class="card-header">
-                        <h3 class="card-title">${prayer.title}</h3>
+                        <h3 class="card-title" id="prayer-title-${prayer.id}">${escapeHtml(prayer.title)}</h3>
                         <div>
-                            <span class="card-tradition">${prayer.tradition}</span>
-                            ${prayer.category.map(cat => `
-                                <span class="card-tradition" style="background: rgba(30, 58, 138, 0.2); color: #60A5FA;">
-                                    ${cat}
-                                </span>
-                            `).join('')}
+                            ${badgeHtml}
+                            <span class="card-tradition">${escapeHtml(prayer.tradition)}</span>
+                            ${prayer.category.map(c => `<span class="card-tradition" style="background:rgba(30,58,138,0.2);color:#60A5FA;">${escapeHtml(c)}</span>`).join('')}
                         </div>
+                        <button class="favorite-btn" 
+                                data-id="${prayer.id}" 
+                                aria-label="${isFavorite ? 'Remove from' : 'Add to'} favorites"
+                                aria-pressed="${isFavorite}">
+                            ${isFavorite ? '★' : '☆'}
+                        </button>
                     </div>
-                    
                     <div class="card-content">
-                        <div class="prayer-text">"${prayer.prayer}"</div>
-                        
+                        <div class="prayer-text">"${escapeHtml(prayer.prayer)}"</div>
                         <div class="ritual-section">
-                            <h4 class="ritual-title">📿 ${prayer.ritual.title}</h4>
-                            <p>${prayer.ritual.instructions}</p>
-                            
-                            <div style="margin: 1rem 0; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 8px;">
-                                <strong>🕯️ Timing:</strong> ${prayer.ritual.timing}<br>
-                                <strong>⏳ Duration:</strong> ${prayer.ritual.duration}
+                            <h4 class="ritual-title">📿 ${escapeHtml(prayer.ritual.title)}</h4>
+                            <p>${escapeHtml(prayer.ritual.instructions)}</p>
+                            <div style="margin:1rem 0; padding:1rem; background:rgba(0,0,0,0.2);border-radius:8px;">
+                                <strong>🕯️ Timing:</strong> ${escapeHtml(prayer.ritual.timing)}<br>
+                                <strong>⏳ Duration:</strong> ${escapeHtml(prayer.ritual.duration)}
                             </div>
-                            
                             <div class="ritual-items">
-                                <strong>🔮 Required Items:</strong>
-                                ${prayer.ritual.items.map(item => `
-                                    <div class="ritual-item">
-                                        <i class="fas fa-circle" style="font-size: 0.5rem; color: var(--ancient-gold);"></i>
-                                        ${item}
-                                    </div>
+                                <strong>🔮 Items:</strong>
+                                ${prayer.ritual.items.map(i => `
+                                    <div class="ritual-item"><i class="fas fa-circle" style="font-size:0.5rem;color:var(--ancient-gold);"></i> ${escapeHtml(i)}</div>
                                 `).join('')}
                             </div>
                         </div>
-                        
-                        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(212, 175, 55, 0.2);">
-                            <small style="color: #94A3B8;">
-                                <i class="fas fa-hashtag"></i> 
-                                ${prayer.tags.map(tag => `<span style="background: rgba(30, 41, 59, 0.5); padding: 0.2rem 0.5rem; border-radius: 3px; margin-right: 0.5rem;">${tag}</span>`).join('')}
+                        <div style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid rgba(212,175,55,0.2);">
+                            <small style="color:#94A3B8;">
+                                ${prayer.tags.map(t => `<span style="background:rgba(30,41,59,0.5);padding:0.2rem 0.5rem;border-radius:3px;margin-right:0.5rem;">${escapeHtml(t)}</span>`).join('')}
                             </small>
                         </div>
                     </div>
                 `;
-                
+
+                // If premium and not unlocked, add overlay
+                if (!prayer.isFree && !isPremium) {
+                    const overlay = document.createElement('div');
+                    overlay.className = 'premium-lock-overlay';
+                    overlay.innerHTML = `
+                        <i class="fas fa-lock"></i>
+                        <p>Premium Prayer - Unlock Full Access</p>
+                        <button class="unlock-btn" onclick="document.getElementById('premium-sanctum').scrollIntoView({behavior:'smooth'})">
+                            <i class="fas fa-crown"></i> UNLOCK FOR $19/MONTH
+                        </button>
+                    `;
+                    card.appendChild(overlay);
+                }
+
+                // Favorite toggle
+                const favBtn = card.querySelector('.favorite-btn');
+                favBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(favBtn.dataset.id);
+                    toggleFavorite(id);
+                };
+
                 prayerList.appendChild(card);
             });
         }
 
-        // Render pagination
-        function renderPagination() {
-            pagination.innerHTML = '';
-            const totalPages = Math.ceil(currentPrayers.length / prayersPerPage);
-            
-            // Previous button
-            if (currentPage > 1) {
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'page-btn';
-                prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-                prevBtn.onclick = () => changePage(currentPage - 1);
-                pagination.appendChild(prevBtn);
-            }
-            
-            // Page numbers
-            for (let i = 1; i <= totalPages; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
-                pageBtn.textContent = i;
-                pageBtn.onclick = () => changePage(i);
-                pagination.appendChild(pageBtn);
-            }
-            
-            // Next button
-            if (currentPage < totalPages) {
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'page-btn';
-                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-                nextBtn.onclick = () => changePage(currentPage + 1);
-                pagination.appendChild(nextBtn);
+        // Helper to escape HTML and prevent XSS
+        function escapeHtml(unsafe) {
+            if (!unsafe) return '';
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function toggleFavorite(id) {
+            try {
+                if (favorites.includes(id)) {
+                    favorites = favorites.filter(f => f !== id);
+                    showToast('Removed from favorites');
+                } else {
+                    favorites.push(id);
+                    showToast('Added to favorites');
+                }
+                
+                localStorage.setItem('umubilica_favorites', JSON.stringify(favorites));
+                
+                // Update button states in current view
+                renderPrayers();
+                
+            } catch (err) {
+                console.error('Error saving favorite:', err);
+                showToast('Failed to save favorite', 'error');
             }
         }
 
-        // Render Soul's Odds
+        function renderPagination() {
+            pagination.innerHTML = '';
+            const totalPages = Math.ceil(currentPrayers.length / prayersPerPage);
+
+            if (totalPages <= 1) return;
+
+            // Previous button
+            if (currentPage > 1) {
+                const prev = document.createElement('button');
+                prev.className = 'page-btn';
+                prev.innerHTML = '<i class="fas fa-chevron-left" aria-hidden="true"></i>';
+                prev.setAttribute('aria-label', 'Previous page');
+                prev.onclick = () => changePage(currentPage - 1);
+                pagination.appendChild(prev);
+            }
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                btn.textContent = i;
+                btn.setAttribute('aria-label', `Page ${i}`);
+                btn.setAttribute('aria-current', i === currentPage ? 'page' : 'false');
+                btn.onclick = () => changePage(i);
+                pagination.appendChild(btn);
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                const next = document.createElement('button');
+                next.className = 'page-btn';
+                next.innerHTML = '<i class="fas fa-chevron-right" aria-hidden="true"></i>';
+                next.setAttribute('aria-label', 'Next page');
+                next.onclick = () => changePage(currentPage + 1);
+                pagination.appendChild(next);
+            }
+        }
+
         function renderSoulsOdds() {
+            if (!oddsContainer) return;
+            
             oddsContainer.innerHTML = '';
             
-            SOULS_ODDS_PRAYERS.forEach(prayer => {
+            SOULS_ODDS_PRAYERS.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'prayer-card';
+                if (!isPremium) {
+                    card.classList.add('premium-locked');
+                }
                 card.style.marginBottom = '1.5rem';
+                
+                const badgeHtml = isPremium ? 
+                    `<span class="card-badge badge-unlocked"><i class="fas fa-unlock"></i> UNLOCKED</span>` :
+                    `<span class="card-badge badge-premium"><i class="fas fa-crown"></i> PREMIUM</span>`;
                 
                 card.innerHTML = `
                     <div class="card-header">
-                        <h3 class="card-title">${prayer.title}</h3>
+                        <h3 class="card-title">${escapeHtml(p.title)}</h3>
                         <div>
-                            <span class="card-tradition">${prayer.tradition}</span>
-                            <span class="card-tradition" style="background: rgba(239, 68, 68, 0.2); color: #FCA5A5;">
-                                Odds: ${prayer.odds}
+                            ${badgeHtml}
+                            <span class="card-tradition">${escapeHtml(p.tradition)}</span>
+                            <span class="card-tradition" style="background:rgba(239,68,68,0.2);color:#FCA5A5;">
+                                Odds: ${escapeHtml(p.odds)}
                             </span>
                         </div>
                     </div>
                     <div class="card-content">
-                        <p style="font-style: italic; margin-bottom: 1.5rem;">"${prayer.prayer}"</p>
-                        
+                        <p style="font-style:italic; margin-bottom:1.5rem;">"${escapeHtml(p.prayer)}"</p>
                         <div class="ritual-section">
                             <h4 class="ritual-title">⚡ Extreme Ritual</h4>
-                            <p>${prayer.ritual}</p>
+                            <p>${escapeHtml(p.ritual.instructions)}</p>
+                            <div style="margin-top:1rem;">
+                                <strong>📋 Items:</strong> ${escapeHtml(p.ritual.items.join(', '))}<br>
+                                <strong>⏰ Timing:</strong> ${escapeHtml(p.ritual.timing)}<br>
+                                <strong>📅 Duration:</strong> ${escapeHtml(p.ritual.duration)}
+                            </div>
                         </div>
                     </div>
                 `;
+                
+                // If not premium, add overlay
+                if (!isPremium) {
+                    const overlay = document.createElement('div');
+                    overlay.className = 'premium-lock-overlay';
+                    overlay.innerHTML = `
+                        <i class="fas fa-lock"></i>
+                        <p>Extreme Miracle Prayer - Premium Only</p>
+                        <button class="unlock-btn" onclick="document.getElementById('premium-sanctum').scrollIntoView({behavior:'smooth'})">
+                            <i class="fas fa-crown"></i> UNLOCK FOR $19/MONTH
+                        </button>
+                    `;
+                    card.appendChild(overlay);
+                }
                 
                 oddsContainer.appendChild(card);
             });
         }
 
-        // Filter by category
-        function filterByCategory(category) {
-            currentPrayers = ALL_PRAYERS.filter(prayer => 
-                prayer.tags.includes(category) || 
-                prayer.category.includes(category)
-            );
+        function filterByCategory(cat) {
+            // Update ARIA pressed states
+            document.querySelectorAll('.quick-btn').forEach(btn => {
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            event.currentTarget.setAttribute('aria-pressed', 'true');
+            
+            if (cat === 'free') {
+                currentPrayers = ALL_PRAYERS.filter(p => p.isFree === true);
+            } else {
+                currentPrayers = ALL_PRAYERS.filter(p => 
+                    p.category.includes(cat) || p.tags.includes(cat)
+                );
+            }
             currentPage = 1;
             renderPrayers();
             renderPagination();
+            prayerList.scrollIntoView({behavior:'smooth', block:'start'});
             
-            // Scroll to prayers
-            prayerList.scrollIntoView({ behavior: 'smooth' });
+            showToast(`Showing ${currentPrayers.length} prayers in ${cat} category`);
         }
 
-        // Show all prayers
         function showAllPrayers() {
+            // Update ARIA pressed states
+            document.querySelectorAll('.quick-btn').forEach(btn => {
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            event.currentTarget.setAttribute('aria-pressed', 'true');
+            
             currentPrayers = ALL_PRAYERS;
             currentPage = 1;
             renderPrayers();
             renderPagination();
+            prayerList.scrollIntoView({behavior:'smooth', block:'start'});
             
-            // Scroll to prayers
-            prayerList.scrollIntoView({ behavior: 'smooth' });
+            showToast(`Showing all ${currentPrayers.length} prayers`);
         }
 
-        // Change page
+        function showFavorites() {
+            if (favorites.length === 0) {
+                showToast("You haven't saved any favorites yet. Click the star on any prayer to add it.", 'info');
+                return;
+            }
+            
+            // Update ARIA pressed states
+            document.querySelectorAll('.quick-btn').forEach(btn => {
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            event.currentTarget.setAttribute('aria-pressed', 'true');
+            
+            currentPrayers = ALL_PRAYERS.filter(p => favorites.includes(p.id));
+            currentPage = 1;
+            renderPrayers();
+            renderPagination();
+            prayerList.scrollIntoView({behavior:'smooth', block:'start'});
+            
+            showToast(`Showing ${currentPrayers.length} favorite prayers`);
+        }
+
+        function showRandomPrayer() {
+            // Show only free prayers if not premium
+            const availablePrayers = isPremium ? ALL_PRAYERS : ALL_PRAYERS.filter(p => p.isFree === true);
+            const idx = Math.floor(Math.random() * availablePrayers.length);
+            currentPrayers = [availablePrayers[idx]];
+            currentPage = 1;
+            renderPrayers();
+            renderPagination();
+            prayerList.scrollIntoView({behavior:'smooth', block:'start'});
+            
+            showToast('Your daily guidance has arrived');
+        }
+
         function changePage(page) {
             currentPage = page;
             renderPrayers();
             renderPagination();
-            
-            // Scroll to top of prayer list
-            prayerList.scrollIntoView({ behavior: 'smooth' });
+            prayerList.scrollIntoView({behavior:'smooth', block:'start'});
         }
 
-        // Setup event listeners
         function setupEventListeners() {
-            // Search functionality
-            searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
+            if (searchInput) {
+                let searchTimeout;
                 
-                if (searchTerm.trim() === '') {
-                    currentPrayers = ALL_PRAYERS;
-                } else {
-                    currentPrayers = ALL_PRAYERS.filter(prayer => 
-                        prayer.title.toLowerCase().includes(searchTerm) ||
-                        prayer.prayer.toLowerCase().includes(searchTerm) ||
-                        prayer.tradition.toLowerCase().includes(searchTerm) ||
-                        prayer.tags.some(tag => tag.toLowerCase().includes(searchTerm)) ||
-                        prayer.category.some(cat => cat.toLowerCase().includes(searchTerm))
-                    );
-                }
-                
-                currentPage = 1;
-                renderPrayers();
-                renderPagination();
-            });
-        }
-
-        // Paystack Integration
-        function payWithPaystack() {
-            const handler = PaystackPop.setup({
-                key: 'pk_test_your_public_key_here',
-                email: 'seeker@umubilica.com',
-                amount: 1900 * 100,
-                currency: 'USD',
-                ref: 'UMU-' + Math.floor((Math.random() * 1000000000) + 1),
-                callback: function(response) {
-                    alert('✨ Full Access Granted!\n\nReference: ' + response.reference + '\n\nAll ' + ALL_PRAYERS.length + ' prayers are now unlocked!');
-                    isPremium = true;
-                    grantPremiumAccess();
-                },
-                onClose: function() {
-                    alert('Payment window closed. Ancient wisdom awaits your return.');
-                }
-            });
-            handler.openIframe();
-        }
-
-        // Grant premium access
-        function grantPremiumAccess() {
-            isPremium = true;
-            
-            // Update UI
-            document.querySelector('.prayer-count').innerHTML = `
-                <i class="fas fa-crown"></i> ${ALL_PRAYERS.length}+ Premium Prayers Unlocked
-            `;
-            
-            const premiumBtn = document.querySelector('.paystack-btn');
-            if (premiumBtn) {
-                premiumBtn.innerHTML = '<i class="fas fa-crown"></i> PREMIUM ACCESS ACTIVE';
-                premiumBtn.style.background = 'linear-gradient(135deg, #10B981, #0D9488)';
-                premiumBtn.onclick = () => alert('You already have premium access! Thank you for your subscription.');
+                searchInput.addEventListener('input', e => {
+                    clearTimeout(searchTimeout);
+                    
+                    const term = e.target.value.toLowerCase().trim();
+                    
+                    searchTimeout = setTimeout(() => {
+                        if (!term) {
+                            currentPrayers = ALL_PRAYERS;
+                        } else {
+                            currentPrayers = ALL_PRAYERS.filter(p =>
+                                p.title.toLowerCase().includes(term) ||
+                                p.prayer.toLowerCase().includes(term) ||
+                                p.tradition.toLowerCase().includes(term) ||
+                                p.tags.some(t => t.toLowerCase().includes(term)) ||
+                                p.category.some(c => c.toLowerCase().includes(term))
+                            );
+                        }
+                        currentPage = 1;
+                        renderPrayers();
+                        renderPagination();
+                        
+                        if (currentPrayers.length === 0) {
+                            showToast('No prayers found for: ' + term, 'info');
+                        } else {
+                            showToast(`Found ${currentPrayers.length} prayers`);
+                        }
+                    }, 300);
+                });
             }
-            
-            // Show premium message
-            prayerList.innerHTML = `
-                <div style="text-align: center; padding: 2rem; background: rgba(212, 175, 55, 0.1); border-radius: 10px; margin-bottom: 2rem;">
-                    <h3 style="font-family: 'Cinzel', serif; color: var(--ancient-gold);">
-                        <i class="fas fa-crown"></i> Welcome Premium Member!
-                    </h3>
-                    <p>All ${ALL_PRAYERS.length} ancient prayers are now fully accessible</p>
-                </div>
-            ` + prayerList.innerHTML;
+
+            // Add keyboard navigation for quick buttons
+            document.querySelectorAll('.quick-btn').forEach(btn => {
+                btn.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        btn.click();
+                    }
+                });
+            });
         }
 
-        // Initialize on load
+        function payWithPaystack() {
+            // Disable button to prevent double clicks
+            if (premiumBtn) {
+                premiumBtn.disabled = true;
+                premiumBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> PROCESSING...';
+            }
+
+            try {
+                // Use test key for development - REPLACE WITH YOUR LIVE KEY IN PRODUCTION
+                const handler = PaystackPop.setup({
+                    key: 'pk_test_d7b7c7e9c6e1b4c1c9d9b7f6c9d9f7c9d9b7c7e9', // Example test key
+                    email: 'user@example.com',
+                    amount: 1900 * 100, // $19 in cents
+                    currency: 'USD',
+                    ref: 'UMU-' + Math.floor(Math.random() * 1000000000) + '-' + Date.now(),
+                    metadata: {
+                        custom_fields: [
+                            {
+                                display_name: "Plan",
+                                variable_name: "plan",
+                                value: "Premium Monthly"
+                            }
+                        ]
+                    },
+                    callback: function(response) {
+                        // Payment successful
+                        isPremium = true;
+                        localStorage.setItem('umubilica_premium', 'true');
+                        updatePremiumStatus();
+                        showToast('Payment successful! Welcome to Umubilica Premium! All 83 prayers unlocked!');
+                        
+                        // Reset button
+                        if (premiumBtn) {
+                            premiumBtn.disabled = false;
+                            premiumBtn.innerHTML = '<i class="fas fa-unlock-alt"></i> UNLOCK PREMIUM - $19/MONTH';
+                        }
+                        
+                        // Re-render everything
+                        renderPrayers();
+                        renderSoulsOdds();
+                        
+                        console.log('Payment reference:', response.reference);
+                    },
+                    onClose: function() {
+                        // Payment window closed
+                        showToast('Payment cancelled. You can try again anytime.', 'info');
+                        
+                        // Reset button
+                        if (premiumBtn) {
+                            premiumBtn.disabled = false;
+                            premiumBtn.innerHTML = '<i class="fas fa-unlock-alt"></i> UNLOCK PREMIUM - $19/MONTH';
+                        }
+                    }
+                });
+                handler.openIframe();
+                
+            } catch (error) {
+                console.error('PayStack error:', error);
+                showToast('Payment system error. Please try again later.', 'error');
+                
+                // Reset button
+                if (premiumBtn) {
+                    premiumBtn.disabled = false;
+                    premiumBtn.innerHTML = '<i class="fas fa-unlock-alt"></i> UNLOCK PREMIUM - $19/MONTH';
+                }
+            }
+        }
+
+        // Make functions globally available
+        window.filterByCategory = filterByCategory;
+        window.showAllPrayers = showAllPrayers;
+        window.showFavorites = showFavorites;
+        window.showRandomPrayer = showRandomPrayer;
+        window.payWithPaystack = payWithPaystack;
+        window.init = init;
+
+        // Start the application when DOM is ready
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
